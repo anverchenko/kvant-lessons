@@ -379,6 +379,84 @@ figure{margin:0}
 .backbtn:hover{border-color:var(--accent-line); color:var(--accent); background:var(--accent-soft)}
 .backbtn .ar{font-size:16px; line-height:1}
 @media (max-width:820px){ .backbtn{padding:7px 12px 7px 10px; font-size:14px} }
+
+
+
+/* device-preview:start */
+.devsw{
+  display:flex; align-items:center; gap:4px; padding:3px;
+  border:1px solid var(--line-strong); background:var(--surface-2); border-radius:12px;
+}
+.devsw .dev{
+  border:0; background:none; color:var(--ink-2); padding:6px 13px; border-radius:9px;
+  font-size:14px; display:inline-flex; align-items:center; gap:7px; transition:.16s ease;
+}
+.devsw .dev:hover{color:var(--ink)}
+.devsw .dev[aria-pressed="true"]{background:var(--surface); color:var(--accent); font-weight:500; box-shadow:0 1px 3px rgba(0,0,0,.09)}
+.devsw .ic{font-size:15px; line-height:1}
+.devlbl{font-size:12.5px; color:var(--ink-3); margin-right:2px; white-space:nowrap}
+
+#phoneview{
+  display:none; gap:34px; align-items:flex-start; flex-wrap:wrap; justify-content:center;
+  max-width:1440px; margin:0 auto; padding:26px clamp(14px,3vw,28px) 56px;
+}
+body.phonemode .shell{display:none}
+body.phonemode #phoneview{display:flex}
+
+.phone{
+  position:relative; flex:none;
+  width:390px; height:780px; padding:11px;
+  background:linear-gradient(160deg,#2A2836,#141320); border-radius:46px;
+  box-shadow:0 30px 60px -30px rgba(20,16,50,.7), 0 0 0 1px rgba(255,255,255,.06) inset;
+}
+.phone::before{
+  content:''; position:absolute; top:20px; left:50%; transform:translateX(-50%);
+  width:104px; height:22px; background:#0C0B14; border-radius:12px; z-index:2;
+}
+.phone iframe{
+  width:100%; height:100%; border:0; border-radius:36px; background:var(--surface); display:block;
+}
+.phonemeta{
+  width:100%; text-align:center; font-size:13.5px; color:var(--ink-3); margin-top:12px;
+}
+
+.qrcard{
+  flex:0 1 320px; background:var(--surface); border:1px solid var(--line);
+  border-radius:16px; box-shadow:var(--shadow); padding:22px; text-align:center;
+}
+.qrcard h3{font-size:19px; margin-bottom:6px}
+.qrcard p{font-size:14.5px; color:var(--ink-2); margin:0 auto 16px; max-width:34ch}
+.qrbox{
+  width:196px; height:196px; margin:0 auto 14px; padding:12px;
+  background:#FFFFFF; border-radius:14px; border:1px solid var(--line-strong);
+}
+.qrbox svg{width:100%; height:100%; display:block}
+.qrlink{
+  display:block; font-size:12.5px; color:var(--ink-3); word-break:break-all; line-height:1.45;
+  padding:9px 11px; background:var(--surface-2); border-radius:10px; border:1px solid var(--line);
+}
+.qrsteps{
+  list-style:none; margin:16px 0 0; padding:0; text-align:left;
+  display:flex; flex-direction:column; gap:8px; font-size:14px; color:var(--ink-2);
+}
+.qrsteps li{display:flex; gap:9px; align-items:flex-start}
+.qrsteps .n{
+  flex:none; width:20px; height:20px; border-radius:6px; display:grid; place-items:center;
+  background:var(--accent-soft); color:var(--accent); font-size:11.5px; font-weight:600; margin-top:2px;
+}
+
+/* Усередині рамки телефона службові елементи не потрібні. */
+body.framed .backbtn, body.framed .devsw, body.framed .devlbl, body.framed .themebtn{display:none}
+
+/* На вузькому екрані рамка телефона зайва — там і так мобільний вигляд. */
+@media (max-width:760px){
+  .phone{display:none}
+  .phonemeta{display:none}
+  .devsw .dev .lbltxt{display:none}
+  .devlbl{display:none}
+  .qrcard{flex:1 1 100%}
+}
+/* device-preview:end */
 </style>
 </head>
 <body>
@@ -389,6 +467,12 @@ figure{margin:0}
     <span><b>КВАНТ</b><small>онлайн-школа</small></span>
   </a>
   <a class="backbtn" href="../"><span class="ar" aria-hidden="true">←</span>До списку уроків</a>
+  
+  <div class="devsw" role="group" aria-label="Перегляд очима учня">
+    <span class="devlbl">Перегляд очима учня</span>
+    <button class="dev" type="button" data-mode="desktop" aria-pressed="true"><span class="ic" aria-hidden="true">🖥</span><span class="lbltxt">Комп’ютер</span></button>
+    <button class="dev" type="button" data-mode="phone" aria-pressed="false"><span class="ic" aria-hidden="true">📱</span><span class="lbltxt">Телефон</span></button>
+  </div>
   <div class="meta">
     <span class="tag subj">Хімія · 10 клас</span>
     <span class="tag">Органічна хімія</span>
@@ -822,6 +906,29 @@ figure{margin:0}
   </aside>
 </div>
 
+
+
+<!-- device-preview:start -->
+<div id="phoneview">
+  <div>
+    <div class="phone"><iframe id="phoneframe" title="Урок очима учня на телефоні" loading="lazy"></iframe></div>
+    <p class="phonemeta">Сторінка уроку в мобільному вигляді — така сама, як побачить учень</p>
+  </div>
+
+  <div class="qrcard">
+    <h3>Відкрити на своєму телефоні</h3>
+    <p>Наведіть камеру на код — урок відкриється у браузері телефона.</p>
+    <div class="qrbox"><svg viewBox="0 0 37 37" role="img" aria-label="QR-код на адресу уроку" shape-rendering="crispEdges"><path d="M2 2h7v1h-7zM12 2h3v1h-3zM20 2h4v1h-4zM25 2h1v1h-1zM28 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM13 3h2v1h-2zM17 3h2v1h-2zM20 3h1v1h-1zM22 3h2v1h-2zM26 3h1v1h-1zM28 3h1v1h-1zM34 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h1v1h-1zM13 4h1v1h-1zM16 4h1v1h-1zM18 4h1v1h-1zM21 4h6v1h-6zM28 4h1v1h-1zM30 4h3v1h-3zM34 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM10 5h2v1h-2zM13 5h2v1h-2zM20 5h1v1h-1zM24 5h1v1h-1zM26 5h1v1h-1zM28 5h1v1h-1zM30 5h3v1h-3zM34 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h8v1h-8zM22 6h2v1h-2zM25 6h1v1h-1zM28 6h1v1h-1zM30 6h3v1h-3zM34 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM14 7h3v1h-3zM20 7h2v1h-2zM28 7h1v1h-1zM34 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h1v1h-1zM26 8h1v1h-1zM28 8h7v1h-7zM10 9h1v1h-1zM13 9h2v1h-2zM16 9h1v1h-1zM18 9h1v1h-1zM21 9h5v1h-5zM2 10h1v1h-1zM4 10h5v1h-5zM12 10h2v1h-2zM15 10h2v1h-2zM19 10h1v1h-1zM21 10h1v1h-1zM24 10h2v1h-2zM28 10h5v1h-5zM2 11h3v1h-3zM7 11h1v1h-1zM9 11h3v1h-3zM13 11h1v1h-1zM15 11h1v1h-1zM18 11h2v1h-2zM21 11h2v1h-2zM25 11h1v1h-1zM28 11h2v1h-2zM31 11h2v1h-2zM34 11h1v1h-1zM2 12h2v1h-2zM8 12h2v1h-2zM15 12h5v1h-5zM23 12h2v1h-2zM30 12h1v1h-1zM32 12h2v1h-2zM3 13h2v1h-2zM6 13h1v1h-1zM9 13h1v1h-1zM11 13h5v1h-5zM17 13h1v1h-1zM19 13h5v1h-5zM27 13h2v1h-2zM30 13h4v1h-4zM3 14h2v1h-2zM6 14h1v1h-1zM8 14h1v1h-1zM13 14h1v1h-1zM16 14h1v1h-1zM18 14h1v1h-1zM21 14h1v1h-1zM24 14h1v1h-1zM26 14h2v1h-2zM30 14h2v1h-2zM2 15h1v1h-1zM6 15h2v1h-2zM9 15h1v1h-1zM12 15h2v1h-2zM17 15h1v1h-1zM20 15h1v1h-1zM25 15h4v1h-4zM31 15h1v1h-1zM33 15h2v1h-2zM4 16h2v1h-2zM8 16h1v1h-1zM10 16h1v1h-1zM12 16h7v1h-7zM22 16h2v1h-2zM27 16h2v1h-2zM33 16h1v1h-1zM2 17h3v1h-3zM6 17h1v1h-1zM12 17h1v1h-1zM17 17h1v1h-1zM20 17h4v1h-4zM25 17h4v1h-4zM31 17h2v1h-2zM2 18h1v1h-1zM4 18h1v1h-1zM6 18h3v1h-3zM10 18h3v1h-3zM15 18h3v1h-3zM19 18h1v1h-1zM21 18h1v1h-1zM24 18h1v1h-1zM26 18h2v1h-2zM29 18h3v1h-3zM34 18h1v1h-1zM3 19h3v1h-3zM9 19h2v1h-2zM12 19h2v1h-2zM18 19h1v1h-1zM20 19h2v1h-2zM25 19h1v1h-1zM28 19h2v1h-2zM31 19h2v1h-2zM34 19h1v1h-1zM2 20h1v1h-1zM5 20h1v1h-1zM7 20h3v1h-3zM11 20h1v1h-1zM15 20h3v1h-3zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM29 20h2v1h-2zM32 20h2v1h-2zM2 21h1v1h-1zM4 21h1v1h-1zM6 21h2v1h-2zM11 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM21 21h5v1h-5zM27 21h6v1h-6zM34 21h1v1h-1zM3 22h3v1h-3zM7 22h3v1h-3zM11 22h3v1h-3zM15 22h2v1h-2zM20 22h2v1h-2zM24 22h1v1h-1zM27 22h1v1h-1zM29 22h3v1h-3zM33 22h1v1h-1zM2 23h2v1h-2zM12 23h1v1h-1zM14 23h6v1h-6zM21 23h1v1h-1zM23 23h1v1h-1zM25 23h1v1h-1zM28 23h1v1h-1zM31 23h2v1h-2zM34 23h1v1h-1zM2 24h1v1h-1zM5 24h2v1h-2zM8 24h1v1h-1zM11 24h1v1h-1zM16 24h1v1h-1zM20 24h1v1h-1zM22 24h3v1h-3zM26 24h1v1h-1zM29 24h1v1h-1zM32 24h2v1h-2zM2 25h1v1h-1zM4 25h1v1h-1zM7 25h1v1h-1zM10 25h2v1h-2zM13 25h1v1h-1zM18 25h1v1h-1zM20 25h1v1h-1zM23 25h3v1h-3zM27 25h1v1h-1zM30 25h1v1h-1zM32 25h3v1h-3zM2 26h1v1h-1zM8 26h2v1h-2zM13 26h1v1h-1zM15 26h1v1h-1zM19 26h1v1h-1zM21 26h1v1h-1zM24 26h7v1h-7zM10 27h2v1h-2zM19 27h1v1h-1zM21 27h3v1h-3zM25 27h2v1h-2zM30 27h1v1h-1zM32 27h3v1h-3zM2 28h7v1h-7zM12 28h1v1h-1zM14 28h2v1h-2zM17 28h1v1h-1zM19 28h1v1h-1zM22 28h5v1h-5zM28 28h1v1h-1zM30 28h1v1h-1zM32 28h2v1h-2zM2 29h1v1h-1zM8 29h1v1h-1zM10 29h4v1h-4zM19 29h3v1h-3zM23 29h4v1h-4zM30 29h5v1h-5zM2 30h1v1h-1zM4 30h3v1h-3zM8 30h1v1h-1zM10 30h2v1h-2zM15 30h4v1h-4zM21 30h2v1h-2zM24 30h1v1h-1zM26 30h6v1h-6zM34 30h1v1h-1zM2 31h1v1h-1zM4 31h3v1h-3zM8 31h1v1h-1zM10 31h1v1h-1zM12 31h3v1h-3zM17 31h1v1h-1zM20 31h3v1h-3zM27 31h1v1h-1zM30 31h2v1h-2zM33 31h2v1h-2zM2 32h1v1h-1zM4 32h3v1h-3zM8 32h1v1h-1zM10 32h3v1h-3zM14 32h5v1h-5zM24 32h2v1h-2zM28 32h2v1h-2zM31 32h2v1h-2zM2 33h1v1h-1zM8 33h1v1h-1zM14 33h2v1h-2zM17 33h1v1h-1zM21 33h3v1h-3zM27 33h2v1h-2zM30 33h3v1h-3zM2 34h7v1h-7zM10 34h2v1h-2zM13 34h1v1h-1zM16 34h2v1h-2zM19 34h1v1h-1zM21 34h1v1h-1zM24 34h6v1h-6zM33 34h1v1h-1z" fill="#14121F"/></svg></div>
+    <span class="qrlink">https://anverchenko.github.io/kvant-lessons/alkeny/</span>
+    <ol class="qrsteps">
+      <li><span class="n">1</span><span>Відкрийте камеру телефона</span></li>
+      <li><span class="n">2</span><span>Наведіть її на код і дочекайтесь підказки</span></li>
+      <li><span class="n">3</span><span>Торкніться посилання, що з’явилось</span></li>
+    </ol>
+  </div>
+</div>
+<!-- device-preview:end -->
+
 <footer class="foot">
   <span>Урок створено для платформи «КВАНТ» · хімія, 10 клас</span>
   <span>Сторінка автономна: працює без інтернету, дані нікуди не надсилаються</span>
@@ -1185,6 +1292,39 @@ figure{margin:0}
     var next = isDark ? 'light' : 'dark';
     root.setAttribute('data-theme', next);
     try { localStorage.setItem(KEY, next); } catch (e) {}
+  });
+})();
+</script>
+
+
+
+<script>
+/* device-preview */
+(function(){
+  'use strict';
+  var body = document.body;
+
+  /* Сторінка, відкрита всередині рамки, не показує службових кнопок. */
+  if (/(?:^|[?&])frame=1(?:&|$)/.test(location.search)) body.classList.add('framed');
+
+  var frame = document.getElementById('phoneframe');
+  var loaded = false;
+
+  function setMode(mode){
+    var phone = (mode === 'phone');
+    body.classList.toggle('phonemode', phone);
+    Array.prototype.forEach.call(document.querySelectorAll('.devsw .dev'), function(b){
+      b.setAttribute('aria-pressed', b.dataset.mode === mode ? 'true' : 'false');
+    });
+    if (phone && !loaded){
+      frame.src = location.pathname + '?frame=1';
+      loaded = true;
+    }
+    if (phone) window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.devsw .dev'), function(b){
+    b.addEventListener('click', function(){ setMode(b.dataset.mode); });
   });
 })();
 </script>

@@ -1,0 +1,843 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Як автор і програміст обмінюються уроками: що йде на вхід, що генерується, як це потрапляє назад у платформу.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Зовнішня розробка уроків та експорт у Квант">
+<meta property="og:description" content="Як автор і програміст обмінюються уроками: що йде на вхід, що генерується, як це потрапляє назад у платформу.">
+<meta property="og:locale" content="uk_UA">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%236741FF%27/%3E%3Ctext y=%27.9em%27 x=%27.5em%27 text-anchor=%27middle%27 font-size=%2762%27 fill=%27white%27 font-family=%27Georgia,serif%27%3EК%3C/text%3E%3C/svg%3E">
+<title>Зовнішня розробка уроків та експорт у Квант — КВАНТ</title>
+
+<style>
+:root{
+  --ground:#F4F3FA; --surface:#FFFFFF; --surface-2:#FAF9FE; --surface-3:#F1EFFB;
+  --line:#E5E2F2; --line-strong:#D3CEEA;
+  --ink:#191730; --ink-2:#5C5880; --ink-3:#8A86A8;
+  --accent:#6741FF; --accent-ink:#FFFFFF; --accent-soft:#EDE8FF; --accent-line:#CFC2FF;
+  --code-bg:#F5F3FC; --code-ink:#3A3070;
+  --shadow:0 1px 2px rgba(25,23,48,.05), 0 12px 32px -18px rgba(48,32,120,.28);
+  --font-display:'Cambria','Georgia','Times New Roman',serif;
+  --font-ui:'Segoe UI Variable Text','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+  --font-mono:'Cascadia Mono','Consolas','SF Mono','Menlo',monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --ground:#100E1A; --surface:#191728; --surface-2:#1F1D31; --surface-3:#242138;
+    --line:#2C2942; --line-strong:#3A3656;
+    --ink:#ECEAF8; --ink-2:#A29DC2; --ink-3:#7C779C;
+    --accent:#9B82FF; --accent-ink:#14102A; --accent-soft:#272044; --accent-line:#463A78;
+    --code-bg:#1C1930; --code-ink:#C9BFF5;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 16px 40px -20px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#100E1A; --surface:#191728; --surface-2:#1F1D31; --surface-3:#242138;
+  --line:#2C2942; --line-strong:#3A3656;
+  --ink:#ECEAF8; --ink-2:#A29DC2; --ink-3:#7C779C;
+  --accent:#9B82FF; --accent-ink:#14102A; --accent-soft:#272044; --accent-line:#463A78;
+  --code-bg:#1C1930; --code-ink:#C9BFF5;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 16px 40px -20px rgba(0,0,0,.7);
+}
+:root[data-theme="light"]{
+  --ground:#F4F3FA; --surface:#FFFFFF; --surface-2:#FAF9FE; --surface-3:#F1EFFB;
+  --line:#E5E2F2; --line-strong:#D3CEEA;
+  --ink:#191730; --ink-2:#5C5880; --ink-3:#8A86A8;
+  --accent:#6741FF; --accent-ink:#FFFFFF; --accent-soft:#EDE8FF; --accent-line:#CFC2FF;
+  --code-bg:#F5F3FC; --code-ink:#3A3070;
+  --shadow:0 1px 2px rgba(25,23,48,.05), 0 12px 32px -18px rgba(48,32,120,.28);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--font-ui); font-size:16.5px; line-height:1.68;
+  -webkit-font-smoothing:antialiased;
+}
+a{color:var(--accent)}
+button{font:inherit; color:inherit; cursor:pointer}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:6px}
+
+.top{
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+  padding:14px clamp(14px,3vw,28px);
+  border-bottom:1px solid var(--line); background:var(--surface);
+  position:sticky; top:0; z-index:5;
+}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none; color:inherit}
+.brand .mark{
+  width:34px; height:34px; border-radius:10px; flex:none;
+  background:linear-gradient(140deg,var(--accent),#B78CFF);
+  display:grid; place-items:center; color:#fff; font-weight:700; font-size:15px;
+  font-family:var(--font-display);
+}
+.brand b{font-family:var(--font-display); font-size:18px; letter-spacing:.06em; display:block; line-height:1.1}
+.brand small{font-size:11px; color:var(--ink-3); letter-spacing:.14em; text-transform:uppercase}
+.tag{
+  font-size:12px; padding:5px 11px; border-radius:999px; text-decoration:none;
+  border:1px solid var(--line-strong); color:var(--ink-2); background:var(--surface-2);
+  transition:.16s ease; white-space:nowrap;
+}
+.tag:hover{border-color:var(--accent-line); color:var(--accent); background:var(--accent-soft)}
+.themebtn{
+  margin-left:auto; border:1px solid var(--line-strong); background:var(--surface-2); color:var(--ink-2);
+  width:34px; height:32px; border-radius:10px; display:grid; place-items:center;
+  font-size:15px; line-height:1; transition:.16s ease;
+}
+.themebtn:hover{border-color:var(--accent-line); color:var(--accent)}
+
+.shell{
+  max-width:1180px; margin:0 auto; padding:clamp(24px,4vw,44px) clamp(14px,3vw,28px) 72px;
+  display:grid; grid-template-columns:minmax(0,1fr) 236px; gap:44px; align-items:start;
+}
+
+.hero{grid-column:1 / -1; display:flex; flex-direction:column; gap:12px; margin-bottom:6px}
+.hero .eyebrow{font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent)}
+.hero h1{
+  font-family:var(--font-display); font-weight:600; margin:0;
+  font-size:clamp(29px,4.4vw,40px); line-height:1.16; letter-spacing:-.015em; text-wrap:balance;
+}
+.hero p{margin:0; font-size:18.5px; color:var(--ink-2); max-width:64ch}
+.hero .meta{display:flex; gap:8px; flex-wrap:wrap; margin-top:4px}
+
+.doc{min-width:0}
+.doc h2{
+  font-family:var(--font-display); font-weight:600; font-size:25px; line-height:1.26;
+  margin:42px 0 12px; padding-top:16px; border-top:1px solid var(--line); text-wrap:balance;
+  scroll-margin-top:80px;
+}
+.doc h2:first-child{margin-top:8px; border-top:0; padding-top:0}
+.doc h3{
+  font-family:var(--font-display); font-weight:600; font-size:19px;
+  margin:26px 0 8px; text-wrap:balance; scroll-margin-top:80px;
+}
+.doc p{margin:0 0 14px; max-width:72ch}
+.doc ul, .doc ol{margin:0 0 16px; padding-left:22px; max-width:72ch}
+.doc li{margin-bottom:6px}
+.doc li::marker{color:var(--accent)}
+.doc strong{color:var(--ink)}
+.doc blockquote{
+  margin:0 0 18px; padding:14px 18px; border-left:3px solid var(--accent);
+  background:var(--accent-soft); border-radius:0 12px 12px 0; color:var(--ink);
+}
+.doc blockquote p{margin:0}
+.doc hr{border:0; border-top:1px solid var(--line); margin:34px 0}
+.doc code{
+  font-family:var(--font-mono); font-size:.88em; background:var(--code-bg); color:var(--code-ink);
+  padding:.14em .4em; border-radius:6px;
+}
+.doc pre{
+  background:var(--code-bg); border:1px solid var(--line); border-radius:13px;
+  padding:16px 18px; overflow-x:auto; margin:0 0 20px; line-height:1.55;
+}
+.doc pre code{background:none; padding:0; font-size:13.5px; color:var(--ink-2)}
+.scrollx{overflow-x:auto; margin:0 0 20px; border:1px solid var(--line); border-radius:13px}
+.doc table{width:100%; border-collapse:collapse; font-size:15.5px; background:var(--surface)}
+.doc th, .doc td{text-align:left; padding:11px 14px; border-bottom:1px solid var(--line); vertical-align:top}
+.doc th{
+  font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3);
+  font-weight:500; background:var(--surface-2); white-space:nowrap;
+}
+.doc tr:last-child td{border-bottom:0}
+.doc td code{white-space:nowrap}
+
+.toc{position:sticky; top:76px; font-size:14.5px}
+.toc .lbl{
+  font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3);
+  padding-bottom:10px; display:block; border-bottom:1px solid var(--line); margin-bottom:10px;
+}
+.toc ol{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:1px}
+.toc a{
+  display:block; padding:6px 10px; border-radius:9px; text-decoration:none;
+  color:var(--ink-2); line-height:1.35; transition:.14s ease;
+}
+.toc a:hover{background:var(--surface-3); color:var(--ink)}
+.toc a.on{background:var(--accent-soft); color:var(--accent); font-weight:500}
+
+.foot{
+  grid-column:1 / -1; margin-top:44px; padding-top:20px; border-top:1px solid var(--line);
+  color:var(--ink-3); font-size:13.5px; display:flex; gap:12px; flex-wrap:wrap;
+  justify-content:space-between; align-items:center;
+}
+
+@media (max-width:900px){
+  .shell{grid-template-columns:minmax(0,1fr); gap:24px}
+  .toc{position:static; order:-1; background:var(--surface-2); border:1px solid var(--line);
+        border-radius:13px; padding:14px 12px}
+}
+@media (prefers-reduced-motion:reduce){ *{transition:none !important} html{scroll-behavior:auto} }
+html{scroll-behavior:smooth}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="../">
+    <span class="mark">К</span>
+    <span><b>КВАНТ</b><small>онлайн-школа</small></span>
+  </a>
+  <a class="tag" href="../">← Каталог уроків</a>
+  <button class="themebtn" id="theme" type="button" aria-label="Перемкнути тему" title="Світла / темна тема">◐</button>
+</header>
+
+<div class="shell">
+  <div class="hero">
+    <span class="eyebrow">Робочий процес</span>
+    <h1>Зовнішня розробка уроків та експорт у Квант</h1>
+    <p>Як автор і програміст обмінюються уроками: що йде на вхід, що генерується, як це потрапляє назад у платформу.</p>
+    <div class="meta"><span class="tag">Технічний контракт</span><span class="tag">Версія 1.0</span><span class="tag">4 серпня 2026</span></div>
+  </div>
+
+  <article class="doc" id="doc">
+<p>Документ описує робочий контур, у якому уроки створюються <strong>поза</strong> кодовою базою Кванта
+(автор + AI-асистент), а потім імпортуються в платформу як звичайні дані. Кодова база
+Кванта при цьому не змінюється від уроку до уроку — змінюються лише записи в БД.</p>
+<hr />
+<h2 id="1">1. Ролі та межі відповідальності</h2>
+<div class="scrollx"><table>
+<thead>
+<tr>
+<th>Сторона</th>
+<th>Володіє</th>
+<th>Не робить</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Квант</strong> (програміст)</td>
+<td>Граф знань, БД, API, редактор, плеєр уроків, статистика</td>
+<td>Не пише контент уроків вручну</td>
+</tr>
+<tr>
+<td><strong>Авторська студія</strong> (автор + AI)</td>
+<td>Педагогічний сценарій, тексти, приклади, ілюстрації, тести</td>
+<td><strong>Не змінює граф знань</strong></td>
+</tr>
+</tbody>
+</table></div>
+<p>Головний інваріант, успадкований з 06. Уроки та варіанти:</p>
+<blockquote>
+<p>Граф знань — джерело істини. Урок — лише <strong>представлення</strong> частини графа.
+Зовнішній контур створює представлення, а не структуру.</p>
+</blockquote>
+<p>Тому експортований урок складається рівно з трьох типів записів, і всі вони вже існують
+у моделі даних:</p>
+<pre><code>NodeVariant   ← контент (пояснення, приклади, тести) прив'язаний до вузла графа
+Lesson        ← назва та тип сценарію
+LessonNode    ← порядок вузлів + вибір варіанта + опції показу
+</code></pre>
+<p>Жодної нової таблиці. Жодної міграції БД. Це навмисне обмеження: якщо для імпорту уроку
+потрібна міграція — контракт спроєктовано неправильно.</p>
+<hr />
+<h2 id="2">2. Цикл роботи</h2>
+<pre><code>┌─ Квант ──────────────┐                        ┌─ Авторська студія ────────┐
+│ 1. Експорт графа     │ ──── graph.json ────▶  │ 2. Вибір цільового вузла  │
+│                      │                        │ 3. Замикання передумов    │
+│                      │                        │ 4. Розкладка по етапах    │
+│                      │                        │ 5. Генерація контенту     │
+│                      │                        │ 6. HTML-прев'ю для правок │
+│ 8. Імпорт (dry-run)  │ ◀── lesson.json ─────  │ 7. Експорт пакета уроку   │
+│ 9. Імпорт + review   │                        │                           │
+│ 10. Плеєр для учня   │                        │                           │
+│ 11. Статистика       │ ──── feedback ──────▶  │ 12. Нові варіанти подачі  │
+└──────────────────────┘                        └───────────────────────────┘
+</code></pre>
+<p>Кроки 2–7 — це те, що виконує AI-асистент разом з автором. Кроки 1 та 8–11 потребують
+роботи з боку Кванта, і саме вони описані нижче як технічне завдання.</p>
+<hr />
+<h2 id="3">3. Вхід: що Квант передає авторській студії</h2>
+<h3 id="31">3.1 Формат</h3>
+<p>Один JSON-файл <code>kvant-graph.v1.json</code> на <strong>один предмет</strong>. Це знімок графа, не жива база.</p>
+<pre><code class="language-jsonc">{
+  &quot;schema_version&quot;: &quot;1.0&quot;,
+  &quot;kind&quot;: &quot;kvant.graph_export&quot;,
+  &quot;meta&quot;: {
+    &quot;subject_id&quot;: &quot;subj-math-8&quot;,
+    &quot;subject_title&quot;: &quot;Алгебра, 8 клас&quot;,
+    &quot;exported_at&quot;: &quot;2026-08-04T09:12:00Z&quot;,
+    &quot;graph_version&quot;: &quot;sha256:4f1c…&quot;   // хеш вмісту; потрібен для контролю конфліктів
+  },
+
+  &quot;nodes&quot;: [
+    {
+      &quot;id&quot;: &quot;nd-quadratic-equation&quot;,
+      &quot;title&quot;: &quot;Квадратне рівняння&quot;,
+      &quot;node_type&quot;: &quot;definition&quot;,
+      &quot;short_description&quot;: &quot;Рівняння виду ax² + bx + c = 0, де a ≠ 0&quot;,
+      &quot;learning_outcome&quot;: [&quot;Упізнає квадратне рівняння&quot;, &quot;Виписує коефіцієнти зі знаками&quot;],
+      &quot;typical_errors&quot;: [&quot;Втрачає знак мінус у коефіцієнті b&quot;],
+      &quot;tags&quot;: [&quot;алгебра&quot;, &quot;рівняння&quot;],
+      &quot;difficulty&quot;: &quot;base&quot;,
+      &quot;estimated_time&quot;: 8,
+      &quot;recommended_age&quot;: &quot;13-14&quot;,
+      &quot;success_criteria&quot;: &quot;Правильно визначає a, b, c у 8 з 10 рівнянь&quot;,
+      &quot;status&quot;: &quot;approved&quot;
+    }
+  ],
+
+  &quot;edges&quot;: [
+    {
+      &quot;from_node_id&quot;: &quot;nd-quadratic-equation&quot;,
+      &quot;to_node_id&quot;: &quot;nd-discriminant&quot;,
+      &quot;relation&quot;: &quot;prerequisite&quot;,     // prerequisite | next
+      &quot;type&quot;: &quot;mandatory&quot;,            // mandatory | desirable | recommended | alternative | advanced
+      &quot;weight&quot;: 100,
+      &quot;min_mastery&quot;: 70,
+      &quot;priority&quot;: 1
+    }
+  ],
+
+  &quot;variants&quot;: [
+    { &quot;id&quot;: &quot;var-…&quot;, &quot;node_id&quot;: &quot;nd-discriminant&quot;, &quot;title&quot;: &quot;Базове пояснення&quot;,
+      &quot;variant_type&quot;: &quot;base&quot;, &quot;status&quot;: &quot;approved&quot;, &quot;language&quot;: &quot;uk&quot; }
+  ],
+
+  &quot;topics&quot;:  [ { &quot;id&quot;: &quot;top-…&quot;, &quot;title&quot;: &quot;Квадратні рівняння&quot;, &quot;node_ids&quot;: [&quot;nd-…&quot;] } ],
+  &quot;lessons&quot;: [ { &quot;id&quot;: &quot;les-…&quot;, &quot;title&quot;: &quot;Дискримінант&quot;, &quot;node_ids&quot;: [&quot;nd-…&quot;] } ]
+}
+</code></pre>
+<h3 id="32">3.2 Що обов'язкове, а що бажане</h3>
+<div class="scrollx"><table>
+<thead>
+<tr>
+<th>Секція</th>
+<th>Статус</th>
+<th>Навіщо</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>meta.subject_id</code>, <code>graph_version</code></td>
+<td><strong>обов'язково</strong></td>
+<td>прив'язка пакета та контроль конфліктів</td>
+</tr>
+<tr>
+<td><code>nodes</code></td>
+<td><strong>обов'язково</strong></td>
+<td>без них урок нема на що спирати</td>
+</tr>
+<tr>
+<td><code>edges</code></td>
+<td><strong>обов'язково</strong></td>
+<td>порядок етапів і визначення передумов</td>
+</tr>
+<tr>
+<td><code>variants</code> (без <code>content</code>)</td>
+<td>бажано</td>
+<td>щоб не плодити дублікати подачі</td>
+</tr>
+<tr>
+<td><code>topics</code>, <code>lessons</code></td>
+<td>бажано</td>
+<td>щоб бачити, що вже покрито</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>Мінімум для старту:</strong> <code>meta</code> + <code>nodes</code> + <code>edges</code>. Решту можна додати пізніше без зміни
+контракту.</p>
+<h3 id="33">3.3 Спосіб доставки</h3>
+<p>Три варіанти, від найпростішого:</p>
+<ol>
+<li><strong>Файл у репозиторії</strong> — <code>data/graph/subj-math-8.json</code>, оновлюється вручну. Достатньо
+   для роботи вдвох.</li>
+<li><strong>Ендпоінт експорту</strong> — <code>GET /subjects/{subject_id}/export</code> повертає той самий JSON.
+   Реалізація тривіальна: наявні <code>NodeRead</code> + <code>DependencyRead</code> уже серіалізують усе потрібне.</li>
+<li><strong>Read-only API-токен</strong> — асистент тягне граф сам через наявні
+   <code>/subjects/{id}/graph</code>, <code>/nodes/{id}/prerequisites</code>, <code>/nodes/{id}/next</code>.</li>
+</ol>
+<blockquote>
+<p>Рекомендація: почати з (1), додати (2) коли уроків стане більше десятка.</p>
+</blockquote>
+<hr />
+<h2 id="4">4. Що робить авторська студія</h2>
+<h3 id="41">4.1 Алгоритм побудови уроку з графа</h3>
+<ol>
+<li><strong>Цільовий вузол</strong> — те, чого урок навчає (напр. <code>nd-discriminant</code>).</li>
+<li><strong>Замикання передумов</strong> — рекурсивно збираються вузли з <code>relation="prerequisite"</code>,
+   <code>type="mandatory"</code>. Вони стають матеріалом етапів «Вхід у тему» та «Ключові поняття».
+   Глибина обмежується (зазвичай 1–2 рівні), інакше урок розростається до всього курсу.</li>
+<li><strong>Топологічне сортування</strong> підграфа — дає базовий порядок проходження.</li>
+<li><strong>Розкладка по ролях етапів</strong> — вузли розподіляються по педагогічних слотах (§5).</li>
+<li><strong>Генерація контенту</strong> — для кожного вузла створюється <code>NodeVariant</code> з блоками,
+   спираючись на <code>short_description</code>, <code>learning_outcome</code>, <code>typical_errors</code>,
+   <code>success_criteria</code> з графа.</li>
+<li><strong>Наступні кроки</strong> — вузли з <code>relation="next"</code> формують етап «Куди далі».</li>
+</ol>
+<h3 id="42">4.2 Чого асистент не робить</h3>
+<ul>
+<li><strong>Не створює вузли графа.</strong> Якщо для уроку бракує поняття — воно йде в
+  <code>graph_suggestions</code> як пропозиція, а рішення ухвалює викладач у редакторі.</li>
+<li><strong>Не редагує чужі варіанти.</strong> Створюються нові записи, старі не чіпаються.</li>
+<li><strong>Не вигадує <code>node_id</code>.</strong> Усі ідентифікатори вузлів беруться з експорту графа.</li>
+</ul>
+<hr />
+<h2 id="5">5. Ролі етапів (педагогічні слоти)</h2>
+<p>Макет плеєра задає фіксований набір ролей. Вони ж є критеріями блоку «Перевірка уроку».</p>
+<div class="scrollx"><table>
+<thead>
+<tr>
+<th>Роль (<code>block_role</code>)</th>
+<th>Етап у плеєрі</th>
+<th>Обов'язковий</th>
+<th>Джерело з графа</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>intro</code></td>
+<td>Вхід у тему</td>
+<td>✔</td>
+<td>передумови + мотивуюча задача</td>
+</tr>
+<tr>
+<td><code>goal</code></td>
+<td>Мета уроку</td>
+<td></td>
+<td><code>learning_outcome</code> цільового вузла</td>
+</tr>
+<tr>
+<td><code>media</code></td>
+<td>Медіа / візуалізація</td>
+<td></td>
+<td>ілюстрація до цільового вузла</td>
+</tr>
+<tr>
+<td><code>concepts</code></td>
+<td>Ключові поняття</td>
+<td></td>
+<td>вузли-передумови (<code>definition</code>)</td>
+</tr>
+<tr>
+<td><code>explain</code></td>
+<td>Пояснення</td>
+<td>✔</td>
+<td>цільовий вузол (<code>material</code>)</td>
+</tr>
+<tr>
+<td><code>example</code></td>
+<td>Розібраний приклад</td>
+<td>✔</td>
+<td>вузли типу <code>algorithm</code> / <code>method</code></td>
+</tr>
+<tr>
+<td><code>practice</code></td>
+<td>Перша спроба</td>
+<td>✔</td>
+<td><code>success_criteria</code></td>
+</tr>
+<tr>
+<td><code>feedback</code></td>
+<td>Фідбек</td>
+<td></td>
+<td><code>typical_errors</code></td>
+</tr>
+<tr>
+<td><code>check</code></td>
+<td>Перевірка (тест)</td>
+<td>✔</td>
+<td><code>learning_outcome</code> → питання</td>
+</tr>
+<tr>
+<td><code>result</code></td>
+<td>Результат уроку</td>
+<td></td>
+<td>обчислюється плеєром</td>
+</tr>
+<tr>
+<td><code>summary</code></td>
+<td>Підсумок</td>
+<td>✔</td>
+<td>цільовий вузол, стисло</td>
+</tr>
+<tr>
+<td><code>next</code></td>
+<td>Наступний крок</td>
+<td></td>
+<td>ребра <code>relation="next"</code></td>
+</tr>
+</tbody>
+</table></div>
+<p>Шість обов'язкових ролей — це і є чек-лист «Перевірка уроку 6/6». Пакет, у якому бракує
+обов'язкової ролі, імпортується, але помічається попередженням.</p>
+<hr />
+<h2 id="6">6. Вихід: пакет уроку</h2>
+<h3 id="61">6.1 Структура файлу</h3>
+<p><code>kvant-lesson-package.v1.json</code> — самодостатній, імпортується однією операцією.</p>
+<pre><code class="language-jsonc">{
+  &quot;schema_version&quot;: &quot;1.0&quot;,
+  &quot;kind&quot;: &quot;kvant.lesson_package&quot;,
+
+  &quot;source_graph&quot;: {
+    &quot;subject_id&quot;: &quot;subj-math-8&quot;,
+    &quot;graph_version&quot;: &quot;sha256:4f1c…&quot;,   // проти якого знімка збиралося
+    &quot;exported_at&quot;: &quot;2026-08-04T09:12:00Z&quot;
+  },
+
+  &quot;lesson&quot;: {
+    &quot;id&quot;: &quot;les-discriminant-base&quot;,
+    &quot;title&quot;: &quot;Квадратне рівняння: розв'язування через дискримінант&quot;,
+    &quot;lesson_type&quot;: &quot;study&quot;,            // study | practice | review | assessment | summary
+    &quot;target_node_id&quot;: &quot;nd-discriminant&quot;,
+    &quot;estimated_duration&quot;: 25,
+    &quot;author&quot;: &quot;Андрій Верченко + AI&quot;,
+    &quot;language&quot;: &quot;uk&quot;
+  },
+
+  &quot;variants&quot;: [
+    {
+      &quot;id&quot;: &quot;var-discriminant-base-explain&quot;,
+      &quot;node_id&quot;: &quot;nd-discriminant&quot;,
+      &quot;title&quot;: &quot;Звідки береться дискримінант&quot;,
+      &quot;variant_type&quot;: &quot;base&quot;,
+      &quot;style&quot;: &quot;проблемний&quot;,
+      &quot;audience&quot;: &quot;8 клас&quot;,
+      &quot;difficulty&quot;: &quot;base&quot;,
+      &quot;language&quot;: &quot;uk&quot;,
+      &quot;status&quot;: &quot;draft&quot;,
+      &quot;learning_objective&quot;: &quot;Розуміє походження формули, а не лише запам'ятовує її&quot;,
+      &quot;estimated_duration&quot;: 6,
+      &quot;author&quot;: &quot;AI (Claude), редакція автора&quot;,
+      &quot;version&quot;: &quot;1.0&quot;,
+      &quot;content&quot;: {
+        &quot;format&quot;: &quot;kvant.blocks/1&quot;,
+        &quot;blocks&quot;: [ /* див. §6.2 */ ]
+      }
+    }
+  ],
+
+  &quot;lesson_nodes&quot;: [
+    { &quot;node_id&quot;: &quot;nd-quadratic-equation&quot;, &quot;variant_id&quot;: &quot;var-…-intro&quot;,   &quot;order&quot;: 0,
+      &quot;display_options&quot;: { &quot;block_role&quot;: &quot;intro&quot;,   &quot;stage_title&quot;: &quot;Вхід у тему&quot; } },
+    { &quot;node_id&quot;: &quot;nd-discriminant&quot;,       &quot;variant_id&quot;: &quot;var-…-explain&quot;, &quot;order&quot;: 1,
+      &quot;display_options&quot;: { &quot;block_role&quot;: &quot;explain&quot;, &quot;stage_title&quot;: &quot;Звідки береться D&quot; } }
+  ],
+
+  &quot;graph_suggestions&quot;: [
+    { &quot;action&quot;: &quot;create_node&quot;, &quot;reason&quot;: &quot;Урок спирається на поняття, якого немає в графі&quot;,
+      &quot;draft&quot;: { &quot;title&quot;: &quot;Виділення повного квадрата&quot;, &quot;node_type&quot;: &quot;method&quot; } },
+    { &quot;action&quot;: &quot;create_edge&quot;, &quot;reason&quot;: &quot;Логічний перехід після теми&quot;,
+      &quot;draft&quot;: { &quot;from_node_id&quot;: &quot;nd-discriminant&quot;, &quot;to_node_id&quot;: &quot;nd-vieta&quot;,
+                 &quot;relation&quot;: &quot;next&quot;, &quot;type&quot;: &quot;recommended&quot; } }
+  ],
+
+  &quot;validation&quot;: {
+    &quot;roles_covered&quot;: [&quot;intro&quot;,&quot;goal&quot;,&quot;media&quot;,&quot;concepts&quot;,&quot;explain&quot;,&quot;example&quot;,
+                      &quot;practice&quot;,&quot;feedback&quot;,&quot;check&quot;,&quot;summary&quot;,&quot;next&quot;],
+    &quot;required_missing&quot;: [],
+    &quot;checklist&quot;: &quot;6/6&quot;
+  }
+}
+</code></pre>
+<h3 id="62">6.2 Схема блоків контенту</h3>
+<p><code>NodeVariant.content</code> — це JSON-поле, тож формат блоків визначаємо ми. Кожен блок має
+<code>type</code>, решта полів залежить від типу.</p>
+<pre><code class="language-jsonc">{ &quot;type&quot;: &quot;text&quot;,     &quot;markdown&quot;: &quot;Ти вже вмієш розв'язувати **ax + b = 0**…&quot; }
+
+{ &quot;type&quot;: &quot;formula&quot;,  &quot;latex&quot;: &quot;D = b^2 - 4ac&quot;, &quot;display&quot;: true,
+                      &quot;caption&quot;: &quot;Дискримінант&quot; }
+
+{ &quot;type&quot;: &quot;derivation&quot;, &quot;steps&quot;: [
+    { &quot;latex&quot;: &quot;ax^2 + bx + c = 0&quot;,              &quot;note&quot;: &quot;початкове рівняння&quot; },
+    { &quot;latex&quot;: &quot;x^2 + \\frac{b}{a}x + \\frac{c}{a} = 0&quot;, &quot;note&quot;: &quot;поділили на a&quot; } ] }
+
+{ &quot;type&quot;: &quot;callout&quot;,  &quot;tone&quot;: &quot;warning&quot;,        // info | success | warning | error
+                      &quot;title&quot;: &quot;Найчастіша помилка&quot;,
+                      &quot;markdown&quot;: &quot;Знак «мінус» належить коефіцієнту.&quot; }
+
+{ &quot;type&quot;: &quot;terms&quot;,    &quot;items&quot;: [
+    { &quot;term&quot;: &quot;a&quot;, &quot;definition&quot;: &quot;старший коефіцієнт, не може бути нулем&quot; } ] }
+
+{ &quot;type&quot;: &quot;steps&quot;,    &quot;items&quot;: [
+    { &quot;title&quot;: &quot;Виписати коефіцієнти&quot;, &quot;markdown&quot;: &quot;a = 2, b = −5, c = −3&quot; } ] }
+
+{ &quot;type&quot;: &quot;table&quot;,    &quot;headers&quot;: [&quot;Знак D&quot;, &quot;Коренів&quot;],
+                      &quot;rows&quot;: [[&quot;D &gt; 0&quot;, &quot;два різні&quot;], [&quot;D = 0&quot;, &quot;один&quot;]] }
+
+{ &quot;type&quot;: &quot;figure&quot;,   &quot;render&quot;: &quot;parabola&quot;,     // параметричний малюнок, без бінарників
+                      &quot;params&quot;: { &quot;a&quot;: 1, &quot;b&quot;: -1, &quot;c&quot;: -6 },
+                      &quot;caption&quot;: &quot;Два перетини з віссю&quot; }
+
+{ &quot;type&quot;: &quot;figure&quot;,   &quot;render&quot;: &quot;svg&quot;, &quot;svg&quot;: &quot;&lt;svg …&gt;&quot;, &quot;caption&quot;: &quot;…&quot; }
+
+{ &quot;type&quot;: &quot;input_task&quot;, &quot;prompt_latex&quot;: &quot;x^2 - 7x + 12 = 0&quot;,
+                        &quot;fields&quot;: [ { &quot;key&quot;: &quot;D&quot;,  &quot;label&quot;: &quot;D&quot;,  &quot;answer&quot;: 1 },
+                                    { &quot;key&quot;: &quot;x1&quot;, &quot;label&quot;: &quot;x₁&quot;, &quot;answer&quot;: 4 },
+                                    { &quot;key&quot;: &quot;x2&quot;, &quot;label&quot;: &quot;x₂&quot;, &quot;answer&quot;: 3 } ],
+                        &quot;unordered&quot;: [&quot;x1&quot;, &quot;x2&quot;],
+                        &quot;tolerance&quot;: 0.001,
+                        &quot;hint_wrong&quot;: &quot;b² = (−7)² = 49, а 4ac = 48.&quot; }
+
+{ &quot;type&quot;: &quot;quiz&quot;,     &quot;question_markdown&quot;: &quot;Скільки коренів має $3x^2-4x+5=0$?&quot;,
+                      &quot;options&quot;: [&quot;Два&quot;, &quot;Один&quot;, &quot;Жодного&quot;, &quot;Безліч&quot;],
+                      &quot;answer_index&quot;: 2,
+                      &quot;explanation&quot;: &quot;D = 16 − 60 = −44 &lt; 0 → дійсних коренів немає.&quot; }
+</code></pre>
+<p>Правила:</p>
+<ul>
+<li><strong>Формули — завжди LaTeX</strong>, а не готовий HTML. Рендер — на боці Кванта (KaTeX уже
+  підключено). Це гарантує однаковий вигляд у плеєрі, друку та мобільній версії.</li>
+<li><strong>Малюнки — параметричні</strong> (<code>render: "parabola"</code> + коефіцієнти) там, де це можливо.
+  Плеєр малює їх сам, вони автоматично підхоплюють тему оформлення й не важать нічого.
+  <code>render: "svg"</code> — запасний варіант для унікальних схем.</li>
+<li><strong>Жодних зовнішніх URL</strong> у контенті. Пакет має бути самодостатнім.</li>
+<li><strong>Невідомий <code>type</code></strong> — плеєр пропускає блок і пише попередження в консоль, а не падає.</li>
+</ul>
+<h3 id="63">6.3 Ідентифікатори та ідемпотентність</h3>
+<p><code>id</code> варіантів генеруються <strong>детерміновано</strong>:</p>
+<pre><code>variant_id = &quot;var-&quot; + uuid5(NAMESPACE_KVANT, lesson_id + &quot;|&quot; + node_id + &quot;|&quot; + block_role)
+</code></pre>
+<p>Наслідок: повторний імпорт того самого уроку <strong>оновлює</strong> ті самі записи, а не створює
+дублікати. Це робить імпорт безпечним для повторного запуску.</p>
+<hr />
+<h2 id="7">7. Що потрібно реалізувати в Кванті</h2>
+<p>Три частини. Перша — обов'язкова, друга — обов'язкова, третя — для зручності.</p>
+<h3 id="71">7.1 Імпорт пакета</h3>
+<p>Найпростіший робочий варіант — CLI, без нових ендпоінтів:</p>
+<pre><code class="language-bash">python -m app.import_lesson package.json --dry-run
+python -m app.import_lesson package.json --mode upsert
+</code></pre>
+<p>Пізніше — ендпоінт <code>POST /subjects/{subject_id}/import/lesson-package</code>.</p>
+<p>Порядок дій імпортера:</p>
+<ol>
+<li>Перевірити <code>schema_version</code> і <code>kind</code>.</li>
+<li>Перевірити, що <code>source_graph.subject_id</code> збігається з цільовим предметом.</li>
+<li>Порівняти <code>graph_version</code> з поточним. Розбіжність — <strong>попередження</strong>, не помилка:
+   вивести перелік вузлів пакета, яких уже немає або які змінилися.</li>
+<li>Перевірити, що всі <code>node_id</code> існують і належать предмету. Відсутній вузол —
+   помилка з іменем вузла (<code>_set_nodes</code> уже так робить).</li>
+<li><strong>Upsert варіантів</strong> по <code>id</code>. Статус при імпорті завжди <code>draft</code> — навіть якщо в пакеті
+   інше. Approve робить людина в редакторі.</li>
+<li>Створити або оновити <code>Lesson</code>.</li>
+<li>Замінити склад уроку — уже реалізовано в <code>PUT /lessons/{id}/nodes</code>.</li>
+<li><code>graph_suggestions</code> — <strong>не застосовувати</strong>. Зберегти в окремий файл або таблицю
+   пропозицій для розгляду викладачем.</li>
+<li>Вивести звіт:</li>
+</ol>
+<pre><code>Урок: Квадратне рівняння: розв'язування через дискримінант
+  Варіанти:  створено 8, оновлено 3, без змін 1
+  Склад:     12 вузлів
+  Чек-лист:  6/6
+  Пропозиції до графа: 2 (не застосовано)
+  Попередження: вузол nd-vieta відсутній у графі — етап «Далі» показано без посилання
+</code></pre>
+<p>Гарантії, які дає імпортер:</p>
+<ul>
+<li>ніколи не видаляє вузли, ребра чи чужі варіанти;</li>
+<li>ніколи не змінює структуру графа;</li>
+<li>при <code>--dry-run</code> не пише в БД взагалі.</li>
+</ul>
+<h3 id="72">7.2 Рендер блоків</h3>
+<p>У фронтенді потрібен один компонент-диспетчер:</p>
+<pre><code>BlockRenderer(block) → switch (block.type)
+    text | formula | derivation | callout | terms | steps
+    table | figure | input_task | quiz
+    default → попередження в консоль, блок пропускається
+</code></pre>
+<p>Markdown + KaTeX уже підключені (комміт «Рендер контенту з формулами»), тож <code>text</code>,
+<code>formula</code> та <code>derivation</code> реалізуються майже без роботи. Інтерактивні блоки
+(<code>input_task</code>, <code>quiz</code>) потребують локального стану — відповідь, перевірка, пояснення.</p>
+<h3 id="73">7.3 Плеєр уроку</h3>
+<p>Сторінка <code>/lessons/{id}/play</code>, три колонки:</p>
+<ul>
+<li><strong>ліворуч</strong> — етапи уроку (з <code>display_options.stage_title</code>), клікабельні;</li>
+<li><strong>центр</strong> — блоки поточного етапу + навігація «Назад / Далі»;</li>
+<li><strong>праворуч</strong> — чек-лист ролей і панель AI-ментора.</li>
+</ul>
+<p>Дані беруться так: <code>GET /lessons/{id}</code> → для кожного <code>LessonNode</code> підтягнути
+<code>variant.content.blocks</code> → згрупувати за <code>display_options.block_role</code>.</p>
+<p><strong>Референсна реалізація вже є</strong> — HTML-прототип уроку про дискримінант містить усю
+логіку навігації, рендер парабол, перевірку відповідей і підрахунок чек-листа. Його
+можна брати як специфікацію поведінки.</p>
+<hr />
+<h2 id="8-html-">8. Роль HTML-прев'ю</h2>
+<p>Прев'ю — це <strong>не формат обміну</strong>. Джерело істини — JSON-пакет. Прев'ю потрібне для того,
+щоб автор побачив урок очима учня <strong>до</strong> імпорту й вніс правки, поки це дешево.</p>
+<div class="scrollx"><table>
+<thead>
+<tr>
+<th></th>
+<th>Прев'ю (HTML)</th>
+<th>Пакет (JSON)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Для кого</td>
+<td>людина</td>
+<td>програма</td>
+</tr>
+<tr>
+<td>Живе</td>
+<td>посилання, одноразове</td>
+<td>у БД Кванта</td>
+</tr>
+<tr>
+<td>Формули</td>
+<td>відрендерені</td>
+<td>LaTeX-джерело</td>
+</tr>
+<tr>
+<td>Правки</td>
+<td>обговорення з автором</td>
+<td>результат правок</td>
+</tr>
+</tbody>
+</table></div>
+<p>Прев'ю генерується з того самого пакета — отже, що бачить автор, те й потрапить у Квант.</p>
+<hr />
+<h2 id="9">9. Версіонування та конфлікти</h2>
+<div class="scrollx"><table>
+<thead>
+<tr>
+<th>Ситуація</th>
+<th>Поведінка</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Граф змінився після експорту</td>
+<td>Імпорт проходить, у звіті — перелік розбіжностей</td>
+</tr>
+<tr>
+<td>Вузол видалено з графа</td>
+<td>Помилка з іменем вузла; урок не імпортується частково</td>
+</tr>
+<tr>
+<td>Варіант змінили в редакторі Кванта</td>
+<td>Upsert перезапише. Захист: <code>--mode create-only</code></td>
+</tr>
+<tr>
+<td>Повторний імпорт того самого пакета</td>
+<td>Ідемпотентний, дублікатів не буде</td>
+</tr>
+<tr>
+<td>Потрібен відкат</td>
+<td><code>version</code> у варіанті + збережений файл пакета</td>
+</tr>
+</tbody>
+</table></div>
+<p>Рекомендація: зберігати пакети в репозиторії (<code>data/lessons/*.json</code>) — тоді історія
+уроків живе в git, а відкат зводиться до повторного імпорту старого файлу.</p>
+<hr />
+<h2 id="10">10. Що зробити першим</h2>
+<div class="scrollx"><table>
+<thead>
+<tr>
+<th>Крок</th>
+<th>Обсяг</th>
+<th>Дає</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1. Експорт графа у JSON (файл або ендпоінт)</td>
+<td>~1 год</td>
+<td>можливість будувати уроки з реального графа</td>
+</tr>
+<tr>
+<td>2. CLI-імпортер пакета з <code>--dry-run</code></td>
+<td>~4 год</td>
+<td>уроки потрапляють у БД</td>
+</tr>
+<tr>
+<td>3. <code>BlockRenderer</code> для 6 базових типів блоків</td>
+<td>~4 год</td>
+<td>урок видно в інтерфейсі</td>
+</tr>
+<tr>
+<td>4. Плеєр з лівою навігацією</td>
+<td>~6 год</td>
+<td>учень проходить урок</td>
+</tr>
+<tr>
+<td>5. Інтерактивні блоки (<code>quiz</code>, <code>input_task</code>)</td>
+<td>~4 год</td>
+<td>практика й перевірка працюють</td>
+</tr>
+<tr>
+<td>6. Ендпоінт імпорту замість CLI</td>
+<td>~3 год</td>
+<td>імпорт з інтерфейсу редактора</td>
+</tr>
+</tbody>
+</table></div>
+<p>Після кроків 1–2 контур уже замкнений: урок можна створити ззовні й покласти в базу.
+Кроки 3–5 роблять його видимим для учня.</p>
+<hr />
+<h2 id="11">11. Відкриті питання</h2>
+<ul>
+<li><strong>Гранулярність варіантів.</strong> Один варіант на вузол чи один на роль етапу? Зараз у
+  контракті — на роль (<code>variant_id</code> унікальний по <code>lesson + node + block_role</code>), бо це
+  дає гнучкість. Але при цьому один вузол може мати багато варіантів того самого типу.</li>
+<li><strong>Спільні блоки.</strong> Чи можуть два уроки використовувати один варіант? Модель це
+  дозволяє; імпортер має не перезаписувати варіант, що використовується іншим уроком.</li>
+<li><strong>Медіа-файли.</strong> Поки що контент самодостатній (LaTeX + параметричні фігури). Коли
+  з'являться зображення й відео — знадобиться окремий розділ пакета з бінарниками.</li>
+<li><strong>Мова.</strong> <code>language</code> є в моделі, але маршрут «той самий урок іншою мовою» не
+  спроєктовано.</li>
+</ul>
+<hr />
+<p>Пов'язані документи: 05. Модель даних ·
+06. Уроки та варіанти · 07. Редактор ·
+09. AI-конвеєр</p>
+  </article>
+
+  <nav class="toc" aria-label="Зміст документа">
+    <span class="lbl">Зміст</span>
+    <ol id="toc"></ol>
+  </nav>
+
+  <div class="foot">
+    <span>Платформа «КВАНТ» · внутрішня документація</span>
+    <span>Оновлено 4 серпня 2026</span>
+  </div>
+</div>
+
+<script>
+(function(){
+  'use strict';
+
+  /* Зміст будується із заголовків другого рівня */
+  var toc = document.getElementById('toc');
+  var heads = Array.prototype.slice.call(document.querySelectorAll('.doc h2'));
+  var links = [];
+
+  heads.forEach(function(h){
+    var li = document.createElement('li');
+    var a = document.createElement('a');
+    a.href = '#' + h.id;
+    a.textContent = h.textContent.replace(/^\d+\.\s*/, '');
+    li.appendChild(a);
+    toc.appendChild(li);
+    links.push(a);
+  });
+
+  /* Підсвітка поточного розділу */
+  if ('IntersectionObserver' in window && heads.length){
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if (!e.isIntersecting) return;
+        var i = heads.indexOf(e.target);
+        links.forEach(function(a, k){ a.classList.toggle('on', k === i); });
+      });
+    }, { rootMargin: '-80px 0px -70% 0px' });
+    heads.forEach(function(h){ io.observe(h); });
+  }
+
+  /* Тема оформлення */
+  var root = document.documentElement, btn = document.getElementById('theme'), KEY = 'kvant-theme';
+  try { var saved = localStorage.getItem(KEY); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+  btn.addEventListener('click', function(){
+    var isDark = root.getAttribute('data-theme') === 'dark' ||
+      (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem(KEY, next); } catch (e) {}
+  });
+})();
+</script>
+</body>
+</html>

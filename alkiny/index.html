@@ -1,0 +1,1427 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Інтерактивний урок з хімії: алкіни, будова етину (ацетилену) та потрійний зв'язок. Приєднання у дві стадії, реакція Кучерова, ацетиленіди, тримеризація, тест.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Алкіни: ацетилен і потрійний зв'язок">
+<meta property="og:description" content="Урок з органічної хімії для 11 класу: два π-зв'язки, приєднання у дві стадії, реакція Кучерова, якісні реакції, тест із поясненнями.">
+<meta property="og:locale" content="uk_UA">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%230F8A63%27/%3E%3Ctext y=%27.9em%27 x=%27.5em%27 text-anchor=%27middle%27 font-size=%2762%27 fill=%27white%27 font-family=%27Georgia,serif%27%3EК%3C/text%3E%3C/svg%3E">
+<title>Алкіни: ацетилен і потрійний зв'язок — КВАНТ</title>
+
+<style>
+:root{
+  --ground:#F2F6F4; --surface:#FFFFFF; --surface-2:#F8FBF9; --surface-3:#EDF4F0;
+  --line:#DFEAE5; --line-strong:#C8DCD4;
+  --ink:#12211C; --ink-2:#4E6259; --ink-3:#7C918A;
+  --accent:#0F8A63; --accent-ink:#FFFFFF; --accent-soft:#E2F3EC; --accent-line:#B3E0CD;
+  --brand:#6741FF;
+  --ok:#0F8A63; --ok-soft:#E2F3EC;
+  --warn:#B0700A; --warn-soft:#FBF1DC;
+  --bad:#C13B4E; --bad-soft:#FBE8EA;
+  --br:#C8641B;            /* бромна вода */
+  --br-soft:#FBEADC;
+  --ag:#B9B396;            /* осад арґентум ацетиленіду */
+  --fl:#2F6BD8;            /* полум'я ацетиленового пальника */
+  --shadow:0 1px 2px rgba(18,33,28,.05), 0 12px 32px -18px rgba(15,90,70,.3);
+  --radius:16px;
+  --font-display:'Cambria','Georgia','Times New Roman',serif;
+  --font-ui:'Segoe UI Variable Text','Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+  --font-chem:'Cambria','Georgia','Times New Roman',serif;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --ground:#0C1512; --surface:#141F1B; --surface-2:#1A2723; --surface-3:#1F2F2A;
+    --line:#25352F; --line-strong:#33473F;
+    --ink:#E6F0EB; --ink-2:#9DB3AA; --ink-3:#789087;
+    --accent:#46C79A; --accent-ink:#0A1A14; --accent-soft:#173029; --accent-line:#2C5648;
+    --brand:#9B82FF;
+    --ok:#46C79A; --ok-soft:#173029;
+    --warn:#E0A54A; --warn-soft:#302512;
+    --bad:#EE8296; --bad-soft:#331A20;
+    --br:#E08A45; --br-soft:#33220F;
+    --ag:#D6D0B4;
+    --fl:#6FA0FF;
+    --shadow:0 1px 2px rgba(0,0,0,.45), 0 16px 40px -20px rgba(0,0,0,.75);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0C1512; --surface:#141F1B; --surface-2:#1A2723; --surface-3:#1F2F2A;
+  --line:#25352F; --line-strong:#33473F;
+  --ink:#E6F0EB; --ink-2:#9DB3AA; --ink-3:#789087;
+  --accent:#46C79A; --accent-ink:#0A1A14; --accent-soft:#173029; --accent-line:#2C5648;
+  --brand:#9B82FF;
+  --ok:#46C79A; --ok-soft:#173029;
+  --warn:#E0A54A; --warn-soft:#302512;
+  --bad:#EE8296; --bad-soft:#331A20;
+  --br:#E08A45; --br-soft:#33220F;
+  --ag:#D6D0B4;
+  --fl:#6FA0FF;
+  --shadow:0 1px 2px rgba(0,0,0,.45), 0 16px 40px -20px rgba(0,0,0,.75);
+}
+:root[data-theme="light"]{
+  --ground:#F2F6F4; --surface:#FFFFFF; --surface-2:#F8FBF9; --surface-3:#EDF4F0;
+  --line:#DFEAE5; --line-strong:#C8DCD4;
+  --ink:#12211C; --ink-2:#4E6259; --ink-3:#7C918A;
+  --accent:#0F8A63; --accent-ink:#FFFFFF; --accent-soft:#E2F3EC; --accent-line:#B3E0CD;
+  --brand:#6741FF;
+  --ok:#0F8A63; --ok-soft:#E2F3EC;
+  --warn:#B0700A; --warn-soft:#FBF1DC;
+  --bad:#C13B4E; --bad-soft:#FBE8EA;
+  --br:#C8641B; --br-soft:#FBEADC;
+  --ag:#B9B396;
+  --fl:#2F6BD8;
+  --shadow:0 1px 2px rgba(18,33,28,.05), 0 12px 32px -18px rgba(15,90,70,.3);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--font-ui); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:var(--font-display); font-weight:600; text-wrap:balance; margin:0}
+p{margin:0}
+button{font:inherit; color:inherit; cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px; border-radius:6px}
+
+/* ─── шапка ─── */
+.top{
+  display:flex; align-items:center; gap:20px; flex-wrap:wrap;
+  padding:14px clamp(14px,3vw,28px);
+  border-bottom:1px solid var(--line); background:var(--surface);
+}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none}
+.brand .mark{
+  width:34px; height:34px; border-radius:10px; flex:none;
+  background:linear-gradient(140deg,var(--brand),#B78CFF);
+  display:grid; place-items:center; color:#fff; font-weight:700; font-size:15px;
+  font-family:var(--font-display);
+}
+.brand b{font-family:var(--font-display); font-size:18px; letter-spacing:.06em; display:block; line-height:1.1}
+.brand small{font-size:11px; color:var(--ink-3); letter-spacing:.14em; text-transform:uppercase}
+.top .meta{margin-left:auto; display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+.tag{
+  font-size:12px; letter-spacing:.04em; padding:5px 11px; border-radius:999px;
+  border:1px solid var(--line-strong); color:var(--ink-2); background:var(--surface-2);
+  white-space:nowrap;
+}
+.tag.subj{border-color:var(--accent-line); color:var(--accent); background:var(--accent-soft)}
+.tag.back{text-decoration:none; transition:.16s ease}
+.tag.back:hover{border-color:var(--accent-line); color:var(--accent); background:var(--accent-soft)}
+.themebtn{
+  border:1px solid var(--line-strong); background:var(--surface-2); color:var(--ink-2);
+  width:34px; height:32px; border-radius:10px; display:grid; place-items:center;
+  font-size:15px; line-height:1; transition:.16s ease;
+}
+.themebtn:hover{border-color:var(--accent-line); color:var(--accent)}
+
+/* ─── каркас ─── */
+.shell{
+  display:grid; grid-template-columns:264px minmax(0,1fr) 288px;
+  gap:18px; align-items:start;
+  padding:18px clamp(14px,3vw,28px) 56px;
+  max-width:1440px; margin:0 auto;
+}
+.panel{background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow)}
+.panel-h{
+  padding:14px 16px 10px; font-size:11px; letter-spacing:.16em; text-transform:uppercase;
+  color:var(--ink-3); display:flex; align-items:center; justify-content:space-between; gap:8px;
+}
+
+/* ─── етапи ─── */
+.rail{position:sticky; top:18px}
+.rail ol{list-style:none; margin:0; padding:0 8px 12px; display:flex; flex-direction:column; gap:2px}
+.rail button{
+  width:100%; display:flex; align-items:center; gap:11px; text-align:left;
+  background:none; border:0; padding:9px 10px; border-radius:11px;
+  color:var(--ink-2); font-size:14.5px; line-height:1.35; transition:.16s ease;
+}
+.rail button:hover{background:var(--surface-3); color:var(--ink)}
+.rail .n{
+  flex:none; width:25px; height:25px; border-radius:50%; display:grid; place-items:center;
+  font-size:12px; font-variant-numeric:tabular-nums; background:var(--surface-3);
+  color:var(--ink-3); border:1px solid var(--line); transition:all .16s ease;
+}
+.rail .t{flex:1; min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap}
+.rail li.done .n{background:var(--ok-soft); color:var(--ok); border-color:transparent}
+.rail li.on button{background:linear-gradient(100deg,var(--accent-soft),transparent 92%); color:var(--ink); font-weight:600}
+.rail li.on .n{background:var(--accent); color:var(--accent-ink); border-color:transparent}
+
+/* ─── картка ─── */
+.stagecol{display:flex; flex-direction:column; gap:14px; min-width:0}
+.card{padding:clamp(20px,3vw,34px); min-height:470px}
+.eyebrow{
+  font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent);
+  display:flex; align-items:center; gap:8px; margin-bottom:12px;
+}
+.eyebrow::before{content:''; width:6px; height:6px; border-radius:50%; background:currentColor}
+.card h1{font-size:clamp(26px,3.4vw,34px); line-height:1.18; letter-spacing:-.01em}
+.card h3{font-size:17px; margin-top:2px}
+.step{display:none; flex-direction:column; gap:18px}
+.step.on{display:flex; animation:in .3s ease both}
+@keyframes in{from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:none}}
+@media (prefers-reduced-motion:reduce){ .step.on{animation:none} *{transition:none !important} }
+.lead{font-size:18.5px; line-height:1.62; color:var(--ink-2)}
+.step p{max-width:66ch}
+
+.navrow{display:flex; align-items:center; gap:14px; flex-wrap:wrap; padding:0 4px}
+.dots{display:flex; gap:6px; flex:1; flex-wrap:wrap}
+.dots button{width:9px; height:9px; padding:0; border:0; border-radius:50%; background:var(--line-strong); transition:all .2s ease}
+.dots button:hover{background:var(--accent-line)}
+.dots button[aria-current="step"]{background:var(--accent); width:22px; border-radius:999px}
+.dots button.seen{background:var(--accent-line)}
+.btn{
+  border:1px solid var(--line-strong); background:var(--surface); color:var(--ink);
+  padding:11px 18px; border-radius:12px; font-size:15px; font-weight:500;
+  display:inline-flex; align-items:center; gap:8px; transition:.16s ease;
+}
+.btn:hover{border-color:var(--accent-line); color:var(--accent)}
+.btn[disabled]{opacity:.4; cursor:not-allowed}
+.btn.primary{
+  background:linear-gradient(100deg,var(--accent),#25A87C); color:#fff; border-color:transparent;
+  box-shadow:0 8px 20px -10px rgba(15,138,99,.85);
+}
+.btn.primary:hover{filter:brightness(1.07); color:#fff}
+
+/* ─── права колонка ─── */
+.side{position:sticky; top:18px; display:flex; flex-direction:column; gap:14px}
+.side .score{font-size:13px; color:var(--ink-2); font-variant-numeric:tabular-nums}
+.checks{list-style:none; margin:0; padding:0 10px 12px; display:flex; flex-direction:column; gap:1px}
+.checks li{display:flex; align-items:center; gap:10px; padding:8px; border-radius:10px; font-size:14.5px; color:var(--ink-3)}
+.checks li .ic{
+  flex:none; width:19px; height:19px; border-radius:50%; display:grid; place-items:center;
+  font-size:11px; background:var(--surface-3); color:var(--ink-3); border:1px solid var(--line);
+}
+.checks li.done{color:var(--ink)}
+.checks li.done .ic{background:var(--ok-soft); color:var(--ok); border-color:transparent; font-weight:700}
+.mentor{padding:16px}
+.mentor .hd{display:flex; align-items:center; gap:10px; margin-bottom:10px}
+.mentor .av{
+  width:34px; height:34px; border-radius:11px; flex:none; display:grid; place-items:center;
+  background:linear-gradient(140deg,var(--accent),#4FD3A6); color:#fff; font-size:16px;
+}
+.mentor .hd b{font-size:15px; font-family:var(--font-ui); font-weight:600; display:block}
+.mentor .hd span{font-size:12.5px; color:var(--ink-3)}
+.hintbox{
+  background:var(--surface-2); border:1px solid var(--line); border-radius:12px;
+  padding:12px 13px; font-size:14.5px; color:var(--ink-2); line-height:1.55;
+}
+.qa{display:flex; flex-direction:column; gap:8px; margin-top:12px}
+.qa .lbl{font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3)}
+.qa button{
+  text-align:left; background:var(--surface); border:1px solid var(--line-strong);
+  border-radius:11px; padding:10px 13px; font-size:14.5px; transition:.16s ease;
+}
+.qa button:hover{border-color:var(--accent-line); color:var(--accent); background:var(--accent-soft)}
+
+/* ─── хімічні формули ─── */
+.f{font-family:var(--font-chem); font-size:1.1em; white-space:nowrap; letter-spacing:.01em}
+.f sub{font-size:.68em; vertical-align:-.28em; padding:0 .03em}
+.f sup{font-size:.68em}
+
+/* схема реакції */
+.rxn{
+  position:relative;
+  display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:center;
+  background:var(--surface-2); border:1px solid var(--line); border-left:3px solid var(--accent);
+  border-radius:13px; padding:20px 18px; overflow-x:auto;
+}
+.rxn.two{padding-top:32px}
+.rxn .st{
+  position:absolute; left:14px; top:10px;
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3);
+}
+.rxn .mol{
+  font-family:var(--font-chem); font-size:21px; white-space:nowrap;
+  padding:9px 14px; border-radius:11px; background:var(--surface); border:1px solid var(--line);
+}
+.rxn .mol sub{font-size:.68em; vertical-align:-.28em}
+.rxn .mol.prod{border-color:var(--accent-line); background:var(--accent-soft); color:var(--accent); font-weight:600}
+.rxn .op{font-size:20px; color:var(--ink-3); font-family:var(--font-chem)}
+.arrow{
+  position:relative; flex:none; width:120px; height:24px;
+  display:flex; align-items:center; color:var(--ink-2);
+}
+.arrow::before{content:''; position:absolute; left:0; right:9px; top:11px; height:1.8px; background:currentColor}
+.arrow::after{
+  content:''; position:absolute; right:0; top:5.5px;
+  border-left:10px solid currentColor; border-top:6px solid transparent; border-bottom:6px solid transparent;
+}
+.arrow em{
+  position:absolute; left:0; right:0; bottom:20px; text-align:center;
+  font-style:normal; font-size:12.5px; color:var(--accent); white-space:nowrap;
+}
+.arrow i{
+  position:absolute; left:0; right:0; top:20px; text-align:center;
+  font-style:normal; font-size:12px; color:var(--ink-3); white-space:nowrap;
+}
+.rxn .cap{width:100%; text-align:center; font-size:13.5px; color:var(--ink-3); margin-top:2px}
+
+/* ─── блоки ─── */
+.box{border:1px solid var(--line); border-radius:13px; padding:15px 17px; background:var(--surface-2)}
+.box h3{margin-bottom:6px}
+.box.accent{background:var(--accent-soft); border-color:var(--accent-line)}
+.box.warn{background:var(--warn-soft); border-color:transparent}
+.box.bad{background:var(--bad-soft); border-color:transparent}
+.box.ok{background:var(--ok-soft); border-color:transparent}
+.grid2{display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}
+.grid3{display:grid; gap:12px; grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.term b{display:block; font-size:15.5px; margin-bottom:2px}
+.term span{font-size:14.5px; color:var(--ink-2)}
+ul.plain{margin:0; padding-left:20px; display:flex; flex-direction:column; gap:7px; color:var(--ink-2)}
+ul.plain li::marker{color:var(--accent)}
+ul.plain b{color:var(--ink)}
+.steps{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:11px; counter-reset:s}
+.steps li{display:flex; gap:12px; align-items:flex-start}
+.steps li::before{
+  counter-increment:s; content:counter(s);
+  flex:none; width:26px; height:26px; border-radius:8px; display:grid; place-items:center;
+  background:var(--accent-soft); color:var(--accent); font-size:13px; font-weight:600;
+  border:1px solid var(--accent-line);
+}
+.steps b{display:block}
+.steps span{color:var(--ink-2)}
+.scrollx{overflow-x:auto}
+.tbl{width:100%; border-collapse:collapse; font-size:15px}
+.tbl th,.tbl td{text-align:left; padding:10px 12px; border-bottom:1px solid var(--line)}
+.tbl th{font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--ink-3); font-weight:500}
+.tbl tr:last-child td{border-bottom:0}
+.tbl td .f{font-size:16px}
+
+figure{margin:0}
+.fig{background:var(--surface-2); border:1px solid var(--line); border-radius:13px; padding:12px 10px 4px; text-align:center}
+.fig svg{width:100%; height:auto; display:block; max-width:440px; margin:0 auto}
+.fig figcaption{font-size:13.5px; color:var(--ink-2); padding:6px 10px 10px; line-height:1.45}
+.fig figcaption b{display:block; color:var(--ink); font-size:14.5px; margin-bottom:2px}
+
+/* ─── дослід ─── */
+.lab{
+  display:flex; gap:22px; align-items:center; flex-wrap:wrap; justify-content:center;
+  background:var(--surface-2); border:1px solid var(--line); border-radius:13px; padding:20px;
+}
+.tube{display:flex; flex-direction:column; align-items:center; gap:9px; width:126px}
+.tube .glass{
+  width:52px; height:132px; border:2px solid var(--line-strong); border-top:0;
+  border-radius:0 0 26px 26px; position:relative; overflow:hidden;
+  background:linear-gradient(180deg, transparent 0 18%, var(--surface) 18%);
+}
+.tube .liquid{
+  position:absolute; left:0; right:0; bottom:0; height:74%;
+  transition:background-color 1.5s ease;
+}
+.tube .liquid.br{background:var(--br)}
+.tube .liquid.clear{background:rgba(140,180,200,.22)}
+.tube .ppt{
+  position:absolute; left:0; right:0; bottom:0; height:17%;
+  background:var(--ag); border-radius:0 0 24px 24px;
+  opacity:0; transform:translateY(10px); transition:opacity .9s ease, transform .9s ease;
+}
+.tube .ppt.on{opacity:1; transform:none}
+.tube .cap{font-size:13px; color:var(--ink-2); text-align:center; line-height:1.35}
+.tube .cap b{display:block; color:var(--ink); font-size:14px}
+.labctl{display:flex; flex-direction:column; gap:9px; align-items:stretch}
+.labctl .btn{justify-content:center}
+.labnote{
+  flex-basis:100%; text-align:center; font-size:14.5px; color:var(--ink-2);
+  min-height:1.6em; transition:color .3s ease;
+}
+.labnote.done{color:var(--accent); font-weight:500}
+
+/* ─── тест і практика ─── */
+.q{border:1px solid var(--line); border-radius:13px; padding:16px 17px; background:var(--surface-2); display:flex; flex-direction:column; gap:11px}
+.q .qh{font-size:11.5px; letter-spacing:.14em; text-transform:uppercase; color:var(--ink-3)}
+.q .qt{font-size:16.5px; font-weight:500}
+.opts{display:flex; flex-direction:column; gap:7px}
+.opt{
+  display:flex; align-items:center; gap:11px; padding:11px 13px; border-radius:11px;
+  border:1px solid var(--line-strong); background:var(--surface); cursor:pointer;
+  font-size:15.5px; transition:.14s ease;
+}
+.opt:hover{border-color:var(--accent-line)}
+.opt input{accent-color:var(--accent); width:17px; height:17px; flex:none; margin:0}
+.opt .key{
+  flex:none; width:23px; height:23px; border-radius:7px; display:grid; place-items:center;
+  background:var(--surface-3); font-size:12.5px; color:var(--ink-2);
+}
+.opt.right{border-color:var(--ok); background:var(--ok-soft)}
+.opt.wrong{border-color:var(--bad); background:var(--bad-soft)}
+.verdict{font-size:14.5px; padding:11px 13px; border-radius:11px; display:none; line-height:1.5}
+.verdict.on{display:block}
+.verdict.good{background:var(--ok-soft); color:var(--ok)}
+.verdict.bad{background:var(--bad-soft); color:var(--bad)}
+.inputs{display:flex; gap:10px; flex-wrap:wrap; align-items:center}
+.inputs input{
+  width:170px; padding:10px 12px; border-radius:11px; border:1px solid var(--line-strong);
+  background:var(--surface); color:var(--ink); font-family:var(--font-chem); font-size:17px;
+}
+.inputs input:focus{outline:2px solid var(--accent); outline-offset:1px; border-color:transparent}
+.result{display:flex; align-items:center; gap:18px; flex-wrap:wrap}
+.ring{
+  width:96px; height:96px; border-radius:50%; flex:none; display:grid; place-items:center;
+  background:conic-gradient(var(--accent) var(--p,0%), var(--surface-3) 0);
+}
+.ring i{
+  width:76px; height:76px; border-radius:50%; background:var(--surface); display:grid; place-items:center;
+  font-style:normal; font-size:22px; font-weight:600; font-variant-numeric:tabular-nums;
+}
+.foot{
+  max-width:1440px; margin:0 auto; padding:0 clamp(14px,3vw,28px) 40px;
+  color:var(--ink-3); font-size:13.5px; display:flex; gap:8px; flex-wrap:wrap;
+  align-items:center; justify-content:space-between;
+}
+
+@media (max-width:1180px){
+  .shell{grid-template-columns:236px minmax(0,1fr)}
+  .side{grid-column:1 / -1; position:static; flex-direction:row; flex-wrap:wrap}
+  .side>*{flex:1 1 300px}
+}
+@media (max-width:820px){
+  .shell{grid-template-columns:minmax(0,1fr); padding-bottom:36px}
+  .rail{position:static}
+  .rail ol{flex-direction:row; overflow-x:auto; padding:0 10px 12px}
+  .rail li{flex:none}
+  .rail button{white-space:nowrap}
+  .rail .t{max-width:150px}
+  .top .meta{width:100%; margin-left:0}
+}
+
+.backbtn{
+  display:inline-flex; align-items:center; gap:7px; text-decoration:none;
+  border:1px solid var(--line-strong); background:var(--surface-2); color:var(--ink-2);
+  padding:8px 15px 8px 12px; border-radius:11px; font-size:14.5px; font-weight:500;
+  white-space:nowrap; transition:.16s ease;
+}
+.backbtn:hover{border-color:var(--accent-line); color:var(--accent); background:var(--accent-soft)}
+.backbtn .ar{font-size:16px; line-height:1}
+@media (max-width:820px){ .backbtn{padding:7px 12px 7px 10px; font-size:14px} }
+
+/* device-preview:start */
+.devsw{
+  display:flex; align-items:center; gap:4px; padding:3px;
+  border:1px solid var(--line-strong); background:var(--surface-2); border-radius:12px;
+}
+.devsw .dev{
+  border:0; background:none; color:var(--ink-2); padding:6px 13px; border-radius:9px;
+  font-size:14px; display:inline-flex; align-items:center; gap:7px; transition:.16s ease;
+}
+.devsw .dev:hover{color:var(--ink)}
+.devsw .dev[aria-pressed="true"]{background:var(--surface); color:var(--accent); font-weight:500; box-shadow:0 1px 3px rgba(0,0,0,.09)}
+.devsw .ic{font-size:15px; line-height:1}
+.devlbl{font-size:12.5px; color:var(--ink-3); margin-right:2px; white-space:nowrap}
+
+#phoneview{
+  display:none; gap:34px; align-items:flex-start; flex-wrap:wrap; justify-content:center;
+  max-width:1440px; margin:0 auto; padding:26px clamp(14px,3vw,28px) 56px;
+}
+body.phonemode .shell{display:none}
+body.phonemode #phoneview{display:flex}
+
+.phone{
+  position:relative; flex:none;
+  width:390px; height:780px; padding:11px;
+  background:linear-gradient(160deg,#2A2836,#141320); border-radius:46px;
+  box-shadow:0 30px 60px -30px rgba(20,16,50,.7), 0 0 0 1px rgba(255,255,255,.06) inset;
+}
+.phone::before{
+  content:''; position:absolute; top:20px; left:50%; transform:translateX(-50%);
+  width:104px; height:22px; background:#0C0B14; border-radius:12px; z-index:2;
+}
+.phone iframe{
+  width:100%; height:100%; border:0; border-radius:36px; background:var(--surface); display:block;
+}
+.phonemeta{
+  width:100%; text-align:center; font-size:13.5px; color:var(--ink-3); margin-top:12px;
+}
+
+.qrcard{
+  flex:0 1 320px; background:var(--surface); border:1px solid var(--line);
+  border-radius:16px; box-shadow:var(--shadow); padding:22px; text-align:center;
+}
+.qrcard h3{font-size:19px; margin-bottom:6px}
+.qrcard p{font-size:14.5px; color:var(--ink-2); margin:0 auto 16px; max-width:34ch}
+.qrbox{
+  width:196px; height:196px; margin:0 auto 14px; padding:12px;
+  background:#FFFFFF; border-radius:14px; border:1px solid var(--line-strong);
+}
+.qrbox svg{width:100%; height:100%; display:block}
+.qrlink{
+  display:block; font-size:12.5px; color:var(--ink-3); word-break:break-all; line-height:1.45;
+  padding:9px 11px; background:var(--surface-2); border-radius:10px; border:1px solid var(--line);
+}
+.qrsteps{
+  list-style:none; margin:16px 0 0; padding:0; text-align:left;
+  display:flex; flex-direction:column; gap:8px; font-size:14px; color:var(--ink-2);
+}
+.qrsteps li{display:flex; gap:9px; align-items:flex-start}
+.qrsteps .n{
+  flex:none; width:20px; height:20px; border-radius:6px; display:grid; place-items:center;
+  background:var(--accent-soft); color:var(--accent); font-size:11.5px; font-weight:600; margin-top:2px;
+}
+
+/* Усередині рамки телефона службові елементи не потрібні. */
+body.framed .backbtn, body.framed .devsw, body.framed .devlbl, body.framed .themebtn{display:none}
+
+/* На вузькому екрані рамка телефона зайва — там і так мобільний вигляд. */
+@media (max-width:760px){
+  .phone{display:none}
+  .phonemeta{display:none}
+  .devsw .dev .lbltxt{display:none}
+  .devlbl{display:none}
+  .qrcard{flex:1 1 100%}
+}
+/* device-preview:end */
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="../" title="Усі уроки">
+    <span class="mark">К</span>
+    <span><b>КВАНТ</b><small>онлайн-школа</small></span>
+  </a>
+  <a class="backbtn" href="../"><span class="ar" aria-hidden="true">←</span>До списку уроків</a>
+  <div class="devsw" role="group" aria-label="Перегляд очима учня">
+    <span class="devlbl">Перегляд очима учня</span>
+    <button class="dev" type="button" data-mode="desktop" aria-pressed="true"><span class="ic" aria-hidden="true">🖥</span><span class="lbltxt">Комп’ютер</span></button>
+    <button class="dev" type="button" data-mode="phone" aria-pressed="false"><span class="ic" aria-hidden="true">📱</span><span class="lbltxt">Телефон</span></button>
+  </div>
+  <div class="meta">
+    <span class="tag subj">Хімія · 11 клас</span>
+    <span class="tag">Органічна хімія</span>
+    <span class="tag">≈ 30 хв</span>
+    <span class="tag" id="stagelabel">Етап 1 з 14</span>
+    <button class="themebtn" id="theme" type="button" aria-label="Перемкнути тему" title="Світла / темна тема">◐</button>
+  </div>
+</header>
+
+<div class="shell">
+
+  <nav class="panel rail" aria-label="Етапи уроку">
+    <div class="panel-h">Етапи уроку</div>
+    <ol id="rail"></ol>
+  </nav>
+
+  <div class="stagecol">
+    <main class="panel card" id="card">
+
+      <!-- 1 -->
+      <section class="step" data-title="Вхід у тему" data-kind="Вступ" data-check="intro"
+        data-simple="Алкіни — вуглеводні з потрійним зв'язком. У ньому два слабкі π-зв'язки, тому алкіни приєднують удвічі більше, ніж алкени."
+        data-example="Ацетилен у кисні дає полум'я понад 3000 °C — ним ріжуть і зварюють сталь.">
+        <div class="eyebrow">Етап 1 · Вступ</div>
+        <h1>Полум'я, що ріже сталь</h1>
+        <p class="lead">Жоден інший вуглеводень не горить так гаряче. Ацетилен у суміші з чистим киснем дає полум'я <b>близько 3150 °C</b> — цього досить, щоб плавити й різати сталь. Це найпростіший представник алкінів, <span class="f">C<sub>2</sub>H<sub>2</sub></span>.</p>
+        <div class="grid2">
+          <div class="box">
+            <h3>Газорізка й зварювання</h3>
+            <p style="margin-top:6px; color:var(--ink-2)">Уся енергія тримається на трьох зв'язках між двома атомами Карбону. Коли вони рвуться у полум'ї, тепла виділяється більше, ніж від будь-якого іншого доступного газу.</p>
+          </div>
+          <div class="box">
+            <h3>Сировина для хімії</h3>
+            <p style="margin-top:6px; color:var(--ink-2)">З ацетилену роблять оцтовий альдегід, вінілхлорид для труб ПВХ, синтетичний каучук і навіть бензен. Довгий час він був головною сировиною органічного синтезу.</p>
+          </div>
+        </div>
+        <p>Ти вже знаєш алкени: подвійний зв'язок розкривається, і до нього щось приєднується. З алкінами схема та сама — але зв'язків, які можна розірвати, <b>вдвічі більше</b>.</p>
+        <div class="rxn">
+          <span class="mol">CH<sub>3</sub>—CH<sub>3</sub></span>
+          <span class="op">·</span>
+          <span class="mol">CH<sub>2</sub>=CH<sub>2</sub></span>
+          <span class="op">·</span>
+          <span class="mol prod">CH≡CH</span>
+          <span class="cap">Етан, етен, етин. Кожна нова риска — новий рівень активності</span>
+        </div>
+        <div class="box accent">
+          <h3>Що буде в кінці уроку</h3>
+          <p style="margin-top:4px">Ти зможеш записати обидві стадії будь-якого приєднання до алкіну, не переплутаєш продукт гідратації зі спиртом і відрізниш етин від етену в двох пробірках.</p>
+        </div>
+      </section>
+
+      <!-- 2 -->
+      <section class="step" data-title="Мета уроку" data-kind="Мета"
+        data-simple="Мета: навчитися писати приєднання у дві стадії, знати реакцію Кучерова і якісні реакції алкінів."
+        data-example="Наприклад, «етин + 2Br₂» — одразу пишеш 1,1,2,2-тетраброметан.">
+        <div class="eyebrow">Етап 2 · Мета</div>
+        <h1>Мета уроку</h1>
+        <p class="lead">Чотири вміння, кожне з яких відпрацюємо на прикладах.</p>
+        <ol class="steps">
+          <li><span><b>Упізнавати алкіни</b><span>за загальною формулою <span class="f">C<sub>n</sub>H<sub>2n−2</sub></span>, суфіксом <b>-ин / -ін</b> і потрійним зв'язком у структурній формулі.</span></span></li>
+          <li><span><b>Пояснювати підвищену активність</b><span>через два π-зв'язки, які розриваються послідовно, — а не заучувати «алкіни активніші за алкени».</span></span></li>
+          <li><span><b>Складати рівняння приєднання у дві стадії</b><span>гідрування, галогенування, гідрогалогенування — з проміжним продуктом-алкеном і умовами над стрілкою.</span></span></li>
+          <li><span><b>Знати особливі реакції алкінів</b><span>гідратацію за Кучеровим (продукт — альдегід, а не спирт), утворення ацетиленідів і тримеризацію в бензен.</span></span></li>
+        </ol>
+        <div class="box">
+          <h3>Що треба знати заздалегідь</h3>
+          <ul class="plain" style="margin-top:8px">
+            <li><b>Алкени</b>: подвійний зв'язок і реакції приєднання</li>
+            <li><b>σ- і π-зв'язки</b>, різниця в міцності</li>
+            <li><b>Правило Марковникова</b> для несиметричних молекул</li>
+            <li><b>Валентність Карбону</b> — завжди чотири</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 3 -->
+      <section class="step" data-title="Медіа · Будова етину" data-kind="Медіа"
+        data-simple="Молекула етину лінійна: усі чотири атоми лежать на одній прямій, кут — 180°."
+        data-example="Уяви шампур: H—C≡C—H витягнутий у струну, зігнути його неможливо.">
+        <div class="eyebrow">Етап 3 · Медіа</div>
+        <h1>Як улаштована молекула етину</h1>
+        <p class="lead">Молекула <span class="f">C<sub>2</sub>H<sub>2</sub></span> <b>лінійна</b>: усі чотири атоми лежать на одній прямій, кут між зв'язками — рівно <b>180°</b>. Не 120°, як в етені, і не 109°, як в етані.</p>
+        <figure class="fig" id="fig-ethyne">
+          <figcaption><b>Структурна формула етину</b>Два атоми Карбону сполучені потрійним зв'язком, кожен утримує лише один атом Гідрогену</figcaption>
+        </figure>
+        <div class="grid3">
+          <div class="box term"><b>Найкоротший зв'язок</b><span>Потрійний <span class="f">C≡C</span> — 0,120 нм. Порівняй: подвійний 0,134 нм, одинарний 0,154 нм. Більше зв'язків — ближче ядра.</span></div>
+          <div class="box term"><b>Найміцніший — і найактивніший</b><span>Загальна енергія трьох зв'язків велика, але два з них слабкі. Рветься не «весь зв'язок», а по одному π за раз.</span></div>
+          <div class="box term"><b>Ізомерії положення менше</b><span>Через лінійність цис-транс-ізомерія для потрійного зв'язку неможлива — обертати нічого.</span></div>
+        </div>
+      </section>
+
+      <!-- 4 -->
+      <section class="step" data-title="Ключові поняття" data-kind="Ключові поняття"
+        data-simple="Алкіни — ненасичені вуглеводні з одним потрійним зв'язком. Формула CₙH₂ₙ₋₂, суфікс -ин."
+        data-example="C₃H₄ — пропін, C₄H₆ — бутин. Гідрогену вдвічі більше за Карбон мінус два.">
+        <div class="eyebrow">Етап 4 · Ключові поняття</div>
+        <h1>Чотири поняття, без яких далі не буде</h1>
+        <div class="grid2">
+          <div class="box term"><b>Алкіни</b><span>Ненасичені вуглеводні з <b>одним потрійним зв'язком</b> між атомами Карбону. Загальна формула <span class="f">C<sub>n</sub>H<sub>2n−2</sub></span>, де n ≥ 2.</span></div>
+          <div class="box term"><b>Потрійний зв'язок</b><span>Один σ-зв'язок і <b>два π-зв'язки</b>, розміщені у двох взаємно перпендикулярних площинах.</span></div>
+          <div class="box term"><b>Кінцевий потрійний зв'язок</b><span>Коли <span class="f">≡CH</span> стоїть з краю ланцюга. Тільки такі алкіни дають реакції заміщення з металами.</span></div>
+          <div class="box term"><b>Ацетиленіди</b><span>Солеподібні сполуки, де рухливий атом Гідрогену біля потрійного зв'язку заміщено на метал: <span class="f">AgC≡CAg</span>.</span></div>
+        </div>
+        <h3>Гомологічний ряд</h3>
+        <div class="scrollx"><table class="tbl">
+          <tr><th>Формула</th><th>Назва</th><th>Структурна формула</th></tr>
+          <tr><td><span class="f">C<sub>2</sub>H<sub>2</sub></span></td><td>етин (ацетилен)</td><td><span class="f">CH≡CH</span></td></tr>
+          <tr><td><span class="f">C<sub>3</sub>H<sub>4</sub></span></td><td>пропін</td><td><span class="f">CH≡C—CH<sub>3</sub></span></td></tr>
+          <tr><td><span class="f">C<sub>4</sub>H<sub>6</sub></span></td><td>бутин-1</td><td><span class="f">CH≡C—CH<sub>2</sub>—CH<sub>3</sub></span></td></tr>
+          <tr><td><span class="f">C<sub>5</sub>H<sub>8</sub></span></td><td>пентин-1</td><td><span class="f">CH≡C—CH<sub>2</sub>—CH<sub>2</sub>—CH<sub>3</sub></span></td></tr>
+        </table></div>
+        <div class="box warn">
+          <h3>Три класи — три формули</h3>
+          <p style="margin-top:4px">Алкани <span class="f">C<sub>n</sub>H<sub>2n+2</sub></span> (-ан), алкени <span class="f">C<sub>n</sub>H<sub>2n</sub></span> (-ен), алкіни <span class="f">C<sub>n</sub>H<sub>2n−2</sub></span> (-ин). Кожен новий кратний зв'язок «забирає» два атоми Гідрогену.</p>
+        </div>
+      </section>
+
+      <!-- 5 -->
+      <section class="step" data-title="Пояснення · Два π-зв'язки" data-kind="Пояснення" data-check="explain"
+        data-simple="У потрійному зв'язку один міцний σ і два слабкі π. Розриваються вони по черзі — тому й реакція йде у дві стадії."
+        data-example="Тому 1 моль етину приєднує 2 моль брому, а 1 моль етену — тільки 1 моль.">
+        <div class="eyebrow">Етап 5 · Пояснення</div>
+        <h1>Чому приєднання йде у дві стадії</h1>
+        <p class="lead">Потрійний зв'язок — це <b>один σ-зв'язок і два π-зв'язки</b>. Електронні хмари двох π-зв'язків лежать у двох взаємно перпендикулярних площинах і разом утворюють «циліндр» навколо осі молекули.</p>
+        <figure class="fig" id="fig-pi">
+          <figcaption><b>σ- і два π-зв'язки в етині</b>σ-зв'язок лежить на осі молекули, π-зв'язки — у двох перпендикулярних площинах (другий показано в перспективі)</figcaption>
+        </figure>
+        <div class="box accent">
+          <h3>Головний висновок уроку</h3>
+          <p style="margin-top:4px">π-зв'язки розриваються <b>по одному</b>. Після першої стадії з алкіну виходить <b>алкен</b> — і лише потім, у другій стадії, він добудовується до насиченої сполуки. Тому в рівняннях алкінів майже завжди коефіцієнт <b>2</b> перед реагентом.</p>
+        </div>
+        <div class="rxn two">
+          <span class="st">Стадія 1</span>
+          <span class="mol">CH≡CH</span><span class="op">+</span><span class="mol">X—Y</span>
+          <span class="arrow"><em>розрив першого π</em></span>
+          <span class="mol prod">CHX=CHY</span>
+          <span class="cap">Проміжний продукт — завжди алкен, у нього ще лишився один π-зв'язок</span>
+        </div>
+        <div class="rxn two">
+          <span class="st">Стадія 2</span>
+          <span class="mol">CHX=CHY</span><span class="op">+</span><span class="mol">X—Y</span>
+          <span class="arrow"><em>розрив другого π</em></span>
+          <span class="mol prod">CHX<sub>2</sub>—CHY<sub>2</sub></span>
+          <span class="cap">Насичена сполука: усі зв'язки одинарні, приєднувати більше нікуди</span>
+        </div>
+        <div class="box warn">
+          <h3>Чому не «одразу все»</h3>
+          <p style="margin-top:4px">Перший π-зв'язок доступніший, тому рветься легше. Після його розриву молекула стає алкеном — і другу порцію реагенту приєднує вже <b>повільніше</b>. Саме тому реакцію можна зупинити на проміжному алкені: так у промисловості й добувають вінілхлорид.</p>
+        </div>
+      </section>
+
+      <!-- 6 -->
+      <section class="step" data-title="Реакції приєднання" data-kind="Пояснення"
+        data-simple="Гідрування, галогенування і гідрогалогенування — усі у дві стадії. Гідратація особлива: дає альдегід."
+        data-example="Етин + 2H₂ (Ni, t°) → етан. Проміжно утворюється етен.">
+        <div class="eyebrow">Етап 6 · Пояснення</div>
+        <h1>Реакції приєднання: чотири випадки</h1>
+        <p class="lead">Три реакції ти вже бачив в алкенів — тут вони просто йдуть двічі. Четверта, гідратація, поводиться зовсім інакше й має власну назву.</p>
+
+        <div class="rxn two">
+          <span class="st">Гідрування</span>
+          <span class="mol">CH≡CH</span><span class="op">+</span><span class="mol">2H<sub>2</sub></span>
+          <span class="arrow"><em>Ni, t°</em><i>через етен</i></span>
+          <span class="mol prod">CH<sub>3</sub>—CH<sub>3</sub></span>
+          <span class="cap">Кінцевий продукт — етан. На проміжній стадії утворюється етен <span class="f">CH<sub>2</sub>=CH<sub>2</sub></span></span>
+        </div>
+
+        <div class="rxn two">
+          <span class="st">Галогенування</span>
+          <span class="mol">CH≡CH</span><span class="op">+</span><span class="mol">2Br<sub>2</sub></span>
+          <span class="arrow"><i>через 1,2-диброметен</i></span>
+          <span class="mol prod">CHBr<sub>2</sub>—CHBr<sub>2</sub></span>
+          <span class="cap">1,1,2,2-тетраброметан. Один моль етину «з'їдає» <b>два</b> моль брому</span>
+        </div>
+
+        <div class="rxn two">
+          <span class="st">Гідрогалогенування</span>
+          <span class="mol">CH≡CH</span><span class="op">+</span><span class="mol">HCl</span>
+          <span class="arrow"><em>HgCl<sub>2</sub>, t°</em><i>зупиняємо на стадії 1</i></span>
+          <span class="mol prod">CH<sub>2</sub>=CHCl</span>
+          <span class="cap">Хлоретен (вінілхлорид) — мономер, з якого роблять ПВХ: труби, лінолеум, вікна</span>
+        </div>
+
+        <div class="rxn two">
+          <span class="st">Гідратація · реакція Кучерова</span>
+          <span class="mol">CH≡CH</span><span class="op">+</span><span class="mol">H<sub>2</sub>O</span>
+          <span class="arrow"><em>HgSO<sub>4</sub>, H<sub>2</sub>SO<sub>4</sub></em><i>1881 рік</i></span>
+          <span class="mol prod">CH<sub>3</sub>—CHO</span>
+          <span class="cap">Етаналь (оцтовий альдегід), а <b>не</b> спирт. Розбір цієї реакції — на наступному етапі</span>
+        </div>
+
+        <div class="box warn">
+          <h3>Умови — частина рівняння</h3>
+          <p style="margin-top:4px">Гідрування без <span class="f">Ni, t°</span>, гідратація без <span class="f">HgSO<sub>4</sub></span> — неповна відповідь. І ще: якщо в задачі сказано «до повного насичення», перед реагентом обов'язково має стояти коефіцієнт <b>2</b>.</p>
+        </div>
+      </section>
+
+      <!-- 7 -->
+      <section class="step" data-title="Дослід · Етин чи етен" data-kind="Демонстрація"
+        data-simple="Бромну воду знебарвлюють обидва гази. А от осад з амоніачним розчином арґентум оксиду дає лише етин."
+        data-example="Випав світлий осад — у пробірці алкін з кінцевим потрійним зв'язком.">
+        <div class="eyebrow">Етап 7 · Демонстрація</div>
+        <h1>Як відрізнити етин від етену</h1>
+        <p class="lead">Обидва гази ненасичені, обидва знебарвлюють бромну воду. Отже, бромна вода відрізнити їх <b>не може</b>. Потрібен другий дослід.</p>
+
+        <div class="lab">
+          <div class="tube">
+            <div class="glass"><div class="liquid br" id="tube1"></div><div class="ppt" id="ppt1"></div></div>
+            <span class="cap"><b>Пробірка 1</b>пропускаємо етен <span class="f">C<sub>2</sub>H<sub>4</sub></span></span>
+          </div>
+          <div class="tube">
+            <div class="glass"><div class="liquid br" id="tube2"></div><div class="ppt" id="ppt2"></div></div>
+            <span class="cap"><b>Пробірка 2</b>пропускаємо етин <span class="f">C<sub>2</sub>H<sub>2</sub></span></span>
+          </div>
+          <div class="labctl">
+            <button class="btn primary" id="labBr">Дослід 1: бромна вода</button>
+            <button class="btn" id="labAg">Дослід 2: розчин <span class="f" style="font-size:15px">Ag<sub>2</sub>O</span> в амоніаку</button>
+            <button class="btn" id="labReset">Спочатку</button>
+          </div>
+          <p class="labnote" id="labNote">В обох пробірках — бромна вода однакового жовто-оранжевого кольору.</p>
+        </div>
+
+        <div class="rxn">
+          <span class="mol">CH≡CH</span><span class="op">+</span>
+          <span class="mol">2[Ag(NH<sub>3</sub>)<sub>2</sub>]OH</span>
+          <span class="arrow"><i>заміщення, не приєднання</i></span>
+          <span class="mol prod">AgC≡CAg↓</span>
+          <span class="op">+</span><span class="mol">4NH<sub>3</sub> + 2H<sub>2</sub>O</span>
+          <span class="cap">Арґентум ацетиленід випадає світлим осадом — етен так не вміє</span>
+        </div>
+
+        <div class="box accent">
+          <h3>Чому це працює як тест</h3>
+          <p style="margin-top:4px">Атом Гідрогену біля потрійного зв'язку <b>рухливий</b>: електрони сильно зміщені до Карбону, і Гідроген легко заміщується на метал. В етену такого зв'язку немає, тож він з амоніачним розчином не реагує. Важливо: реакція йде тільки для алкінів із <b>кінцевим</b> потрійним зв'язком — бутин-2 <span class="f">CH<sub>3</sub>—C≡C—CH<sub>3</sub></span> осаду не дасть.</p>
+        </div>
+      </section>
+
+      <!-- 8 -->
+      <section class="step" data-title="Розібраний приклад" data-kind="Приклад" data-check="example"
+        data-simple="Гідратація етину дає етаналь. Спирт, який утворився б, нестійкий і одразу перебудовується в альдегід."
+        data-example="CH≡CH + H₂O → [CH₂=CH—OH] → CH₃—CHO">
+        <div class="eyebrow">Етап 8 · Розібраний приклад</div>
+        <h1>Реакція Кучерова: чому не спирт</h1>
+        <p class="lead">За логікою алкенів гідратація мала б дати спирт. Але продукт гідратації етину — <b>етаналь</b>, альдегід. Розберемо по кроках, звідки він береться.</p>
+
+        <ol class="steps">
+          <li><span><b>Вода приєднується до потрійного зв'язку</b><span>За тією ж схемою, що й в алкенів: <span class="f">H</span> до одного атома Карбону, <span class="f">OH</span> — до другого. Каталізатор — солі Меркурію(II) у сульфатнокислому середовищі.</span></span></li>
+          <li><span><b>Виходить вініловий спирт</b><span><span class="f">CH<sub>2</sub>=CH—OH</span> — група <span class="f">OH</span> стоїть біля атома Карбону з подвійним зв'язком. Така сполука <b>нестійка</b>.</span></span></li>
+          <li><span><b>Спирт миттєво перебудовується</b><span>Атом Гідрогену переходить від <span class="f">OH</span> до сусіднього Карбону, подвійний зв'язок зміщується до Оксигену. Це <b>правило Ельтекова</b>.</span></span></li>
+          <li><span><b>Кінцевий продукт — етаналь</b><span><span class="f">CH<sub>3</sub>—CHO</span>. У відповіді пишуть саме його; вініловий спирт беруть у квадратні дужки як проміжну сполуку.</span></span></li>
+        </ol>
+
+        <div class="rxn two">
+          <span class="st">Повний запис</span>
+          <span class="mol">CH≡CH</span><span class="op">+</span><span class="mol">H<sub>2</sub>O</span>
+          <span class="arrow"><em>HgSO<sub>4</sub>, H<sub>2</sub>SO<sub>4</sub></em></span>
+          <span class="mol">[CH<sub>2</sub>=CH—OH]</span>
+          <span class="arrow"><i>перегрупування</i></span>
+          <span class="mol prod">CH<sub>3</sub>—CHO</span>
+          <span class="cap">Дужки означають: сполука існує лише мить і в чистому вигляді не виділяється</span>
+        </div>
+
+        <div class="box bad">
+          <h3>А так — неправильно</h3>
+          <p style="margin-top:4px">Відповідь <span class="f">CH<sub>3</sub>—CH<sub>2</sub>OH</span> (етанол) — найпоширеніша помилка на цій темі. Етанол утворюється з <b>етену</b>, а не з етину. Плутанина коштує цілого завдання.</p>
+        </div>
+        <div class="box">
+          <h3>Гомологи поводяться інакше</h3>
+          <p style="margin-top:4px">Альдегід дає лише сам етин. Гідратація його гомологів (пропіну, бутину) за правилом Марковникова приводить до <b>кетонів</b>: пропін + вода → ацетон <span class="f">CH<sub>3</sub>—CO—CH<sub>3</sub></span>.</p>
+        </div>
+      </section>
+
+      <!-- 9 -->
+      <section class="step" data-title="Добування і тримеризація" data-kind="Застосування"
+        data-simple="Ацетилен добувають з карбіду кальцію водою або піролізом метану. Три його молекули можуть зшитися в бензен."
+        data-example="CaC₂ + 2H₂O → C₂H₂↑ + Ca(OH)₂ — саме так працювала карбідна лампа.">
+        <div class="eyebrow">Етап 9 · Застосування</div>
+        <h1>Звідки беруть ацетилен — і що з нього виходить</h1>
+        <p class="lead">Два промислові способи добування й одна незвичайна реакція, у якій алкін перетворюється на ароматичний вуглеводень.</p>
+
+        <div class="rxn two">
+          <span class="st">Карбідний спосіб</span>
+          <span class="mol">CaC<sub>2</sub></span><span class="op">+</span><span class="mol">2H<sub>2</sub>O</span>
+          <span class="arrow"><i>без нагрівання</i></span>
+          <span class="mol prod">C<sub>2</sub>H<sub>2</sub>↑</span>
+          <span class="op">+</span><span class="mol">Ca(OH)<sub>2</sub></span>
+          <span class="cap">Достатньо кинути карбід у воду. На цьому працювали шахтарські карбідні лампи</span>
+        </div>
+
+        <div class="rxn two">
+          <span class="st">Піроліз метану</span>
+          <span class="mol">2CH<sub>4</sub></span>
+          <span class="arrow"><em>1500 °C</em><i>швидке охолодження</i></span>
+          <span class="mol prod">C<sub>2</sub>H<sub>2</sub></span>
+          <span class="op">+</span><span class="mol">3H<sub>2</sub></span>
+          <span class="cap">Сучасний промисловий спосіб: сировина дешевша, побічний продукт — водень</span>
+        </div>
+
+        <div class="rxn two">
+          <span class="st">Тримеризація</span>
+          <span class="mol">3CH≡CH</span>
+          <span class="arrow"><em>C(активоване), 600 °C</em><i>реакція Зелінського</i></span>
+          <span class="mol prod">C<sub>6</sub>H<sub>6</sub></span>
+          <span class="cap">Три молекули замикаються в кільце — виходить бензен</span>
+        </div>
+
+        <figure class="fig" id="fig-benzene">
+          <figcaption><b>Що відбувається з молекулами</b>Три молекули етину змикаються в шестикутне кільце: потрійні зв'язки розкриваються й переходять в ароматичну систему</figcaption>
+        </figure>
+
+        <div class="box warn">
+          <h3>Обережно з ацетиленом</h3>
+          <p style="margin-top:4px">Суміш ацетилену з повітрям вибухонебезпечна в дуже широкому діапазоні концентрацій. Тому в балонах його зберігають не стисненим, а розчиненим в ацетоні, яким просочено пористий наповнювач.</p>
+        </div>
+      </section>
+
+      <!-- 10 -->
+      <section class="step" data-title="Перша спроба" data-kind="Практика" data-check="practice"
+        data-simple="Гідратація етину — це реакція Кучерова. Продукт — етаналь CH₃CHO, тобто C₂H₄O."
+        data-example="Порахуй атоми: C₂H₂ + H₂O = C₂H₄O. Спирт мав би ту саму формулу, але він нестійкий.">
+        <div class="eyebrow">Етап 10 · Перша спроба</div>
+        <h1>Тепер ти</h1>
+        <p class="lead">Етин пропустили крізь воду в присутності солей Меркурію(II). Впиши <b>молекулярну формулу</b> продукту реакції.</p>
+
+        <div class="q">
+          <div class="qh">Завдання</div>
+          <div class="qt"><span class="f" style="font-size:20px">CH≡CH + H<sub>2</sub>O</span> &nbsp;→(HgSO<sub>4</sub>, H<sub>2</sub>SO<sub>4</sub>)&nbsp; ?</div>
+          <div class="inputs">
+            <input id="pAns" placeholder="напр. C2H6O" aria-label="Молекулярна формула продукту">
+            <button class="btn primary" id="pCheck">Перевірити</button>
+          </div>
+          <div class="verdict" id="pV"></div>
+        </div>
+        <div class="box">
+          <p style="color:var(--ink-2)">Пиши формулу без індексів унизу — просто <span class="f">C2H4O</span>. Регістр літер не має значення. Структурний запис на кшталт <span class="f">CH3CHO</span> теж приймається.</p>
+        </div>
+      </section>
+
+      <!-- 11 -->
+      <section class="step" data-title="Фідбек" data-kind="Фідбек"
+        data-simple="Найчастіші помилки — спирт замість альдегіда, забутий коефіцієнт 2 і формула алкенів замість алкінів."
+        data-example="1 моль етину приєднує 2 моль Br₂ — це різниця у половину відповіді в задачі.">
+        <div class="eyebrow">Етап 11 · Фідбек після першої спроби</div>
+        <h1>Де зазвичай губляться бали</h1>
+        <p class="lead">Правильна відповідь: <span class="f">C<sub>2</sub>H<sub>4</sub>O</span> — етаналь <span class="f">CH<sub>3</sub>—CHO</span>. Ось чотири місця, де на цій темі помиляються найчастіше.</p>
+        <div class="grid2">
+          <div class="box bad">
+            <h3>Спирт замість альдегіда</h3>
+            <p style="margin-top:4px">Пишуть <span class="f">C<sub>2</sub>H<sub>5</sub>OH</span>, за аналогією з алкенами. Але вініловий спирт нестійкий і одразу перегруповується в етаналь — це і є реакція Кучерова.</p>
+          </div>
+          <div class="box bad">
+            <h3>Забутий коефіцієнт 2</h3>
+            <p style="margin-top:4px">Пишуть <span class="f">C<sub>2</sub>H<sub>2</sub> + Br<sub>2</sub> → C<sub>2</sub>H<sub>2</sub>Br<sub>4</sub></span> — рівняння не збалансоване. До повного насичення потрібно <b>два</b> моль реагенту.</p>
+          </div>
+          <div class="box bad">
+            <h3>Помилка в загальній формулі</h3>
+            <p style="margin-top:4px">Пишуть <span class="f">C<sub>n</sub>H<sub>2n</sub></span> — це алкени. В алкінів <span class="f">C<sub>n</sub>H<sub>2n−2</sub></span>: етин має 2 атоми H, а не 4.</p>
+          </div>
+          <div class="box bad">
+            <h3>Ацетиленід для будь-якого алкіну</h3>
+            <p style="margin-top:4px">Осад дають лише алкіни з <b>кінцевим</b> потрійним зв'язком. Для бутину-2 реакція з амоніачним розчином не йде — рухливого Гідрогену там немає.</p>
+          </div>
+        </div>
+        <div class="box">
+          <h3>Спосіб перевірити себе</h3>
+          <p style="margin-top:4px">Після кожного рівняння порахуй атоми обабіч стрілки. Для алкінів це особливо корисно: більшість помилок — саме недорахований другий моль реагенту.</p>
+        </div>
+      </section>
+
+      <!-- 12 -->
+      <section class="step" data-title="Перевірка · Тест" data-kind="Перевірка" data-check="test"
+        data-simple="Тримай у голові дві речі: два π-зв'язки та альдегід у Кучерова. Більшість питань саме про це."
+        data-example="Побачив -ин у назві → алкін → приєднує вдвічі більше → дає осад з Ag₂O в амоніаку.">
+        <div class="eyebrow">Етап 12 · Перевірка</div>
+        <h1>Тестова перевірка</h1>
+        <p class="lead">П'ять питань. Обери варіанти й натисни «Перевірити» — до кожної відповіді буде пояснення.</p>
+        <div id="quiz"></div>
+        <button class="btn primary" id="qCheck" style="align-self:flex-start">Перевірити відповіді</button>
+        <div class="verdict" id="qV"></div>
+      </section>
+
+      <!-- 13 -->
+      <section class="step" data-title="Результат уроку" data-kind="Результат"
+        data-simple="Результат показує, що саме варто повторити перед контрольною."
+        data-example="Помилка в питанні про Кучерова — поверніться на етап 8.">
+        <div class="eyebrow">Етап 13 · Результат</div>
+        <h1>Твій результат</h1>
+        <div class="result">
+          <div class="ring" id="ring"><i id="ringN">—</i></div>
+          <div>
+            <p id="resTitle" style="font-size:19px; font-weight:600">Тест ще не пройдено</p>
+            <p id="resText" style="color:var(--ink-2); margin-top:4px">Повернись на етап 12 і дай відповіді — тоді тут з'явиться розбір.</p>
+          </div>
+        </div>
+        <div class="box" id="resAdvice" style="display:none"></div>
+        <div class="box accent">
+          <h3>Що робити далі</h3>
+          <ul class="plain" style="margin-top:8px">
+            <li><b>0–2 правильні:</b> повтори етапи 5 і 6 — два π-зв'язки та приєднання у дві стадії</li>
+            <li><b>3–4 правильні:</b> суть зрозуміла, потренуй рівняння з коефіцієнтами й реакцію Кучерова</li>
+            <li><b>5 правильних:</b> можна переходити до аренів і генетичних зв'язків між класами</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 14 -->
+      <section class="step" data-title="Підсумок уроку" data-kind="Підсумок" data-check="summary"
+        data-simple="Головне: два π-зв'язки → приєднання у дві стадії → коефіцієнт 2. Гідратація дає альдегід."
+        data-example="Випав осад з амоніачним розчином срібла — значить, потрійний зв'язок на кінці ланцюга.">
+        <div class="eyebrow">Етап 14 · Підсумок</div>
+        <h1>Що взяти з уроку</h1>
+        <div class="box accent">
+          <p style="font-size:17px">Потрійний зв'язок = міцний <b>σ</b> + два слабкі <b>π</b>. Вони рвуться по черзі — звідси дві стадії, коефіцієнт <b>2</b> і проміжний алкен у кожному рівнянні.</p>
+        </div>
+        <div class="scrollx"><table class="tbl">
+          <tr><th>Реакція</th><th>Реагент</th><th>Умови</th><th>Продукт з етину</th></tr>
+          <tr><td>Гідрування</td><td><span class="f">2H<sub>2</sub></span></td><td><span class="f">Ni, t°</span></td><td>етан</td></tr>
+          <tr><td>Галогенування</td><td><span class="f">2Br<sub>2</sub></span></td><td>звичайні</td><td>1,1,2,2-тетраброметан</td></tr>
+          <tr><td>Гідрогалогенування</td><td><span class="f">HCl</span></td><td><span class="f">HgCl<sub>2</sub></span></td><td>хлоретен (вінілхлорид)</td></tr>
+          <tr><td>Гідратація (Кучеров)</td><td><span class="f">H<sub>2</sub>O</span></td><td><span class="f">HgSO<sub>4</sub>, H<sub>2</sub>SO<sub>4</sub></span></td><td>етаналь</td></tr>
+          <tr><td>Заміщення</td><td><span class="f">Ag<sub>2</sub>O</span> в амоніаку</td><td>звичайні</td><td>ацетиленід, осад</td></tr>
+          <tr><td>Тримеризація</td><td>сам алкін</td><td><span class="f">C</span>, 600 °C</td><td>бензен</td></tr>
+        </table></div>
+        <div class="grid2">
+          <div class="box term"><b>Формула класу</b><span><span class="f">C<sub>n</sub>H<sub>2n−2</sub></span>, суфікс <b>-ин / -ін</b>. На два атоми Гідрогену менше, ніж в алкену.</span></div>
+          <div class="box term"><b>Якісні реакції</b><span>Знебарвлення бромної води — є кратний зв'язок. Осад з амоніачним розчином <span class="f">Ag<sub>2</sub>O</span> — саме кінцевий потрійний.</span></div>
+        </div>
+        <div class="box">
+          <h3>Куди рухатись далі</h3>
+          <ul class="plain" style="margin-top:8px">
+            <li><b>Арени</b> — бензен, у який щойно перетворився ацетилен</li>
+            <li><b>Альдегіди</b> — продукт реакції Кучерова, наступний клас сполук</li>
+            <li><b>Полімери</b> — вінілхлорид і ПВХ, каучук з дієнових вуглеводнів</li>
+            <li><b>Генетичні зв'язки</b> — ланцюжки перетворень між класами вуглеводнів</li>
+          </ul>
+        </div>
+      </section>
+
+    </main>
+
+    <div class="navrow">
+      <div class="dots" id="dots" role="tablist" aria-label="Прогрес уроку"></div>
+      <button class="btn" id="prev">← Назад</button>
+      <button class="btn primary" id="next">Далі →</button>
+    </div>
+  </div>
+
+  <aside class="side">
+    <div class="panel">
+      <div class="panel-h"><span>Перевірка уроку</span><span class="score" id="score">0/6</span></div>
+      <ul class="checks" id="checks">
+        <li data-k="intro"><span class="ic">✓</span>Є вступ</li>
+        <li data-k="explain"><span class="ic">✓</span>Є пояснення</li>
+        <li data-k="example"><span class="ic">✓</span>Є приклад</li>
+        <li data-k="practice"><span class="ic">✓</span>Є практика</li>
+        <li data-k="test"><span class="ic">✓</span>Є перевірка</li>
+        <li data-k="summary"><span class="ic">✓</span>Є підсумок</li>
+      </ul>
+    </div>
+    <div class="panel mentor">
+      <div class="hd">
+        <span class="av">✦</span>
+        <span><b>AI-ментор</b><span>поруч на уроці</span></span>
+      </div>
+      <div class="hintbox" id="hint">Застряг — натисни «Поясни простіше» або «Дай приклад». Підказка залежить від етапу, на якому ти зараз.</div>
+      <div class="qa">
+        <span class="lbl">Швидкі дії</span>
+        <button id="askSimple">Поясни простіше</button>
+        <button id="askExample">Дай приклад</button>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<!-- device-preview:start -->
+<div id="phoneview">
+  <div>
+    <div class="phone"><iframe id="phoneframe" title="Урок очима учня на телефоні" loading="lazy"></iframe></div>
+    <p class="phonemeta">Сторінка уроку в мобільному вигляді — така сама, як побачить учень</p>
+  </div>
+
+  <div class="qrcard">
+    <h3>Відкрити на своєму телефоні</h3>
+    <p>Наведіть камеру на код — урок відкриється у браузері телефона.</p>
+    <div class="qrbox"><svg viewBox="0 0 37 37" role="img" aria-label="QR-код на адресу уроку" shape-rendering="crispEdges"><path d="M2 2h7v1h-7zM12 2h3v1h-3zM20 2h4v1h-4zM25 2h1v1h-1zM28 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM11 3h1v1h-1zM13 3h2v1h-2zM17 3h2v1h-2zM20 3h1v1h-1zM22 3h2v1h-2zM26 3h1v1h-1zM28 3h1v1h-1zM34 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM10 4h4v1h-4zM16 4h1v1h-1zM18 4h1v1h-1zM21 4h6v1h-6zM28 4h1v1h-1zM30 4h3v1h-3zM34 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM10 5h2v1h-2zM13 5h2v1h-2zM20 5h1v1h-1zM24 5h1v1h-1zM26 5h1v1h-1zM28 5h1v1h-1zM30 5h3v1h-3zM34 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h8v1h-8zM22 6h2v1h-2zM25 6h1v1h-1zM28 6h1v1h-1zM30 6h3v1h-3zM34 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM10 7h1v1h-1zM15 7h2v1h-2zM20 7h2v1h-2zM28 7h1v1h-1zM34 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h1v1h-1zM26 8h1v1h-1zM28 8h7v1h-7zM10 9h1v1h-1zM13 9h1v1h-1zM16 9h1v1h-1zM18 9h1v1h-1zM21 9h5v1h-5zM2 10h1v1h-1zM4 10h5v1h-5zM12 10h2v1h-2zM15 10h2v1h-2zM19 10h1v1h-1zM21 10h1v1h-1zM24 10h2v1h-2zM28 10h5v1h-5zM2 11h3v1h-3zM6 11h2v1h-2zM9 11h3v1h-3zM13 11h1v1h-1zM15 11h1v1h-1zM18 11h2v1h-2zM21 11h2v1h-2zM25 11h1v1h-1zM28 11h2v1h-2zM31 11h2v1h-2zM34 11h1v1h-1zM6 12h1v1h-1zM8 12h2v1h-2zM15 12h5v1h-5zM23 12h2v1h-2zM30 12h1v1h-1zM32 12h2v1h-2zM3 13h2v1h-2zM6 13h1v1h-1zM9 13h1v1h-1zM11 13h5v1h-5zM17 13h1v1h-1zM19 13h5v1h-5zM27 13h2v1h-2zM30 13h4v1h-4zM2 14h3v1h-3zM6 14h1v1h-1zM8 14h1v1h-1zM11 14h3v1h-3zM16 14h1v1h-1zM18 14h1v1h-1zM21 14h1v1h-1zM24 14h1v1h-1zM26 14h2v1h-2zM30 14h2v1h-2zM2 15h1v1h-1zM5 15h3v1h-3zM9 15h2v1h-2zM13 15h2v1h-2zM17 15h1v1h-1zM20 15h1v1h-1zM25 15h4v1h-4zM31 15h1v1h-1zM33 15h2v1h-2zM5 16h1v1h-1zM8 16h1v1h-1zM10 16h1v1h-1zM12 16h2v1h-2zM15 16h4v1h-4zM22 16h2v1h-2zM27 16h2v1h-2zM33 16h1v1h-1zM2 17h2v1h-2zM6 17h1v1h-1zM12 17h1v1h-1zM17 17h1v1h-1zM20 17h4v1h-4zM25 17h4v1h-4zM31 17h2v1h-2zM2 18h1v1h-1zM4 18h1v1h-1zM6 18h8v1h-8zM15 18h3v1h-3zM19 18h1v1h-1zM21 18h1v1h-1zM24 18h1v1h-1zM26 18h2v1h-2zM29 18h3v1h-3zM34 18h1v1h-1zM3 19h3v1h-3zM9 19h2v1h-2zM12 19h2v1h-2zM18 19h1v1h-1zM20 19h2v1h-2zM25 19h1v1h-1zM28 19h2v1h-2zM31 19h2v1h-2zM34 19h1v1h-1zM5 20h5v1h-5zM12 20h1v1h-1zM16 20h2v1h-2zM20 20h1v1h-1zM22 20h1v1h-1zM26 20h1v1h-1zM29 20h2v1h-2zM32 20h2v1h-2zM3 21h2v1h-2zM7 21h1v1h-1zM11 21h1v1h-1zM16 21h1v1h-1zM18 21h1v1h-1zM21 21h5v1h-5zM27 21h6v1h-6zM34 21h1v1h-1zM2 22h1v1h-1zM4 22h1v1h-1zM8 22h6v1h-6zM20 22h2v1h-2zM24 22h1v1h-1zM27 22h1v1h-1zM29 22h3v1h-3zM33 22h1v1h-1zM2 23h1v1h-1zM4 23h2v1h-2zM7 23h1v1h-1zM10 23h1v1h-1zM14 23h6v1h-6zM21 23h1v1h-1zM23 23h1v1h-1zM25 23h1v1h-1zM28 23h1v1h-1zM31 23h2v1h-2zM34 23h1v1h-1zM2 24h1v1h-1zM4 24h1v1h-1zM6 24h1v1h-1zM8 24h4v1h-4zM13 24h2v1h-2zM16 24h1v1h-1zM20 24h1v1h-1zM22 24h3v1h-3zM26 24h1v1h-1zM29 24h1v1h-1zM32 24h2v1h-2zM2 25h1v1h-1zM5 25h1v1h-1zM7 25h1v1h-1zM11 25h1v1h-1zM13 25h1v1h-1zM18 25h1v1h-1zM20 25h1v1h-1zM23 25h3v1h-3zM27 25h1v1h-1zM30 25h1v1h-1zM32 25h3v1h-3zM2 26h1v1h-1zM4 26h1v1h-1zM8 26h1v1h-1zM15 26h1v1h-1zM19 26h1v1h-1zM21 26h1v1h-1zM24 26h7v1h-7zM10 27h1v1h-1zM19 27h1v1h-1zM21 27h2v1h-2zM25 27h2v1h-2zM30 27h1v1h-1zM32 27h3v1h-3zM2 28h7v1h-7zM12 28h1v1h-1zM14 28h1v1h-1zM16 28h2v1h-2zM19 28h1v1h-1zM22 28h2v1h-2zM25 28h2v1h-2zM28 28h1v1h-1zM30 28h1v1h-1zM32 28h2v1h-2zM2 29h1v1h-1zM8 29h1v1h-1zM10 29h1v1h-1zM13 29h1v1h-1zM16 29h1v1h-1zM19 29h3v1h-3zM23 29h4v1h-4zM30 29h5v1h-5zM2 30h1v1h-1zM4 30h3v1h-3zM8 30h1v1h-1zM10 30h2v1h-2zM15 30h4v1h-4zM21 30h2v1h-2zM24 30h1v1h-1zM26 30h6v1h-6zM34 30h1v1h-1zM2 31h1v1h-1zM4 31h3v1h-3zM8 31h1v1h-1zM10 31h1v1h-1zM12 31h1v1h-1zM17 31h1v1h-1zM20 31h3v1h-3zM27 31h1v1h-1zM30 31h2v1h-2zM33 31h2v1h-2zM2 32h1v1h-1zM4 32h3v1h-3zM8 32h1v1h-1zM10 32h3v1h-3zM15 32h4v1h-4zM24 32h2v1h-2zM28 32h2v1h-2zM31 32h2v1h-2zM2 33h1v1h-1zM8 33h1v1h-1zM13 33h1v1h-1zM15 33h1v1h-1zM17 33h1v1h-1zM21 33h3v1h-3zM27 33h2v1h-2zM30 33h3v1h-3zM2 34h7v1h-7zM10 34h2v1h-2zM13 34h1v1h-1zM16 34h2v1h-2zM19 34h1v1h-1zM21 34h1v1h-1zM24 34h6v1h-6zM33 34h1v1h-1z" fill="#14121F"/></svg></div>
+    <span class="qrlink">https://anverchenko.github.io/kvant-lessons/alkiny/</span>
+    <ol class="qrsteps">
+      <li><span class="n">1</span><span>Відкрийте камеру телефона</span></li>
+      <li><span class="n">2</span><span>Наведіть її на код і дочекайтесь підказки</span></li>
+      <li><span class="n">3</span><span>Торкніться посилання, що з’явилось</span></li>
+    </ol>
+  </div>
+</div>
+<!-- device-preview:end -->
+
+<footer class="foot">
+  <span>Урок створено для платформи «КВАНТ» · хімія, 11 клас</span>
+  <span>Сторінка автономна: працює без інтернету, дані нікуди не надсилаються</span>
+</footer>
+
+<script>
+(function(){
+  'use strict';
+  var steps = Array.prototype.slice.call(document.querySelectorAll('.step'));
+  var rail = document.getElementById('rail');
+  var dots = document.getElementById('dots');
+  var cur = 0, seen = {0:true}, checks = {};
+
+  steps.forEach(function(s, i){
+    var li = document.createElement('li');
+    var b = document.createElement('button');
+    b.type = 'button';
+    b.innerHTML = '<span class="n">' + (i+1) + '</span><span class="t"></span>';
+    b.querySelector('.t').textContent = s.dataset.title;
+    b.title = s.dataset.title;
+    b.addEventListener('click', function(){ go(i); });
+    li.appendChild(b);
+    rail.appendChild(li);
+
+    var d = document.createElement('button');
+    d.type = 'button';
+    d.setAttribute('aria-label', 'Етап ' + (i+1) + ': ' + s.dataset.title);
+    d.addEventListener('click', function(){ go(i); });
+    dots.appendChild(d);
+  });
+
+  var railItems = Array.prototype.slice.call(rail.children);
+  var dotItems = Array.prototype.slice.call(dots.children);
+
+  function reduce(){ return window.matchMedia('(prefers-reduced-motion: reduce)').matches; }
+
+  function go(i){
+    if (i < 0 || i >= steps.length) return;
+    cur = i; seen[i] = true;
+    steps.forEach(function(s, k){ s.classList.toggle('on', k === i); });
+    railItems.forEach(function(li, k){
+      li.classList.toggle('on', k === i);
+      li.classList.toggle('done', !!seen[k] && k !== i);
+    });
+    dotItems.forEach(function(d, k){
+      if (k === i) d.setAttribute('aria-current', 'step'); else d.removeAttribute('aria-current');
+      d.classList.toggle('seen', !!seen[k] && k !== i);
+    });
+    document.getElementById('stagelabel').textContent = 'Етап ' + (i+1) + ' з ' + steps.length;
+    document.getElementById('prev').disabled = (i === 0);
+    document.getElementById('next').disabled = (i === steps.length - 1);
+    document.getElementById('hint').textContent =
+      'Ти на етапі «' + steps[i].dataset.title + '». Обери дію нижче — поясню саме цей крок.';
+    var k = steps[i].dataset.check;
+    if (k && k !== 'practice' && k !== 'test') mark(k);
+    railItems[i].scrollIntoView({block:'nearest', inline:'nearest'});
+    document.getElementById('card').scrollIntoView({block:'nearest', behavior: reduce() ? 'auto' : 'smooth'});
+  }
+
+  document.getElementById('next').addEventListener('click', function(){ go(cur+1); });
+  document.getElementById('prev').addEventListener('click', function(){ go(cur-1); });
+  document.addEventListener('keydown', function(e){
+    if (e.target.tagName === 'INPUT') return;
+    if (e.key === 'ArrowRight') go(cur+1);
+    if (e.key === 'ArrowLeft') go(cur-1);
+  });
+
+  function mark(key){
+    if (checks[key]) return;
+    checks[key] = true;
+    var li = document.querySelector('.checks li[data-k="' + key + '"]');
+    if (li) li.classList.add('done');
+    document.getElementById('score').textContent = Object.keys(checks).length + '/6';
+  }
+
+  function hint(attr, fallback){
+    var t = steps[cur].dataset[attr];
+    document.getElementById('hint').textContent = t || fallback;
+  }
+  document.getElementById('askSimple').addEventListener('click', function(){
+    hint('simple', 'Цей етап уже сформульовано максимально просто — спробуй «Дай приклад».');
+  });
+  document.getElementById('askExample').addEventListener('click', function(){
+    hint('example', 'Тут прикладів немає — етап оглядовий.');
+  });
+
+  /* ── малювання структурних формул ── */
+  var C_INK = 'var(--ink)', H_INK = 'var(--ink-3)', BOND = 'var(--ink-2)';
+
+  function svgWrap(w, h, inner, label){
+    return '<svg viewBox="0 0 ' + w + ' ' + h + '" role="img" aria-label="' + label + '">' + inner + '</svg>';
+  }
+  function bond(x1,y1,x2,y2,color,width){
+    return '<line x1="'+x1+'" y1="'+y1+'" x2="'+x2+'" y2="'+y2+
+           '" stroke="'+(color||BOND)+'" stroke-width="'+(width||2)+'" stroke-linecap="round"/>';
+  }
+  function atom(x,y,el,color,size){
+    return '<circle cx="'+x+'" cy="'+y+'" r="'+(size||13)+'" fill="var(--surface-2)"/>' +
+           '<text x="'+x+'" y="'+y+'" text-anchor="middle" dominant-baseline="central" ' +
+           'font-family="Cambria,Georgia,serif" font-size="'+(size ? size*1.5 : 20)+'" ' +
+           'fill="'+(color||C_INK)+'">'+el+'</text>';
+  }
+
+  /* Етап 3 — структурна формула етину */
+  (function(){
+    var host = document.getElementById('fig-ethyne');
+    if (!host) return;
+    var W = 420, H = 180, cy = 96, c1 = 170, c2 = 250, hx = 84, d = 8;
+    var s = '';
+    // потрійний зв'язок C≡C: три паралельні лінії
+    s += bond(c1+16, cy-d, c2-16, cy-d, 'var(--accent)', 2.6);
+    s += bond(c1+16, cy,   c2-16, cy,   'var(--accent)', 2.6);
+    s += bond(c1+16, cy+d, c2-16, cy+d, 'var(--accent)', 2.6);
+    // зв'язки C—H уздовж тієї самої прямої
+    s += bond(c1-15, cy, c1-hx+13, cy);
+    s += bond(c2+15, cy, c2+hx-13, cy);
+    // атоми
+    s += atom(c1-hx, cy, 'H', H_INK, 11);
+    s += atom(c2+hx, cy, 'H', H_INK, 11);
+    s += atom(c1, cy, 'C', C_INK, 14);
+    s += atom(c2, cy, 'C', C_INK, 14);
+    // підпис кута 180°
+    s += '<path d="M '+(c1-46)+' '+cy+' A 46 46 0 0 1 '+(c1+46)+' '+cy+
+         '" fill="none" stroke="var(--accent-line)" stroke-width="1.6" stroke-dasharray="3 3"/>';
+    s += '<text x="'+c1+'" y="'+(cy-56)+'" text-anchor="middle" ' +
+         'font-family="Segoe UI,sans-serif" font-size="13" fill="var(--accent)">180°</text>';
+    s += '<text x="'+((c1+c2)/2)+'" y="'+(cy+42)+'" text-anchor="middle" ' +
+         'font-family="Segoe UI,sans-serif" font-size="13" fill="var(--accent)">потрійний зв’язок · 0,120 нм</text>';
+    s += '<text x="210" y="162" text-anchor="middle" ' +
+         'font-family="Segoe UI,sans-serif" font-size="12.5" fill="var(--ink-3)">усі чотири атоми — на одній прямій</text>';
+    host.insertAdjacentHTML('afterbegin', svgWrap(W, H, s, 'Структурна формула етину'));
+  })();
+
+  /* Етап 5 — σ- і два π-зв'язки */
+  (function(){
+    var host = document.getElementById('fig-pi');
+    if (!host) return;
+    var W = 420, H = 240, cy = 120, c1 = 172, c2 = 248, mx = (c1+c2)/2;
+    var s = '';
+    // другий π-зв'язок — у перпендикулярній площині, показаний у перспективі
+    s += '<g transform="rotate(-34 '+mx+' '+cy+')">';
+    s += '<ellipse cx="'+mx+'" cy="'+(cy-40)+'" rx="66" ry="22" fill="var(--warn)" opacity="0.16"/>';
+    s += '<ellipse cx="'+mx+'" cy="'+(cy+40)+'" rx="66" ry="22" fill="var(--warn)" opacity="0.16"/>';
+    s += '<ellipse cx="'+mx+'" cy="'+(cy-40)+'" rx="66" ry="22" fill="none" stroke="var(--warn)" stroke-width="1.4" stroke-dasharray="3 4"/>';
+    s += '<ellipse cx="'+mx+'" cy="'+(cy+40)+'" rx="66" ry="22" fill="none" stroke="var(--warn)" stroke-width="1.4" stroke-dasharray="3 4"/>';
+    s += '</g>';
+    // перший π-зв'язок — над і під площиною
+    s += '<ellipse cx="'+mx+'" cy="'+(cy-44)+'" rx="70" ry="26" fill="var(--accent)" opacity="0.2"/>';
+    s += '<ellipse cx="'+mx+'" cy="'+(cy+44)+'" rx="70" ry="26" fill="var(--accent)" opacity="0.2"/>';
+    s += '<ellipse cx="'+mx+'" cy="'+(cy-44)+'" rx="70" ry="26" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-dasharray="4 4"/>';
+    s += '<ellipse cx="'+mx+'" cy="'+(cy+44)+'" rx="70" ry="26" fill="none" stroke="var(--accent)" stroke-width="1.6" stroke-dasharray="4 4"/>';
+    // вісь молекули
+    s += bond(40, cy, 380, cy, 'var(--line-strong)', 1.4);
+    // σ-зв'язок і атоми
+    s += bond(c1+15, cy, c2-15, cy, 'var(--ink)', 3);
+    s += atom(c1, cy, 'C', C_INK, 14);
+    s += atom(c2, cy, 'C', C_INK, 14);
+    // підписи
+    s += '<text x="'+mx+'" y="'+(cy-44)+'" text-anchor="middle" dominant-baseline="central" ' +
+         'font-family="Cambria,Georgia,serif" font-size="16" fill="var(--accent)">π<tspan font-size="12">1</tspan></text>';
+    s += '<text x="'+mx+'" y="'+(cy+44)+'" text-anchor="middle" dominant-baseline="central" ' +
+         'font-family="Cambria,Georgia,serif" font-size="16" fill="var(--accent)">π<tspan font-size="12">1</tspan></text>';
+    s += '<text x="'+(mx-92)+'" y="'+(cy+62)+'" text-anchor="middle" dominant-baseline="central" ' +
+         'font-family="Cambria,Georgia,serif" font-size="16" fill="var(--warn)">π<tspan font-size="12">2</tspan></text>';
+    s += '<text x="'+(mx+92)+'" y="'+(cy-62)+'" text-anchor="middle" dominant-baseline="central" ' +
+         'font-family="Cambria,Georgia,serif" font-size="16" fill="var(--warn)">π<tspan font-size="12">2</tspan></text>';
+    s += '<text x="'+mx+'" y="'+(cy+17)+'" text-anchor="middle" ' +
+         'font-family="Cambria,Georgia,serif" font-size="15" fill="var(--ink-2)">σ-зв’язок</text>';
+    s += '<text x="46" y="'+(cy-10)+'" font-family="Segoe UI,sans-serif" font-size="12" fill="var(--ink-3)">вісь молекули</text>';
+    s += '<text x="210" y="228" text-anchor="middle" font-family="Segoe UI,sans-serif" ' +
+         'font-size="12.5" fill="var(--ink-3)">два π-зв’язки у взаємно перпендикулярних площинах</text>';
+    host.insertAdjacentHTML('afterbegin', svgWrap(W, H, s, 'Сигма-зв’язок і два пі-зв’язки в молекулі етину'));
+  })();
+
+  /* Етап 9 — тримеризація в бензен */
+  (function(){
+    var host = document.getElementById('fig-benzene');
+    if (!host) return;
+    var W = 420, H = 250, s = '';
+    // три молекули етину вгорі
+    var ys = 48;
+    [26, 156, 286].forEach(function(x){
+      s += bond(x+13, ys-6, x+95, ys-6, 'var(--accent)', 2.2);
+      s += bond(x+13, ys,   x+95, ys,   'var(--accent)', 2.2);
+      s += bond(x+13, ys+6, x+95, ys+6, 'var(--accent)', 2.2);
+      s += atom(x, ys, 'C', C_INK, 11);
+      s += atom(x+108, ys, 'C', C_INK, 11);
+    });
+    s += '<text x="210" y="16" text-anchor="middle" font-family="Segoe UI,sans-serif" ' +
+         'font-size="12.5" fill="var(--ink-3)">три молекули етину</text>';
+    // стрілка вниз з підписом
+    s += bond(210, 78, 210, 104, 'var(--ink-3)', 1.8);
+    s += '<path d="M 204 102 L 210 114 L 216 102 Z" fill="var(--ink-3)"/>';
+    s += '<text x="224" y="98" font-family="Segoe UI,sans-serif" font-size="12" fill="var(--ink-3)">C, 600 °C</text>';
+    // шестикутник бензену
+    var cx = 210, cyc = 172, r = 50, pts = [];
+    for (var i = 0; i < 6; i++){
+      var a = Math.PI / 180 * (60 * i - 90);
+      pts.push([cx + r * Math.cos(a), cyc + r * Math.sin(a)]);
+    }
+    for (var k = 0; k < 6; k++){
+      var p = pts[k], q = pts[(k+1) % 6];
+      s += bond(p[0], p[1], q[0], q[1], 'var(--accent)', 2.4);
+    }
+    s += '<circle cx="'+cx+'" cy="'+cyc+'" r="'+(r*0.6)+'" fill="none" stroke="var(--accent)" stroke-width="2"/>';
+    pts.forEach(function(p){ s += atom(p[0], p[1], 'C', C_INK, 11); });
+    s += '<text x="210" y="242" text-anchor="middle" font-family="Segoe UI,sans-serif" ' +
+         'font-size="12.5" fill="var(--accent)">бензен C₆H₆: кільце з ароматичною системою зв’язків</text>';
+    host.insertAdjacentHTML('afterbegin', svgWrap(W, H, s, 'Схема тримеризації етину в бензен'));
+  })();
+
+  /* ── дослід: бромна вода і амоніачний розчин Ag2O ── */
+  var t1 = document.getElementById('tube1'), t2 = document.getElementById('tube2');
+  var p1 = document.getElementById('ppt1'), p2 = document.getElementById('ppt2');
+  var note = document.getElementById('labNote');
+
+  document.getElementById('labBr').addEventListener('click', function(){
+    p1.classList.remove('on'); p2.classList.remove('on');
+    t1.className = 'liquid clear';
+    t2.className = 'liquid clear';
+    note.className = 'labnote done';
+    note.innerHTML = 'Знебарвились <b>обидві</b> пробірки: і етен, і етин приєднали бром. ' +
+                     'Дослід довів наявність кратного зв’язку, але не сказав, якого саме.';
+  });
+
+  document.getElementById('labAg').addEventListener('click', function(){
+    t1.className = 'liquid clear';
+    t2.className = 'liquid clear';
+    p1.classList.remove('on');
+    p2.classList.add('on');
+    note.className = 'labnote done';
+    note.innerHTML = 'У пробірці 2 випав світлий осад арґентум ацетиленіду — там етин. ' +
+                     'У пробірці 1 розчин лишився прозорим: етену нічим заміщувати Гідроген.';
+  });
+
+  document.getElementById('labReset').addEventListener('click', function(){
+    t1.className = 'liquid br';
+    t2.className = 'liquid br';
+    p1.classList.remove('on');
+    p2.classList.remove('on');
+    note.className = 'labnote';
+    note.textContent = 'В обох пробірках — бромна вода однакового жовто-оранжевого кольору.';
+  });
+
+  /* ── практика ── */
+  function normalize(v){
+    return v.toUpperCase()
+      .replace(/\s+/g, '')
+      .replace(/[₀₁₂₃₄₅₆₇₈₉]/g, function(d){ return '₀₁₂₃₄₅₆₇₈₉'.indexOf(d) + ''; })
+      .replace(/[^A-Z0-9]/g, '');
+  }
+  document.getElementById('pCheck').addEventListener('click', function(){
+    var v = document.getElementById('pV');
+    var ans = normalize(document.getElementById('pAns').value);
+    mark('practice');
+    v.className = 'verdict on';
+    if (ans === 'C2H4O' || ans === 'CH3CHO' || ans === 'CH3COH'){
+      v.classList.add('good');
+      v.innerHTML = '<b>Правильно.</b> Продукт — етаналь CH<sub>3</sub>—CHO, тобто C<sub>2</sub>H<sub>4</sub>O. ' +
+                    'Вініловий спирт, що утворився першим, одразу перегрупувався в альдегід.';
+    } else if (ans === 'C2H6O' || ans === 'C2H5OH' || ans === 'CH3CH2OH'){
+      v.classList.add('bad');
+      v.innerHTML = '<b>Це продукт із етену, не з етину.</b> Етанол C<sub>2</sub>H<sub>6</sub>O утворюється при гідратації ' +
+                    'подвійного зв’язку. З потрійного виходить етаналь C<sub>2</sub>H<sub>4</sub>O — це реакція Кучерова.';
+    } else if (ans === 'C2H4'){
+      v.classList.add('bad');
+      v.innerHTML = '<b>Не вистачає Оксигену.</b> Вода приєдналася цілком: до C<sub>2</sub>H<sub>2</sub> додалися ' +
+                    'H і OH. Порахуй атоми — вийде C<sub>2</sub>H<sub>4</sub>O.';
+    } else {
+      v.classList.add('bad');
+      v.innerHTML = '<b>Ще не те.</b> Склади формули: C<sub>2</sub>H<sub>2</sub> + H<sub>2</sub>O = ' +
+                    'C<sub>2</sub>H<sub>4</sub>O. Це етаналь CH<sub>3</sub>—CHO, а не спирт.';
+    }
+  });
+
+  /* ── тест ── */
+  var QUESTIONS = [
+    {
+      t: 'Яка загальна формула алкінів?',
+      o: ['C<sub>n</sub>H<sub>2n+2</sub>', 'C<sub>n</sub>H<sub>2n</sub>', 'C<sub>n</sub>H<sub>2n−2</sub>', 'C<sub>n</sub>H<sub>2n−6</sub>'],
+      a: 2,
+      why: 'Кожен кратний зв’язок «забирає» два атоми Гідрогену: алкани C<sub>n</sub>H<sub>2n+2</sub>, алкени C<sub>n</sub>H<sub>2n</sub>, алкіни C<sub>n</sub>H<sub>2n−2</sub>.'
+    },
+    {
+      t: 'Скільки моль брому приєднує 1 моль етину до повного насичення?',
+      o: ['1 моль', '2 моль', '3 моль', 'Не реагує з бромом'],
+      a: 1,
+      why: 'У потрійному зв’язку два π-зв’язки, і кожен приєднує свою молекулу Br<sub>2</sub>. Продукт — 1,1,2,2-тетраброметан CHBr<sub>2</sub>—CHBr<sub>2</sub>.'
+    },
+    {
+      t: 'Який продукт утворюється при гідратації етину (реакція Кучерова)?',
+      o: ['Етанол', 'Етаналь', 'Етанова кислота', 'Етен'],
+      a: 1,
+      why: 'Спочатку утворюється вініловий спирт CH<sub>2</sub>=CH—OH, але він нестійкий і перегруповується в етаналь CH<sub>3</sub>—CHO.'
+    },
+    {
+      t: 'Яка речовина дає осад з амоніачним розчином арґентум(I) оксиду?',
+      o: ['Етан', 'Етен', 'Етин', 'Бутин-2'],
+      a: 2,
+      why: 'Реакція йде лише за наявності рухливого атома Гідрогену біля <b>кінцевого</b> потрійного зв’язку. У бутину-2 потрійний зв’язок посередині, тож осаду не буде.'
+    },
+    {
+      t: 'Чому алкіни приєднують реагенти у дві стадії?',
+      o: ['Молекула лінійна', 'У потрійному зв’язку два π-зв’язки, які розриваються по черзі', 'Потрійний зв’язок найдовший', 'Через високу молекулярну масу'],
+      a: 1,
+      why: 'σ-зв’язок лишається цілим, а два π-зв’язки рвуться послідовно. Після першої стадії з алкіну виходить алкен — і лише потім насичена сполука.'
+    }
+  ];
+  var KEYS = ['А', 'Б', 'В', 'Г'];
+  var quiz = document.getElementById('quiz');
+  quiz.style.display = 'flex';
+  quiz.style.flexDirection = 'column';
+  quiz.style.gap = '12px';
+
+  QUESTIONS.forEach(function(q, qi){
+    var box = document.createElement('div');
+    box.className = 'q';
+    var opts = q.o.map(function(text, oi){
+      return '<label class="opt" data-o="' + oi + '">' +
+             '<input type="radio" name="q' + qi + '" value="' + oi + '">' +
+             '<span class="key">' + KEYS[oi] + '</span><span class="f">' + text + '</span></label>';
+    }).join('');
+    box.innerHTML =
+      '<div class="qh">Питання ' + (qi+1) + ' з ' + QUESTIONS.length + '</div>' +
+      '<div class="qt">' + q.t + '</div>' +
+      '<div class="opts">' + opts + '</div>' +
+      '<div class="verdict" data-v="' + qi + '"></div>';
+    quiz.appendChild(box);
+  });
+
+  document.getElementById('qCheck').addEventListener('click', function(){
+    var right = 0, answered = 0;
+    QUESTIONS.forEach(function(q, qi){
+      var sel = quiz.querySelector('input[name="q' + qi + '"]:checked');
+      var v = quiz.querySelector('[data-v="' + qi + '"]');
+      Array.prototype.forEach.call(quiz.querySelectorAll('[name="q' + qi + '"]'), function(inp){
+        inp.closest('.opt').classList.remove('right', 'wrong');
+      });
+      if (!sel){
+        v.className = 'verdict on bad';
+        v.textContent = 'Відповідь не обрано.';
+        return;
+      }
+      answered++;
+      var correctEl = quiz.querySelector('[name="q' + qi + '"][value="' + q.a + '"]').closest('.opt');
+      correctEl.classList.add('right');
+      v.className = 'verdict on';
+      if (+sel.value === q.a){
+        right++;
+        v.classList.add('good');
+        v.innerHTML = '<b>Правильно.</b> ' + q.why;
+      } else {
+        sel.closest('.opt').classList.add('wrong');
+        v.classList.add('bad');
+        v.innerHTML = '<b>Не так.</b> ' + q.why;
+      }
+    });
+
+    var total = QUESTIONS.length;
+    var out = document.getElementById('qV');
+    out.className = 'verdict on ' + (right === total ? 'good' : 'bad');
+    out.innerHTML = '<b>' + right + ' з ' + total + '</b> — ' +
+      (right === total ? 'бездоганно. Результат уроку вже оновлено.' : 'розбір кожного питання вище. Результат уроку оновлено.');
+
+    if (answered > 0) mark('test');
+    updateResult(right, total);
+  });
+
+  function updateResult(right, total){
+    document.getElementById('ring').style.setProperty('--p', Math.round(right / total * 100) + '%');
+    document.getElementById('ringN').textContent = right + '/' + total;
+    var t = document.getElementById('resTitle'), x = document.getElementById('resText');
+    var adv = document.getElementById('resAdvice');
+    if (right === total){
+      t.textContent = 'Тема засвоєна';
+      x.textContent = 'Будова, дві стадії приєднання й реакція Кучерова — усе зійшлося.';
+    } else if (right >= 3){
+      t.textContent = 'Майже все зійшлося';
+      x.textContent = 'Суть зрозуміла, збій у деталях. Перечитай пояснення біля питань з помилками.';
+    } else if (right >= 1){
+      t.textContent = 'Основа є, потрібне закріплення';
+      x.textContent = 'Повернись до етапів 5 і 6: два π-зв’язки та приєднання у дві стадії.';
+    } else {
+      t.textContent = 'Варто пройти урок ще раз';
+      x.textContent = 'Почни з етапу 5 — після нього решта стає очевидною.';
+    }
+    adv.style.display = 'block';
+    adv.innerHTML = '<h3>Прогрес уроку</h3><p style="margin-top:4px; color:var(--ink-2)">Пройдено етапів: ' +
+      Object.keys(seen).length + ' з ' + steps.length + ' · Тест: ' + right + ' з ' + total +
+      ' · Чек-лист: ' + Object.keys(checks).length + ' з 6</p>';
+  }
+
+  go(0);
+
+  /* ── тема оформлення ── */
+  var root = document.documentElement, btn = document.getElementById('theme'), KEY = 'kvant-theme';
+  try { var saved = localStorage.getItem(KEY); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+  btn.addEventListener('click', function(){
+    var isDark = root.getAttribute('data-theme') === 'dark' ||
+      (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem(KEY, next); } catch (e) {}
+  });
+})();
+</script>
+
+<script>
+/* device-preview */
+(function(){
+  'use strict';
+  var body = document.body;
+
+  /* Сторінка, відкрита всередині рамки, не показує службових кнопок. */
+  if (/(?:^|[?&])frame=1(?:&|$)/.test(location.search)) body.classList.add('framed');
+
+  var frame = document.getElementById('phoneframe');
+  var loaded = false;
+
+  function setMode(mode){
+    var phone = (mode === 'phone');
+    body.classList.toggle('phonemode', phone);
+    Array.prototype.forEach.call(document.querySelectorAll('.devsw .dev'), function(b){
+      b.setAttribute('aria-pressed', b.dataset.mode === mode ? 'true' : 'false');
+    });
+    if (phone && !loaded){
+      frame.src = location.pathname + '?frame=1';
+      loaded = true;
+    }
+    if (phone) window.scrollTo({ top: 0, behavior: 'auto' });
+  }
+
+  Array.prototype.forEach.call(document.querySelectorAll('.devsw .dev'), function(b){
+    b.addEventListener('click', function(){ setMode(b.dataset.mode); });
+  });
+})();
+</script>
+</body>
+</html>

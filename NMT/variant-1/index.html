@@ -1,0 +1,947 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Вхідна діагностика готовності до НМТ з математики 2026, варіант 1: 22 завдання, 60 хвилин, автоматична перевірка та розбір помилок за темами.">
+<meta name="color-scheme" content="light dark">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Вхідна діагностика НМТ-2026 з математики · Варіант 1">
+<meta property="og:description" content="22 завдання, 60 хвилин, максимум 32 тестові бали. Онлайн-перевірка з розбором за темами.">
+<meta property="og:locale" content="uk_UA">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%236741FF%27/%3E%3Ctext y=%27.9em%27 x=%27.5em%27 text-anchor=%27middle%27 font-size=%2762%27 fill=%27white%27 font-family=%27Georgia,serif%27%3EК%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&display=swap">
+<title>Вхідна діагностика НМТ-2026 · Варіант 1 — КВАНТ</title>
+
+<style>
+:root{
+  --ground:#F4F3FA; --surface:#FFFFFF; --surface-2:#FAF9FE; --surface-3:#F1EFFB;
+  --line:#E5E2F2; --line-strong:#D3CEEA;
+  --ink:#191730; --ink-2:#5C5880; --ink-3:#8A86A8;
+  --accent:#6741FF; --accent-ink:#FFFFFF; --accent-soft:#EDE8FF; --accent-line:#CFC2FF;
+  --grad:linear-gradient(135deg,#8B5CF6,#3B82F6);
+  --ok:#0F9D63; --ok-soft:#E8F8F0; --ok-line:#9BDCC0;
+  --bad:#D92D3E; --bad-soft:#FDECEE; --bad-line:#F3B3BA;
+  --warn:#B4730A; --warn-soft:#FFF6E6; --warn-line:#F0CE92;
+  --shadow:0 1px 2px rgba(25,23,48,.05), 0 12px 32px -18px rgba(48,32,120,.28);
+  --font-display:'Onest','Segoe UI',system-ui,-apple-system,Arial,sans-serif;
+  --font-ui:'Onest','Segoe UI Variable Text','Segoe UI',system-ui,-apple-system,Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#100E1A; --surface:#191728; --surface-2:#1F1D31; --surface-3:#242138;
+    --line:#2C2942; --line-strong:#3A3656;
+    --ink:#ECEAF8; --ink-2:#A29DC2; --ink-3:#7C779C;
+    --accent:#9B82FF; --accent-ink:#14102A; --accent-soft:#272044; --accent-line:#463A78;
+    --ok:#4BD79C; --ok-soft:#142C24; --ok-line:#2A5E48;
+    --bad:#FF8592; --bad-soft:#2E1620; --bad-line:#6B2C3A;
+    --warn:#F0B95E; --warn-soft:#2C2214; --warn-line:#5E4724;
+    --shadow:0 1px 2px rgba(0,0,0,.4), 0 16px 40px -20px rgba(0,0,0,.7);
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#100E1A; --surface:#191728; --surface-2:#1F1D31; --surface-3:#242138;
+  --line:#2C2942; --line-strong:#3A3656;
+  --ink:#ECEAF8; --ink-2:#A29DC2; --ink-3:#7C779C;
+  --accent:#9B82FF; --accent-ink:#14102A; --accent-soft:#272044; --accent-line:#463A78;
+  --ok:#4BD79C; --ok-soft:#142C24; --ok-line:#2A5E48;
+  --bad:#FF8592; --bad-soft:#2E1620; --bad-line:#6B2C3A;
+  --warn:#F0B95E; --warn-soft:#2C2214; --warn-line:#5E4724;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 16px 40px -20px rgba(0,0,0,.7);
+}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--ground); color:var(--ink);
+  font-family:var(--font-ui); font-size:16px; line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+h1,h2,h3{font-family:var(--font-display); font-weight:600; text-wrap:balance; margin:0}
+p{margin:0}
+button{font:inherit; color:inherit; cursor:pointer}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent); outline-offset:3px; border-radius:8px}
+[hidden]{display:none !important}
+
+/* ── Шапка сайту ───────────────────────────────────────────── */
+.top{
+  display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+  padding:14px clamp(14px,3vw,28px);
+  border-bottom:1px solid var(--line); background:var(--surface);
+}
+.brand{display:flex; align-items:center; gap:10px; text-decoration:none}
+.brand .mark{
+  width:34px; height:34px; border-radius:10px; flex:none;
+  background:linear-gradient(140deg,var(--accent),#B78CFF);
+  display:grid; place-items:center; color:#fff; font-weight:700; font-size:15px;
+}
+.brand b{font-size:18px; letter-spacing:.06em; display:block; line-height:1.1}
+.brand small{font-size:11px; color:var(--ink-3); letter-spacing:.14em; text-transform:uppercase}
+.back{
+  text-decoration:none; font-size:14px; color:var(--ink-2);
+  border:1px solid var(--line-strong); background:var(--surface-2);
+  padding:6px 14px; border-radius:999px; transition:.16s ease;
+}
+.back:hover{border-color:var(--accent-line); color:var(--accent)}
+.themebtn{
+  margin-left:auto; border:1px solid var(--line-strong); background:var(--surface-2); color:var(--ink-2);
+  width:34px; height:32px; border-radius:10px; display:grid; place-items:center;
+  font-size:15px; line-height:1; transition:.16s ease;
+}
+.themebtn:hover{border-color:var(--accent-line); color:var(--accent)}
+
+.wrap{max-width:880px; margin:0 auto; padding:clamp(24px,4vw,44px) clamp(14px,3vw,28px) 72px}
+
+/* ── Титул ─────────────────────────────────────────────────── */
+.head{display:flex; flex-direction:column; gap:10px; margin-bottom:22px}
+.head .eyebrow{font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); font-weight:600}
+.head h1{
+  font-size:clamp(28px,5.4vw,40px); line-height:1.12; letter-spacing:-.02em; font-weight:700;
+  background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
+  display:inline-block;
+}
+.head .lead{font-size:17px; color:var(--ink-2); max-width:62ch}
+.tags{display:flex; align-items:center; gap:7px; flex-wrap:wrap; margin-top:4px}
+.pill{
+  font-size:12px; padding:4px 11px; border-radius:999px;
+  border:1px solid var(--line-strong); color:var(--ink-2); background:var(--surface-2); white-space:nowrap;
+}
+.pill.subject{background:var(--accent-soft); border-color:var(--accent-line); color:var(--accent); font-weight:600}
+
+/* ── Інструкція ────────────────────────────────────────────── */
+.brief{
+  border:1px solid var(--line); border-radius:20px; background:var(--surface);
+  box-shadow:var(--shadow); padding:22px clamp(16px,3vw,26px); margin-bottom:20px;
+}
+.brief h2{font-size:17px; margin-bottom:12px}
+.brief ul{margin:0; padding-left:20px; color:var(--ink-2); font-size:15px; line-height:1.65}
+.brief li{margin-bottom:6px}
+.brief li:last-child{margin-bottom:0}
+.brief b{color:var(--ink); font-weight:600}
+.brief .src{margin-top:14px; font-size:13px; color:var(--ink-3)}
+.brief .src a{color:var(--accent)}
+
+/* ── Липка панель ──────────────────────────────────────────── */
+.bar{
+  position:sticky; top:0; z-index:8;
+  display:flex; align-items:center; gap:10px 14px; flex-wrap:wrap;
+  padding:11px 16px; margin-bottom:8px;
+  border:1px solid var(--line-strong); border-radius:16px;
+  background:var(--surface); box-shadow:var(--shadow);
+}
+.bar__timer{
+  display:inline-flex; align-items:center; gap:7px;
+  font-variant-numeric:tabular-nums; font-weight:600; font-size:16px;
+  padding:5px 12px; border-radius:999px;
+  background:var(--surface-2); border:1px solid var(--line-strong); color:var(--ink);
+}
+.bar__timer.is-low{background:var(--warn-soft); border-color:var(--warn-line); color:var(--warn)}
+.bar__timer.is-off{color:var(--ink-3)}
+.bar__prog{display:flex; flex-direction:column; gap:5px; min-width:150px; flex:1 1 150px}
+.bar__count{font-size:12.5px; color:var(--ink-2); font-variant-numeric:tabular-nums}
+.bar__track{height:7px; border-radius:999px; background:var(--surface-3); overflow:hidden}
+.bar__fill{display:block; height:100%; width:0%; border-radius:999px; background:var(--grad); transition:width .25s ease}
+
+.btn{
+  border:1px solid transparent; background:var(--accent); color:var(--accent-ink);
+  padding:9px 18px; border-radius:999px; font-size:14.5px; font-weight:600;
+  transition:.16s ease; display:inline-flex; align-items:center; gap:8px;
+}
+.btn:hover{filter:brightness(1.08)}
+.btn:disabled{opacity:.5; cursor:default; filter:none}
+.btn.ghost{background:var(--surface); border-color:var(--line-strong); color:var(--ink-2); font-weight:500}
+.btn.ghost:hover{border-color:var(--accent-line); color:var(--accent); filter:none}
+.btn.sm{padding:6px 14px; font-size:13.5px}
+
+/* ── Частини й завдання ────────────────────────────────────── */
+.part{margin-top:30px}
+.part__head{margin-bottom:6px}
+.part__kicker{font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--accent); font-weight:600}
+.part__title{font-size:19px; margin-top:3px}
+.part__hint{font-size:14px; color:var(--ink-3); margin-top:5px; max-width:70ch}
+
+.tasks{list-style:none; margin:14px 0 0; padding:0; display:flex; flex-direction:column; gap:14px}
+.task{
+  border:1px solid var(--line); border-radius:20px; background:var(--surface);
+  box-shadow:var(--shadow); padding:20px clamp(15px,3vw,24px); scroll-margin-top:86px;
+}
+.task__top{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+.task__n{
+  flex:none; min-width:30px; height:30px; padding:0 8px; border-radius:10px;
+  background:var(--accent-soft); color:var(--accent);
+  display:grid; place-items:center; font-size:13.5px; font-weight:700;
+}
+.task__tag{font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-3); font-weight:600}
+.task__pts{margin-left:auto; font-size:12px; color:var(--ink-3); white-space:nowrap}
+.task__q{font-size:16.5px; line-height:1.55; margin-bottom:14px; overflow-wrap:break-word; white-space:pre-line}
+
+/* Рисунок до умови: діаграма, графік, креслення */
+.fig{
+  margin:0 0 14px; padding:14px 10px; border-radius:14px;
+  background:var(--surface-2); border:1px solid var(--line);
+  display:flex; justify-content:center; color:var(--ink);
+}
+.fig__svg{display:block; width:100%; max-width:440px; height:auto}
+.fig__svg .g{stroke:var(--line-strong); stroke-width:1; fill:none}
+.fig__svg .ax{stroke:currentColor; stroke-width:1.6; fill:none}
+.fig__svg .sh{stroke:currentColor; stroke-width:2; fill:none; stroke-linejoin:round}
+.fig__svg .cv{stroke:var(--accent); stroke-width:3; fill:none; stroke-linejoin:round; stroke-linecap:round}
+.fig__svg .hl{stroke:var(--accent); stroke-width:3; fill:none; stroke-linecap:round}
+.fig__svg .acc{stroke:var(--accent); stroke-width:2; fill:none}
+.fig__svg .pt{fill:var(--accent)}
+.fig__svg text{font-family:var(--font-ui)}
+.fig__svg .t{fill:currentColor; font-size:15px; font-weight:700; font-style:italic}
+.fig__svg .d{fill:var(--ink-2); font-size:13px; font-weight:600}
+.fig__svg text.mini{font-size:10px}
+
+/* Варіанти відповіді */
+.opts{display:flex; flex-direction:column; gap:8px}
+
+/* Варіанти відповіді — п'ять рисунків замість тексту */
+.opts--fig{display:grid; grid-template-columns:repeat(5,1fr); gap:8px}
+.opt--fig{flex-direction:column; align-items:stretch; gap:9px; padding:10px 8px}
+.opt--fig .fig{margin:0; padding:6px 2px; background:var(--surface); border-color:var(--line)}
+.opt--fig .fig__svg{max-width:100%}
+.opt--fig .opt__key{margin:0 auto}
+.opt--fig:has(input:checked) .fig{border-color:var(--accent-line)}
+@media (max-width:660px){ .opts--fig{grid-template-columns:repeat(2,1fr)} }
+.opt{
+  display:flex; align-items:center; gap:12px; cursor:pointer;
+  padding:11px 14px; border-radius:14px;
+  border:1px solid var(--line); background:var(--surface-2);
+  transition:border-color .14s ease, background .14s ease;
+}
+.opt:hover{border-color:var(--accent-line)}
+.opt input{position:absolute; opacity:0; width:0; height:0}
+.opt__key{
+  flex:none; width:28px; height:28px; border-radius:9px;
+  display:grid; place-items:center; font-size:13px; font-weight:700;
+  border:1px solid var(--line-strong); background:var(--surface); color:var(--ink-2);
+  transition:.14s ease;
+}
+.opt__val{font-size:16px; overflow-wrap:break-word; min-width:0}
+.opt:has(input:checked){border-color:var(--accent); background:var(--accent-soft)}
+.opt:has(input:checked) .opt__key{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.opt:has(input:focus-visible){outline:2px solid var(--accent); outline-offset:2px}
+
+/* Логічні пари */
+.pairs{display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:12px; margin-bottom:14px}
+.pairs ol,.pairs ul{margin:0; padding:14px 16px 14px 32px; border-radius:14px; background:var(--surface-2); border:1px solid var(--line); font-size:15.5px}
+.pairs ul{list-style:none; padding-left:16px}
+.pairs li{margin-bottom:7px; overflow-wrap:break-word}
+.pairs li:last-child{margin-bottom:0}
+.pairs ul li::before{content:attr(data-k) ") "; font-weight:700; color:var(--accent)}
+
+.bank{border:1px solid var(--line-strong); border-radius:14px; overflow:hidden; background:var(--surface-2)}
+.bank__row{display:grid; grid-template-columns:44px repeat(5,1fr); align-items:stretch}
+.bank__row + .bank__row{border-top:1px solid var(--line)}
+.bank__row--head{background:var(--surface-3); font-size:12.5px; font-weight:700; color:var(--ink-2)}
+.bank__row--head span{display:grid; place-items:center; padding:7px 0}
+.bank__lbl{display:grid; place-items:center; font-weight:700; font-size:14px; color:var(--ink-2); background:var(--surface-3); border-right:1px solid var(--line)}
+.bank__cell{position:relative; display:grid; place-items:center; padding:9px 0; cursor:pointer; border-left:1px solid var(--line)}
+.bank__cell input{position:absolute; opacity:0; width:0; height:0}
+.bank__dot{
+  width:24px; height:24px; border-radius:8px;
+  border:1.5px solid var(--line-strong); background:var(--surface);
+  display:grid; place-items:center; font-size:13px; font-weight:700; color:transparent;
+  transition:.14s ease;
+}
+.bank__cell:hover .bank__dot{border-color:var(--accent-line)}
+.bank__cell:has(input:checked) .bank__dot{background:var(--accent); border-color:var(--accent); color:var(--accent-ink)}
+.bank__cell:has(input:checked) .bank__dot::after{content:"✕"}
+.bank__cell:has(input:focus-visible) .bank__dot{outline:2px solid var(--accent); outline-offset:2px}
+
+/* Коротка відповідь */
+.short{display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+.short label{font-size:14.5px; color:var(--ink-2)}
+.short input{
+  font:inherit; font-weight:600; font-size:17px; color:var(--ink);
+  width:180px; max-width:100%; padding:10px 14px; border-radius:12px;
+  border:1px solid var(--line-strong); background:var(--surface-2);
+  text-align:center; font-variant-numeric:tabular-nums;
+}
+.short input:focus{outline:2px solid var(--accent); outline-offset:1px; border-color:var(--accent)}
+
+/* ── Стани після перевірки ─────────────────────────────────── */
+.task.is-ok{border-color:var(--ok-line)}
+.task.is-bad{border-color:var(--bad-line)}
+.task.is-ok .task__n{background:var(--ok-soft); color:var(--ok)}
+.task.is-bad .task__n{background:var(--bad-soft); color:var(--bad)}
+.task.is-part .task__n{background:var(--warn-soft); color:var(--warn)}
+
+.opt.is-right{border-color:var(--ok); background:var(--ok-soft)}
+.opt.is-right .opt__key{background:var(--ok); border-color:var(--ok); color:#fff}
+.opt.is-wrong{border-color:var(--bad); background:var(--bad-soft)}
+.opt.is-wrong .opt__key{background:var(--bad); border-color:var(--bad); color:#fff}
+.bank__cell.is-right .bank__dot{background:var(--ok); border-color:var(--ok); color:#fff}
+.bank__cell.is-right .bank__dot::after{content:"✓"}
+.bank__cell.is-wrong .bank__dot{background:var(--bad); border-color:var(--bad); color:#fff}
+.short input.is-right{border-color:var(--ok); background:var(--ok-soft); color:var(--ok)}
+.short input.is-wrong{border-color:var(--bad); background:var(--bad-soft); color:var(--bad)}
+
+.verdict{margin-top:14px; padding:14px 16px; border-radius:14px; border:1px solid var(--line); background:var(--surface-2)}
+.verdict__line{display:flex; align-items:baseline; gap:8px; flex-wrap:wrap; font-size:14.5px; font-weight:600}
+.verdict__line.ok{color:var(--ok)}
+.verdict__line.bad{color:var(--bad)}
+.verdict__line.part{color:var(--warn)}
+.verdict__right{margin-top:7px; font-size:15px; color:var(--ink)}
+.verdict__right b{color:var(--accent)}
+.verdict__sol{margin-top:8px; font-size:14.5px; line-height:1.6; color:var(--ink-2); overflow-wrap:break-word; white-space:pre-line}
+
+/* ── Кнопка перевірки ──────────────────────────────────────── */
+.submitwrap{margin-top:28px; display:flex; align-items:center; gap:12px; flex-wrap:wrap}
+.submitwrap .btn{padding:13px 26px; font-size:16px}
+.submitwrap .note{font-size:13.5px; color:var(--ink-3)}
+
+/* ── Результат ─────────────────────────────────────────────── */
+.result{margin-top:30px; scroll-margin-top:86px}
+.score{
+  border:1px solid var(--accent-line); border-radius:24px; background:var(--surface);
+  box-shadow:var(--shadow); padding:clamp(20px,4vw,32px); text-align:center;
+}
+.score__lbl{font-size:11.5px; letter-spacing:.18em; text-transform:uppercase; color:var(--accent); font-weight:600}
+.score__big{
+  margin-top:8px; font-family:var(--font-display); font-weight:800; letter-spacing:-.03em;
+  font-size:clamp(46px,12vw,72px); line-height:1.05;
+  background:var(--grad); -webkit-background-clip:text; background-clip:text; color:transparent;
+}
+.score__of{font-size:15px; color:var(--ink-2); margin-top:2px}
+.score__track{margin:18px auto 0; max-width:420px; height:10px; border-radius:999px; background:var(--surface-3); overflow:hidden}
+.score__fill{display:block; height:100%; width:0%; border-radius:999px; background:var(--grad); transition:width .5s ease}
+.score__level{
+  display:inline-block; margin-top:16px; padding:7px 18px; border-radius:999px;
+  font-size:14.5px; font-weight:600;
+  border:1px solid var(--accent-line); background:var(--accent-soft); color:var(--accent);
+}
+.score__note{margin-top:12px; font-size:13.5px; color:var(--ink-3); max-width:56ch; margin-left:auto; margin-right:auto}
+
+.sheet{
+  margin-top:16px; border:1px solid var(--line); border-radius:20px;
+  background:var(--surface); box-shadow:var(--shadow); padding:18px clamp(15px,3vw,22px);
+}
+.sheet h3{font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); font-weight:700; margin-bottom:12px}
+.sheet__grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(52px,1fr)); gap:7px}
+.sheet__cell{
+  border:1px solid var(--line-strong); background:var(--surface-2); color:var(--ink-2);
+  border-radius:11px; padding:7px 2px; font-size:13px; font-weight:600; text-align:center;
+  display:flex; flex-direction:column; gap:1px; line-height:1.2; transition:.14s ease;
+}
+.sheet__cell:hover{border-color:var(--accent-line)}
+.sheet__cell small{font-size:10.5px; font-weight:600; opacity:.85}
+.sheet__cell.ok{border-color:var(--ok-line); background:var(--ok-soft); color:var(--ok)}
+.sheet__cell.bad{border-color:var(--bad-line); background:var(--bad-soft); color:var(--bad)}
+.sheet__cell.part{border-color:var(--warn-line); background:var(--warn-soft); color:var(--warn)}
+
+.diag{
+  margin-top:16px; border:1px solid var(--line); border-radius:20px;
+  background:var(--surface); box-shadow:var(--shadow); padding:20px clamp(15px,3vw,24px);
+}
+.diag h3{font-size:12px; letter-spacing:.16em; text-transform:uppercase; color:var(--ink-3); font-weight:700; margin-bottom:14px}
+.diag__row{padding:12px 0; border-top:1px solid var(--line)}
+.diag__row:first-of-type{border-top:0; padding-top:0}
+.diag__line{display:flex; align-items:baseline; gap:10px; flex-wrap:wrap}
+.diag__name{font-size:15.5px; font-weight:600}
+.diag__sc{margin-left:auto; font-size:14px; font-weight:700; font-variant-numeric:tabular-nums; color:var(--ink-2)}
+.diag__hint{font-size:13px; color:var(--ink-3); margin-top:2px}
+.diag__track{margin-top:8px; height:8px; border-radius:999px; background:var(--surface-3); overflow:hidden}
+.diag__fill{display:block; height:100%; width:0%; border-radius:999px; background:var(--grad); transition:width .5s ease}
+.diag__fill.low{background:linear-gradient(135deg,#F97316,#EF4444)}
+.diag__fill.mid{background:linear-gradient(135deg,#F59E0B,#8B5CF6)}
+.diag__foot{margin-top:16px; padding-top:14px; border-top:1px solid var(--line); font-size:14px; color:var(--ink-2)}
+.diag__foot b{color:var(--ink)}
+
+.after{margin-top:18px; display:flex; align-items:center; gap:10px; flex-wrap:wrap}
+
+.foot-note{
+  margin-top:44px; padding-top:20px; border-top:1px solid var(--line);
+  color:var(--ink-3); font-size:13.5px; display:flex; gap:12px; flex-wrap:wrap;
+  justify-content:space-between; align-items:center;
+}
+.foot-note a{color:var(--accent)}
+
+@media (max-width:560px){
+  .bank__row{grid-template-columns:36px repeat(5,1fr)}
+  .task{padding:17px 14px}
+  .opt{padding:10px 12px; gap:10px}
+}
+@media (prefers-reduced-motion:reduce){ *{transition:none !important} }
+@media print{
+  .top,.bar,.submitwrap,.after,.themebtn{display:none !important}
+  .task,.brief,.score,.diag,.sheet{box-shadow:none; break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <a class="brand" href="../../">
+    <span class="mark">К</span>
+    <span><b>КВАНТ</b><small>онлайн-школа</small></span>
+  </a>
+  <a class="back" href="../../">← До бібліотеки</a>
+  <button class="themebtn" id="theme" type="button" aria-label="Перемкнути тему" title="Світла / темна тема">◐</button>
+</header>
+
+<div class="wrap">
+
+  <div class="head">
+    <span class="eyebrow">Вхідна діагностика · НМТ-2026</span>
+    <h1>Математика. Варіант 1</h1>
+    <p class="lead">Пробний тест для одинадцятикласників на початку навчального року: перевіряє те, що вже вивчено в 5–10 класах, і показує, які теми підтягнути до НМТ.</p>
+    <div class="tags">
+      <span class="pill subject">Математика</span>
+      <span class="pill">11 клас</span>
+      <span class="pill">Варіант 1</span>
+      <span class="pill">22 завдання</span>
+      <span class="pill">60 хв</span>
+      <span class="pill">32 бали</span>
+    </div>
+  </div>
+
+  <div class="brief">
+    <h2>Як це працює</h2>
+    <ul>
+      <li>Структура повторює офіційну характеристику НМТ-2026: <b>22 завдання</b>, орієнтовно <b>60 хвилин</b>, максимум <b>32 тестові бали</b>.</li>
+      <li>Завдання <b>1–15</b> — вибір однієї правильної відповіді з п’яти, по <b>1 балу</b>. Завдання <b>16–18</b> — логічні пари, по <b>1 балу за кожну правильну пару</b> (до 3 балів). Завдання <b>19–22</b> — коротка відповідь, по <b>2 бали</b>.</li>
+      <li>Як у демоваріанті УЦОЯО, частина умов спирається на <b>рисунок</b> — діаграму, графік або креслення фігури. Дані потрібно зчитати саме з рисунка. В одному завданні самі варіанти відповіді є ескізами графіків.</li>
+      <li>З діагностики свідомо вилучено теми, які в 11 класі вивчають як новий матеріал: показникова й логарифмічна функції, інтеграл, комбінаторика, ймовірності та статистика, многогранники, тіла обертання, об’єми й площі поверхонь.</li>
+      <li>Таймер стартує з першою відповіддю. Відповіді зберігаються у браузері, тож сторінку можна перезавантажити. Кнопка <b>«Показати результат»</b> перевірить роботу і покаже розбір кожного завдання.</li>
+    </ul>
+    <p class="src">Це авторська діагностика онлайн-школи «КВАНТ», а не офіційний тест УЦОЯО. Форма, типи завдань і система нарахування балів звірені з <a href="https://testportal.gov.ua/matematyka-2026/" target="_blank" rel="noopener">характеристикою тесту з математики НМТ-2026</a> та демонстраційним варіантом УЦОЯО; зміст відповідає чинній програмі ЗНО з математики.</p>
+  </div>
+
+  <div class="bar" id="bar">
+    <span class="bar__timer is-off" id="timer" title="Час на виконання — 60 хвилин">⏱ 60:00</span>
+    <span class="bar__prog">
+      <span class="bar__count" id="count">Відповіді: 0 з 22</span>
+      <span class="bar__track"><span class="bar__fill" id="fill"></span></span>
+    </span>
+    <button class="btn sm" id="check-top" type="button">Показати результат</button>
+  </div>
+
+  <form id="form" autocomplete="off" novalidate>
+    <section class="part">
+      <div class="part__head">
+        <p class="part__kicker">Частина 1 · завдання 1–15</p>
+        <h2 class="part__title">Вибір однієї правильної відповіді</h2>
+        <p class="part__hint">До кожного завдання подано п’ять варіантів відповіді, з яких лише один правильний. За кожну правильну відповідь — 1 бал.</p>
+      </div>
+      <ol class="tasks" id="part1"></ol>
+    </section>
+
+    <section class="part">
+      <div class="part__head">
+        <p class="part__kicker">Частина 2 · завдання 16–18</p>
+        <h2 class="part__title">Установлення відповідності (логічні пари)</h2>
+        <p class="part__hint">До кожного рядка 1–3 доберіть один варіант А–Д і позначте його в таблиці. Один варіант залишиться зайвим. За кожну правильну пару — 1 бал.</p>
+      </div>
+      <ol class="tasks" id="part2"></ol>
+    </section>
+
+    <section class="part">
+      <div class="part__head">
+        <p class="part__kicker">Частина 3 · завдання 19–22</p>
+        <h2 class="part__title">Завдання з короткою відповіддю</h2>
+        <p class="part__hint">Запишіть лише число — без одиниць вимірювання й пояснень. Дробову частину відокремлюйте комою. Якщо відповідь від’ємна, знак мінус записуйте перед першою цифрою. За кожну правильну відповідь — 2 бали.</p>
+      </div>
+      <ol class="tasks" id="part3"></ol>
+    </section>
+  </form>
+
+  <div class="submitwrap">
+    <button class="btn" id="check" type="button">Показати результат</button>
+    <span class="note" id="checknote">Перевірити можна будь-коли — навіть якщо відповіли не на все.</span>
+  </div>
+
+  <div class="result" id="result" hidden>
+    <div class="score">
+      <p class="score__lbl">Ваш результат</p>
+      <p class="score__big" id="score-big">0</p>
+      <p class="score__of" id="score-of">із 32 тестових балів</p>
+      <span class="score__track"><span class="score__fill" id="score-fill"></span></span>
+      <p><span class="score__level" id="score-level">—</span></p>
+      <p class="score__note" id="score-note"></p>
+    </div>
+
+    <div class="sheet">
+      <h3>Бланк відповідей</h3>
+      <div class="sheet__grid" id="sheet"></div>
+    </div>
+
+    <div class="diag">
+      <h3>Діагностика за темами</h3>
+      <div id="diag"></div>
+      <p class="diag__foot" id="diag-foot"></p>
+    </div>
+
+    <div class="after">
+      <button class="btn ghost" id="retry" type="button">Пройти ще раз</button>
+      <a class="btn ghost" href="../variant-2/">Варіант 2 →</a>
+      <a class="btn ghost" href="../../">До бібліотеки уроків</a>
+    </div>
+  </div>
+
+  <div class="foot-note">
+    <span>Онлайн-школа «КВАНТ» · вхідна діагностика готовності до НМТ</span>
+    <span><a href="../variant-2/">Варіант 2</a></span>
+  </div>
+</div>
+
+<script>
+(function(){
+  "use strict";
+
+  var LETTERS = ['А','Б','В','Г','Д'];
+  var TIME_LIMIT = 60 * 60;          // 60 хвилин, як в офіційному тесті
+  var STORE_KEY = 'kvant-nmt-2026-v1';
+
+  var BLOCKS = [["nums","Числа, вирази, відсотки","обчислення, відсотки, відношення, корені, читання діаграм"],["eq","Рівняння та нерівності","лінійні та квадратні рівняння й нерівності"],["func","Функції та графіки","читання графіка, ескізи парабол, прогресії"],["trig","Тригонометрія","значення тригонометричних функцій"],["deriv","Похідна","правила диференціювання та значення похідної"],["geo","Планіметрія","кути, трикутники, коло, чотирикутники, площі"]];
+  var TASKS  = [{"n":1,"t":"mc","b":"nums","q":"На діаграмі показано кількість опадів (у міліметрах), що випали протягом п’яти місяців. За діаграмою визначте, на скільки міліметрів більше опадів випало у травні, ніж у березні.","fig":"\u003csvg class=\"fig__svg\" viewBox=\"0 0 440 270\" style=\"max-width:440px\" role=\"img\" aria-label=\"Стовпчикова діаграма: березень — 30, квітень — 45, травень — 70, червень — 55, липень — 25\"\u003e\u003cline class=\"g\" x1=\"54\" y1=\"216\" x2=\"426\" y2=\"216\"/\u003e\u003ctext class=\"d\" x=\"46\" y=\"220\" text-anchor=\"end\"\u003e0\u003c/text\u003e\u003cline class=\"g\" x1=\"54\" y1=\"191\" x2=\"426\" y2=\"191\"/\u003e\u003ctext class=\"d\" x=\"46\" y=\"195\" text-anchor=\"end\"\u003e10\u003c/text\u003e\u003cline class=\"g\" x1=\"54\" y1=\"166\" x2=\"426\" y2=\"166\"/\u003e\u003ctext class=\"d\" x=\"46\" y=\"170\" text-anchor=\"end\"\u003e20\u003c/text\u003e\u003cline class=\"g\" x1=\"54\" y1=\"141\" x2=\"426\" y2=\"141\"/\u003e\u003ctext class=\"d\" x=\"46\" y=\"145\" text-anchor=\"end\"\u003e30\u003c/text\u003e\u003cline class=\"g\" x1=\"54\" y1=\"116\" x2=\"426\" y2=\"116\"/\u003e\u003ctext class=\"d\" x=\"46\" y=\"120\" text-anchor=\"end\"\u003e40\u003c/text\u003e\u003cline class=\"g\" x1=\"54\" y1=\"91\" x2=\"426\" y2=\"91\"/\u003e\u003ctext class=\"d\" x=\"46\" y=\"95\" text-anchor=\"end\"\u003e50\u003c/text\u003e\u003cline class=\"g\" x1=\"54\" y1=\"66\" x2=\"426\" y2=\"66\"/\u003e\u003ctext class=\"d\" x=\"46\" y=\"70\" text-anchor=\"end\"\u003e60\u003c/text\u003e\u003cline class=\"g\" x1=\"54\" y1=\"41\" x2=\"426\" y2=\"41\"/\u003e\u003ctext class=\"d\" x=\"46\" y=\"45\" text-anchor=\"end\"\u003e70\u003c/text\u003e\u003cline class=\"g\" x1=\"54\" y1=\"16\" x2=\"426\" y2=\"16\"/\u003e\u003ctext class=\"d\" x=\"46\" y=\"20\" text-anchor=\"end\"\u003e80\u003c/text\u003e\u003cline class=\"ax\" x1=\"54\" y1=\"16\" x2=\"54\" y2=\"216\"/\u003e\u003cline class=\"ax\" x1=\"54\" y1=\"216\" x2=\"426\" y2=\"216\"/\u003e\u003crect x=\"73.34\" y=\"141\" width=\"35.71\" height=\"75\" rx=\"3\" fill=\"#8B5CF6\"/\u003e\u003ctext class=\"d\" x=\"91.2\" y=\"236\" text-anchor=\"middle\"\u003eберезень\u003c/text\u003e\u003crect x=\"147.74\" y=\"103.5\" width=\"35.71\" height=\"112.5\" rx=\"3\" fill=\"#3B82F6\"/\u003e\u003ctext class=\"d\" x=\"165.6\" y=\"236\" text-anchor=\"middle\"\u003eквітень\u003c/text\u003e\u003crect x=\"222.14\" y=\"41\" width=\"35.71\" height=\"175\" rx=\"3\" fill=\"#14B8A6\"/\u003e\u003ctext class=\"d\" x=\"240\" y=\"236\" text-anchor=\"middle\"\u003eтравень\u003c/text\u003e\u003crect x=\"296.54\" y=\"78.5\" width=\"35.71\" height=\"137.5\" rx=\"3\" fill=\"#F59E0B\"/\u003e\u003ctext class=\"d\" x=\"314.4\" y=\"236\" text-anchor=\"middle\"\u003eчервень\u003c/text\u003e\u003crect x=\"370.94\" y=\"153.5\" width=\"35.71\" height=\"62.5\" rx=\"3\" fill=\"#F43F5E\"/\u003e\u003ctext class=\"d\" x=\"388.8\" y=\"236\" text-anchor=\"middle\"\u003eлипень\u003c/text\u003e\u003ctext class=\"d\" x=\"240\" y=\"262\" text-anchor=\"middle\"\u003eМісяць\u003c/text\u003e\u003ctext class=\"d\" x=\"14\" y=\"116\" text-anchor=\"middle\" transform=\"rotate(-90 14 116)\"\u003eОпади, мм\u003c/text\u003e\u003c/svg\u003e","o":["15","25","40","45","55"],"a":2,"s":"За шкалою зчитуємо: у травні стовпчик сягає позначки 70 мм, у березні — 30 мм. Різниця: 70 − 30 = 40 мм."},{"n":2,"t":"mc","b":"geo","q":"Драбина BC приставлена до вертикальної стіни AB і спирається на горизонтальну поверхню в точці C (див. рисунок). За наведеними на рисунку даними визначте градусну міру кута BCA нахилу драбини до поверхні.","fig":"\u003csvg class=\"fig__svg\" viewBox=\"0 0 300 260\" style=\"max-width:300px\" role=\"img\" aria-label=\"Вертикальна стіна AB, драбина BC спирається на землю в точці C; біля B позначено кут 155 градусів між продовженням стіни вгору та драбиною\"\u003e\u003cline class=\"sh\" x1=\"40\" y1=\"200\" x2=\"282\" y2=\"200\"/\u003e\u003cline class=\"sh\" x1=\"90\" y1=\"56\" x2=\"90\" y2=\"200\"/\u003e\u003cline class=\"g\" x1=\"78\" y1=\"70\" x2=\"90\" y2=\"60\"/\u003e\u003cline class=\"g\" x1=\"78\" y1=\"86\" x2=\"90\" y2=\"76\"/\u003e\u003cline class=\"g\" x1=\"78\" y1=\"102\" x2=\"90\" y2=\"92\"/\u003e\u003cline class=\"g\" x1=\"78\" y1=\"118\" x2=\"90\" y2=\"108\"/\u003e\u003cline class=\"g\" x1=\"78\" y1=\"134\" x2=\"90\" y2=\"124\"/\u003e\u003cline class=\"g\" x1=\"78\" y1=\"150\" x2=\"90\" y2=\"140\"/\u003e\u003cline class=\"g\" x1=\"78\" y1=\"166\" x2=\"90\" y2=\"156\"/\u003e\u003cline class=\"g\" x1=\"78\" y1=\"182\" x2=\"90\" y2=\"172\"/\u003e\u003cline class=\"g\" x1=\"78\" y1=\"198\" x2=\"90\" y2=\"188\"/\u003e\u003cline class=\"sh\" x1=\"90\" y1=\"56\" x2=\"90\" y2=\"28\" stroke-dasharray=\"5 4\"/\u003e\u003cline class=\"hl\" x1=\"90\" y1=\"56\" x2=\"236\" y2=\"200\"/\u003e\u003cpath class=\"sh\" d=\"M 90 184 h 16 v 16\" fill=\"none\"/\u003e\u003cpath class=\"acc\" d=\"M 90 22 A 34 34 0 0 1 116 78\" fill=\"none\"/\u003e\u003ctext class=\"t\" x=\"104\" y=\"42\"\u003e155°\u003c/text\u003e\u003ctext class=\"t\" x=\"68\" y=\"62\"\u003eB\u003c/text\u003e\u003ctext class=\"t\" x=\"68\" y=\"206\"\u003eA\u003c/text\u003e\u003ctext class=\"t\" x=\"244\" y=\"220\"\u003eC\u003c/text\u003e\u003c/svg\u003e","o":["25°","35°","55°","65°","155°"],"a":3,"s":"Кут 155° і кут ABC — суміжні, тож ∠ABC = 180° − 155° = 25°. У прямокутному трикутнику ABC (кут при A прямий) гострі кути доповнюють один одного до 90°, тому ∠BCA = 90° − 25° = 65°."},{"n":3,"t":"mc","b":"nums","q":"Кількість хлопців у класі відноситься до кількості дівчат як 4 : 5. Якою може бути загальна кількість учнів у цьому класі?","o":["30","32","36","40","44"],"a":2,"s":"Нехай хлопців 4k, дівчат 5k. Тоді всього 9k — число, кратне 9. Серед запропонованих лише 36 = 9 · 4 ділиться на 9."},{"n":4,"t":"mc","b":"nums","q":"Першого разу з рахунку зняли 30 % усіх грошей, а другого — ще 400 грн. Після цього на рахунку залишилася половина початкової суми. Скільки гривень залишилося на рахунку?","o":["800","1000","1200","2000","2400"],"a":1,"s":"Нехай початкова сума x. Тоді x − 0,3x − 400 = 0,5x, тобто 0,2x = 400 і x = 2000 грн. Залишилася половина: 0,5 · 2000 = 1000 грн. Питають саме залишок, а не початкову суму."},{"n":5,"t":"mc","b":"nums","q":"Спростіть вираз: √72 − √8.","o":["2√2","4√2","6√2","8√2","√64"],"a":1,"s":"√72 = √(36 · 2) = 6√2, а √8 = √(4 · 2) = 2√2. Тоді 6√2 − 2√2 = 4√2."},{"n":6,"t":"mc","b":"func","q":"На якому рисунку зображено ескіз графіка квадратичної функції, що набуває лише додатних значень на всій області визначення?","ofig":["\u003csvg class=\"fig__svg\" viewBox=\"0 0 150 132\" style=\"max-width:150px\" role=\"img\" aria-label=\"Ескіз графіка квадратичної функції\"\u003e\u003cline class=\"g\" x1=\"12\" y1=\"120\" x2=\"12\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"33\" y1=\"120\" x2=\"33\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"54\" y1=\"120\" x2=\"54\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"75\" y1=\"120\" x2=\"75\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"96\" y1=\"120\" x2=\"96\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"117\" y1=\"120\" x2=\"117\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"138\" y1=\"120\" x2=\"138\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"120\" x2=\"138\" y2=\"120\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"102\" x2=\"138\" y2=\"102\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"84\" x2=\"138\" y2=\"84\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"66\" x2=\"138\" y2=\"66\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"48\" x2=\"138\" y2=\"48\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"30\" x2=\"138\" y2=\"30\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"12\" x2=\"138\" y2=\"12\"/\u003e\u003cline class=\"ax\" x1=\"12\" y1=\"66\" x2=\"138\" y2=\"66\"/\u003e\u003cline class=\"ax\" x1=\"75\" y1=\"120\" x2=\"75\" y2=\"12\"/\u003e\u003cpath class=\"ax\" d=\"M 138 66 l -7 -4 M 138 66 l -7 4\" fill=\"none\"/\u003e\u003cpath class=\"ax\" d=\"M 75 12 l -4 7 M 75 12 l 4 7\" fill=\"none\"/\u003e\u003ctext class=\"d mini\" x=\"134\" y=\"84\"\u003ex\u003c/text\u003e\u003ctext class=\"d mini\" x=\"84\" y=\"22\"\u003ey\u003c/text\u003e\u003ctext class=\"d mini\" x=\"61\" y=\"82\"\u003e0\u003c/text\u003e\u003ctext class=\"d mini\" x=\"92\" y=\"82\"\u003e1\u003c/text\u003e\u003ctext class=\"d mini\" x=\"61\" y=\"53\"\u003e1\u003c/text\u003e\u003cpath class=\"cv\" d=\"M26.7,9.1 L28.8,16.39 L30.9,23.36 L33,30 L35.1,36.32 L37.2,42.31 L39.3,47.98 L41.4,53.33 L43.5,58.35 L45.6,63.05 L47.7,67.42 L49.8,71.47 L51.9,75.2 L54,78.6 L56.1,81.68 L58.2,84.43 L60.3,86.86 L62.4,88.97 L64.5,90.75 L66.6,92.21 L68.7,93.34 L70.8,94.15 L72.9,94.64 L75,94.8 L77.1,94.64 L79.2,94.15 L81.3,93.34 L83.4,92.21 L85.5,90.75 L87.6,88.97 L89.7,86.86 L91.8,84.43 L93.9,81.68 L96,78.6 L98.1,75.2 L100.2,71.47 L102.3,67.42 L104.4,63.05 L106.5,58.35 L108.6,53.33 L110.7,47.98 L112.8,42.31 L114.9,36.32 L117,30 L119.1,23.36 L121.2,16.39 L123.3,9.1\" fill=\"none\"/\u003e\u003c/svg\u003e","\u003csvg class=\"fig__svg\" viewBox=\"0 0 150 132\" style=\"max-width:150px\" role=\"img\" aria-label=\"Ескіз графіка квадратичної функції\"\u003e\u003cline class=\"g\" x1=\"12\" y1=\"120\" x2=\"12\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"33\" y1=\"120\" x2=\"33\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"54\" y1=\"120\" x2=\"54\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"75\" y1=\"120\" x2=\"75\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"96\" y1=\"120\" x2=\"96\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"117\" y1=\"120\" x2=\"117\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"138\" y1=\"120\" x2=\"138\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"120\" x2=\"138\" y2=\"120\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"102\" x2=\"138\" y2=\"102\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"84\" x2=\"138\" y2=\"84\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"66\" x2=\"138\" y2=\"66\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"48\" x2=\"138\" y2=\"48\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"30\" x2=\"138\" y2=\"30\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"12\" x2=\"138\" y2=\"12\"/\u003e\u003cline class=\"ax\" x1=\"12\" y1=\"66\" x2=\"138\" y2=\"66\"/\u003e\u003cline class=\"ax\" x1=\"75\" y1=\"120\" x2=\"75\" y2=\"12\"/\u003e\u003cpath class=\"ax\" d=\"M 138 66 l -7 -4 M 138 66 l -7 4\" fill=\"none\"/\u003e\u003cpath class=\"ax\" d=\"M 75 12 l -4 7 M 75 12 l 4 7\" fill=\"none\"/\u003e\u003ctext class=\"d mini\" x=\"134\" y=\"84\"\u003ex\u003c/text\u003e\u003ctext class=\"d mini\" x=\"84\" y=\"22\"\u003ey\u003c/text\u003e\u003ctext class=\"d mini\" x=\"61\" y=\"82\"\u003e0\u003c/text\u003e\u003ctext class=\"d mini\" x=\"92\" y=\"82\"\u003e1\u003c/text\u003e\u003ctext class=\"d mini\" x=\"61\" y=\"53\"\u003e1\u003c/text\u003e\u003cpath class=\"cv\" d=\"M45.6,121.15 L47.7,116.78 L49.8,112.73 L51.9,109 L54,105.6 L56.1,102.52 L58.2,99.77 L60.3,97.34 L62.4,95.23 L64.5,93.45 L66.6,91.99 L68.7,90.86 L70.8,90.05 L72.9,89.56 L75,89.4 L77.1,89.56 L79.2,90.05 L81.3,90.86 L83.4,91.99 L85.5,93.45 L87.6,95.23 L89.7,97.34 L91.8,99.77 L93.9,102.52 L96,105.6 L98.1,109 L100.2,112.73 L102.3,116.78 L104.4,121.15\" fill=\"none\"/\u003e\u003c/svg\u003e","\u003csvg class=\"fig__svg\" viewBox=\"0 0 150 132\" style=\"max-width:150px\" role=\"img\" aria-label=\"Ескіз графіка квадратичної функції\"\u003e\u003cline class=\"g\" x1=\"12\" y1=\"120\" x2=\"12\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"33\" y1=\"120\" x2=\"33\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"54\" y1=\"120\" x2=\"54\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"75\" y1=\"120\" x2=\"75\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"96\" y1=\"120\" x2=\"96\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"117\" y1=\"120\" x2=\"117\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"138\" y1=\"120\" x2=\"138\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"120\" x2=\"138\" y2=\"120\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"102\" x2=\"138\" y2=\"102\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"84\" x2=\"138\" y2=\"84\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"66\" x2=\"138\" y2=\"66\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"48\" x2=\"138\" y2=\"48\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"30\" x2=\"138\" y2=\"30\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"12\" x2=\"138\" y2=\"12\"/\u003e\u003cline class=\"ax\" x1=\"12\" y1=\"66\" x2=\"138\" y2=\"66\"/\u003e\u003cline class=\"ax\" x1=\"75\" y1=\"120\" x2=\"75\" y2=\"12\"/\u003e\u003cpath class=\"ax\" d=\"M 138 66 l -7 -4 M 138 66 l -7 4\" fill=\"none\"/\u003e\u003cpath class=\"ax\" d=\"M 75 12 l -4 7 M 75 12 l 4 7\" fill=\"none\"/\u003e\u003ctext class=\"d mini\" x=\"134\" y=\"84\"\u003ex\u003c/text\u003e\u003ctext class=\"d mini\" x=\"84\" y=\"22\"\u003ey\u003c/text\u003e\u003ctext class=\"d mini\" x=\"61\" y=\"82\"\u003e0\u003c/text\u003e\u003ctext class=\"d mini\" x=\"92\" y=\"82\"\u003e1\u003c/text\u003e\u003ctext class=\"d mini\" x=\"61\" y=\"53\"\u003e1\u003c/text\u003e\u003cpath class=\"cv\" d=\"M45.6,10.85 L47.7,15.22 L49.8,19.27 L51.9,23 L54,26.4 L56.1,29.48 L58.2,32.23 L60.3,34.66 L62.4,36.77 L64.5,38.55 L66.6,40.01 L68.7,41.14 L70.8,41.95 L72.9,42.44 L75,42.6 L77.1,42.44 L79.2,41.95 L81.3,41.14 L83.4,40.01 L85.5,38.55 L87.6,36.77 L89.7,34.66 L91.8,32.23 L93.9,29.48 L96,26.4 L98.1,23 L100.2,19.27 L102.3,15.22 L104.4,10.85\" fill=\"none\"/\u003e\u003c/svg\u003e","\u003csvg class=\"fig__svg\" viewBox=\"0 0 150 132\" style=\"max-width:150px\" role=\"img\" aria-label=\"Ескіз графіка квадратичної функції\"\u003e\u003cline class=\"g\" x1=\"12\" y1=\"120\" x2=\"12\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"33\" y1=\"120\" x2=\"33\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"54\" y1=\"120\" x2=\"54\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"75\" y1=\"120\" x2=\"75\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"96\" y1=\"120\" x2=\"96\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"117\" y1=\"120\" x2=\"117\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"138\" y1=\"120\" x2=\"138\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"120\" x2=\"138\" y2=\"120\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"102\" x2=\"138\" y2=\"102\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"84\" x2=\"138\" y2=\"84\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"66\" x2=\"138\" y2=\"66\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"48\" x2=\"138\" y2=\"48\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"30\" x2=\"138\" y2=\"30\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"12\" x2=\"138\" y2=\"12\"/\u003e\u003cline class=\"ax\" x1=\"12\" y1=\"66\" x2=\"138\" y2=\"66\"/\u003e\u003cline class=\"ax\" x1=\"75\" y1=\"120\" x2=\"75\" y2=\"12\"/\u003e\u003cpath class=\"ax\" d=\"M 138 66 l -7 -4 M 138 66 l -7 4\" fill=\"none\"/\u003e\u003cpath class=\"ax\" d=\"M 75 12 l -4 7 M 75 12 l 4 7\" fill=\"none\"/\u003e\u003ctext class=\"d mini\" x=\"134\" y=\"84\"\u003ex\u003c/text\u003e\u003ctext class=\"d mini\" x=\"84\" y=\"22\"\u003ey\u003c/text\u003e\u003ctext class=\"d mini\" x=\"61\" y=\"82\"\u003e0\u003c/text\u003e\u003ctext class=\"d mini\" x=\"92\" y=\"82\"\u003e1\u003c/text\u003e\u003ctext class=\"d mini\" x=\"61\" y=\"53\"\u003e1\u003c/text\u003e\u003cpath class=\"cv\" d=\"M26.7,122.9 L28.8,115.61 L30.9,108.64 L33,102 L35.1,95.68 L37.2,89.69 L39.3,84.02 L41.4,78.67 L43.5,73.65 L45.6,68.95 L47.7,64.58 L49.8,60.53 L51.9,56.8 L54,53.4 L56.1,50.32 L58.2,47.57 L60.3,45.14 L62.4,43.03 L64.5,41.25 L66.6,39.79 L68.7,38.66 L70.8,37.85 L72.9,37.36 L75,37.2 L77.1,37.36 L79.2,37.85 L81.3,38.66 L83.4,39.79 L85.5,41.25 L87.6,43.03 L89.7,45.14 L91.8,47.57 L93.9,50.32 L96,53.4 L98.1,56.8 L100.2,60.53 L102.3,64.58 L104.4,68.95 L106.5,73.65 L108.6,78.67 L110.7,84.02 L112.8,89.69 L114.9,95.68 L117,102 L119.1,108.64 L121.2,115.61 L123.3,122.9\" fill=\"none\"/\u003e\u003c/svg\u003e","\u003csvg class=\"fig__svg\" viewBox=\"0 0 150 132\" style=\"max-width:150px\" role=\"img\" aria-label=\"Ескіз графіка квадратичної функції\"\u003e\u003cline class=\"g\" x1=\"12\" y1=\"120\" x2=\"12\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"33\" y1=\"120\" x2=\"33\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"54\" y1=\"120\" x2=\"54\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"75\" y1=\"120\" x2=\"75\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"96\" y1=\"120\" x2=\"96\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"117\" y1=\"120\" x2=\"117\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"138\" y1=\"120\" x2=\"138\" y2=\"12\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"120\" x2=\"138\" y2=\"120\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"102\" x2=\"138\" y2=\"102\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"84\" x2=\"138\" y2=\"84\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"66\" x2=\"138\" y2=\"66\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"48\" x2=\"138\" y2=\"48\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"30\" x2=\"138\" y2=\"30\"/\u003e\u003cline class=\"g\" x1=\"12\" y1=\"12\" x2=\"138\" y2=\"12\"/\u003e\u003cline class=\"ax\" x1=\"12\" y1=\"66\" x2=\"138\" y2=\"66\"/\u003e\u003cline class=\"ax\" x1=\"75\" y1=\"120\" x2=\"75\" y2=\"12\"/\u003e\u003cpath class=\"ax\" d=\"M 138 66 l -7 -4 M 138 66 l -7 4\" fill=\"none\"/\u003e\u003cpath class=\"ax\" d=\"M 75 12 l -4 7 M 75 12 l 4 7\" fill=\"none\"/\u003e\u003ctext class=\"d mini\" x=\"134\" y=\"84\"\u003ex\u003c/text\u003e\u003ctext class=\"d mini\" x=\"84\" y=\"22\"\u003ey\u003c/text\u003e\u003ctext class=\"d mini\" x=\"61\" y=\"82\"\u003e0\u003c/text\u003e\u003ctext class=\"d mini\" x=\"92\" y=\"82\"\u003e1\u003c/text\u003e\u003ctext class=\"d mini\" x=\"61\" y=\"53\"\u003e1\u003c/text\u003e\u003cpath class=\"cv\" d=\"M37.2,13.51 L39.3,19.18 L41.4,24.53 L43.5,29.55 L45.6,34.25 L47.7,38.62 L49.8,42.67 L51.9,46.4 L54,49.8 L56.1,52.88 L58.2,55.63 L60.3,58.06 L62.4,60.17 L64.5,61.95 L66.6,63.41 L68.7,64.54 L70.8,65.35 L72.9,65.84 L75,66 L77.1,65.84 L79.2,65.35 L81.3,64.54 L83.4,63.41 L85.5,61.95 L87.6,60.17 L89.7,58.06 L91.8,55.63 L93.9,52.88 L96,49.8 L98.1,46.4 L100.2,42.67 L102.3,38.62 L104.4,34.25 L106.5,29.55 L108.6,24.53 L110.7,19.18 L112.8,13.51\" fill=\"none\"/\u003e\u003c/svg\u003e"],"oalt":["парабола вітками вгору, перетинає вісь абсцис у двох точках","парабола вітками вниз, розташована нижче осі абсцис і не перетинає її","парабола вітками вгору, розташована вище осі абсцис і не перетинає її","парабола вітками вниз, перетинає вісь абсцис у двох точках","парабола вітками вгору, дотикається осі абсцис в одній точці"],"a":2,"s":"Усі значення функції додатні, коли парабола лежить вище осі абсцис і не торкається її: вітки вгору, а вершина над віссю. Варіант із дотиком до осі не підходить — у вершині значення дорівнює нулю, а нуль не є додатним числом."},{"n":7,"t":"mc","b":"eq","q":"Розв’яжіть рівняння: 3x − 7 = 2x + 5.","o":["−12","−2","5","12","14"],"a":3,"s":"Переносимо невідомі вліво, числа вправо: 3x − 2x = 5 + 7, звідси x = 12."},{"n":8,"t":"mc","b":"func","q":"На рисунку зображено графік лінійної функції y = kx + b. Визначте значення k.","fig":"\u003csvg class=\"fig__svg\" viewBox=\"0 0 400 260\" style=\"max-width:400px\" role=\"img\" aria-label=\"Графік лінійної функції, що проходить через точки (0; -1) і (2; 3)\"\u003e\u003cline class=\"g\" x1=\"16\" y1=\"244\" x2=\"16\" y2=\"16\"/\u003e\u003cline class=\"g\" x1=\"62\" y1=\"244\" x2=\"62\" y2=\"16\"/\u003e\u003cline class=\"g\" x1=\"108\" y1=\"244\" x2=\"108\" y2=\"16\"/\u003e\u003cline class=\"g\" x1=\"154\" y1=\"244\" x2=\"154\" y2=\"16\"/\u003e\u003cline class=\"g\" x1=\"200\" y1=\"244\" x2=\"200\" y2=\"16\"/\u003e\u003cline class=\"g\" x1=\"246\" y1=\"244\" x2=\"246\" y2=\"16\"/\u003e\u003cline class=\"g\" x1=\"292\" y1=\"244\" x2=\"292\" y2=\"16\"/\u003e\u003cline class=\"g\" x1=\"338\" y1=\"244\" x2=\"338\" y2=\"16\"/\u003e\u003cline class=\"g\" x1=\"384\" y1=\"244\" x2=\"384\" y2=\"16\"/\u003e\u003cline class=\"g\" x1=\"16\" y1=\"244\" x2=\"384\" y2=\"244\"/\u003e\u003cline class=\"g\" x1=\"16\" y1=\"215.5\" x2=\"384\" y2=\"215.5\"/\u003e\u003cline class=\"g\" x1=\"16\" y1=\"187\" x2=\"384\" y2=\"187\"/\u003e\u003cline class=\"g\" x1=\"16\" y1=\"158.5\" x2=\"384\" y2=\"158.5\"/\u003e\u003cline class=\"g\" x1=\"16\" y1=\"130\" x2=\"384\" y2=\"130\"/\u003e\u003cline class=\"g\" x1=\"16\" y1=\"101.5\" x2=\"384\" y2=\"101.5\"/\u003e\u003cline class=\"g\" x1=\"16\" y1=\"73\" x2=\"384\" y2=\"73\"/\u003e\u003cline class=\"g\" x1=\"16\" y1=\"44.5\" x2=\"384\" y2=\"44.5\"/\u003e\u003cline class=\"g\" x1=\"16\" y1=\"16\" x2=\"384\" y2=\"16\"/\u003e\u003cline class=\"ax\" x1=\"16\" y1=\"130\" x2=\"384\" y2=\"130\"/\u003e\u003cline class=\"ax\" x1=\"200\" y1=\"244\" x2=\"200\" y2=\"16\"/\u003e\u003cpath class=\"ax\" d=\"M 384 130 l -7 -4 M 384 130 l -7 4\" fill=\"none\"/\u003e\u003cpath class=\"ax\" d=\"M 200 16 l -4 7 M 200 16 l 4 7\" fill=\"none\"/\u003e\u003ctext class=\"d\" x=\"380\" y=\"148\"\u003ex\u003c/text\u003e\u003ctext class=\"d\" x=\"209\" y=\"26\"\u003ey\u003c/text\u003e\u003ctext class=\"d\" x=\"186\" y=\"146\"\u003e0\u003c/text\u003e\u003ctext class=\"d\" x=\"242\" y=\"146\"\u003e1\u003c/text\u003e\u003ctext class=\"d\" x=\"186\" y=\"106.5\"\u003e1\u003c/text\u003e\u003cpath class=\"cv\" d=\"M131,244 L315,16\" fill=\"none\"/\u003e\u003ccircle class=\"pt\" cx=\"200\" cy=\"158.5\" r=\"4\"/\u003e\u003ccircle class=\"pt\" cx=\"292\" cy=\"44.5\" r=\"4\"/\u003e\u003c/svg\u003e","o":["−2","−1","½","2","3"],"a":3,"s":"Зчитуємо з графіка дві точки: (0; −1) і (2; 3). Кутовий коефіцієнт — це відношення приросту y до приросту x: k = (3 − (−1)) / (2 − 0) = 4/2 = 2. Значення −1 — це b, а не k."},{"n":9,"t":"mc","b":"eq","q":"Розв’яжіть нерівність: x² − 5x + 6 ≤ 0.","o":["(−∞; 2] ∪ [3; +∞)","[2; 3]","(2; 3)","[−2; −3]","(−∞; 3]"],"a":1,"s":"Корені рівняння x² − 5x + 6 = 0 — це 2 і 3. Парабола вітками вгору, тому вираз недодатний між коренями. Нерівність нестрога (≤), тому дужки квадратні: [2; 3]."},{"n":10,"t":"mc","b":"geo","q":"У трикутнику ABC проведено висоту BH до сторони AC (див. рисунок). Які з наведених тверджень є правильними?\nІ. ∠BHA = 90°.\nІІ. AH = HC.\nІІІ. Трикутники ABH і CBH — прямокутні.","fig":"\u003csvg class=\"fig__svg\" viewBox=\"0 0 380 240\" style=\"max-width:380px\" role=\"img\" aria-label=\"Трикутник ABC із висотою BH, проведеною до сторони AC; кут при основі H прямий\"\u003e\u003cpath class=\"sh\" d=\"M 52 196 L 206 44 L 330 196 Z\" fill=\"none\"/\u003e\u003cline class=\"hl\" x1=\"206\" y1=\"44\" x2=\"206\" y2=\"196\"/\u003e\u003cpath class=\"sh\" d=\"M 206 180 h 16 v 16\" fill=\"none\"/\u003e\u003ctext class=\"t\" x=\"200\" y=\"218\"\u003eH\u003c/text\u003e\u003ctext class=\"t\" x=\"32\" y=\"204\"\u003eA\u003c/text\u003e\u003ctext class=\"t\" x=\"200\" y=\"32\"\u003eB\u003c/text\u003e\u003ctext class=\"t\" x=\"338\" y=\"204\"\u003eC\u003c/text\u003e\u003c/svg\u003e","o":["лише І","лише І та ІІ","лише І та ІІІ","лише ІІ та ІІІ","І, ІІ та ІІІ"],"a":2,"s":"І — правильне: висота за означенням перпендикулярна до сторони. ІІІ — правильне: обидва трикутники мають прямий кут при H. ІІ — неправильне: висота ділить сторону навпіл лише в рівнобедреному трикутнику, а тут трикутник довільний."},{"n":11,"t":"mc","b":"trig","q":"Обчисліть sin 150°.","o":["−√3/2","−1/2","0","1/2","√3/2"],"a":3,"s":"Кут 150° лежить у другій чверті, де синус додатний. sin 150° = sin(180° − 30°) = sin 30° = 1/2."},{"n":12,"t":"mc","b":"trig","q":"Знайдіть значення виразу cos 60° + sin 30°.","o":["0","1/2","1","3/2","2"],"a":2,"s":"cos 60° = 1/2 і sin 30° = 1/2, тому сума дорівнює 1."},{"n":13,"t":"mc","b":"deriv","q":"Для функції f(x) = x² − 6x + 2 знайдіть f′(4).","o":["−4","−2","0","2","4"],"a":3,"s":"f′(x) = 2x − 6. Підставляємо: f′(4) = 2 · 4 − 6 = 2. Стала +2 на похідну не впливає."},{"n":14,"t":"mc","b":"geo","q":"На рисунку зображено ромб ABCD, діагоналі якого дорівнюють 16 см і 12 см. Знайдіть сторону ромба.","fig":"\u003csvg class=\"fig__svg\" viewBox=\"0 0 380 250\" style=\"max-width:380px\" role=\"img\" aria-label=\"Ромб ABCD із діагоналями AC = 16 см і BD = 12 см, що перетинаються під прямим кутом\"\u003e\u003cpath class=\"sh\" d=\"M 62 122 L 190 40 L 318 122 L 190 204 Z\" fill=\"none\"/\u003e\u003cline class=\"hl\" x1=\"62\" y1=\"122\" x2=\"318\" y2=\"122\"/\u003e\u003cline class=\"hl\" x1=\"190\" y1=\"40\" x2=\"190\" y2=\"204\"/\u003e\u003cpath class=\"sh\" d=\"M 190 136 h 14 v -14\" fill=\"none\"/\u003e\u003ctext class=\"t\" x=\"42\" y=\"128\"\u003eA\u003c/text\u003e\u003ctext class=\"t\" x=\"184\" y=\"28\"\u003eB\u003c/text\u003e\u003ctext class=\"t\" x=\"326\" y=\"128\"\u003eC\u003c/text\u003e\u003ctext class=\"t\" x=\"184\" y=\"228\"\u003eD\u003c/text\u003e\u003ctext class=\"d\" x=\"134\" y=\"112\" text-anchor=\"middle\"\u003e16 см\u003c/text\u003e\u003ctext class=\"d\" x=\"200\" y=\"82\"\u003e12 см\u003c/text\u003e\u003c/svg\u003e","o":["8 см","10 см","12 см","14 см","20 см"],"a":1,"s":"Діагоналі ромба перетинаються під прямим кутом і діляться навпіл, тому половини дорівнюють 8 см і 6 см. Сторона — гіпотенуза прямокутного трикутника: √(8² + 6²) = √100 = 10 см."},{"n":15,"t":"mc","b":"geo","q":"На колі з центром O позначено точки A, B і C так, що вписаний кут ACB дорівнює 40° (див. рисунок). Визначте градусну міру центрального кута AOB, що спирається на ту саму дугу AB.","fig":"\u003csvg class=\"fig__svg\" viewBox=\"0 0 380 280\" style=\"max-width:380px\" role=\"img\" aria-label=\"Коло з центром O. Хорди CA і CB утворюють вписаний кут ACB, що дорівнює 40 градусів; проведено також радіуси OA і OB\"\u003e\u003ccircle class=\"sh\" cx=\"190\" cy=\"146\" r=\"102\" fill=\"none\"/\u003e\u003cline class=\"hl\" x1=\"190\" y1=\"248\" x2=\"124.44\" y2=\"67.86\"/\u003e\u003cline class=\"hl\" x1=\"190\" y1=\"248\" x2=\"255.56\" y2=\"67.86\"/\u003e\u003cline class=\"sh\" x1=\"190\" y1=\"146\" x2=\"124.44\" y2=\"67.86\"/\u003e\u003cline class=\"sh\" x1=\"190\" y1=\"146\" x2=\"255.56\" y2=\"67.86\"/\u003e\u003cpath class=\"acc\" d=\"M 176.32 210.41 A 40 40 0 0 1 203.68 210.41\" fill=\"none\"/\u003e\u003ctext class=\"t\" x=\"190\" y=\"197\" text-anchor=\"middle\"\u003e40°\u003c/text\u003e\u003ccircle class=\"pt\" cx=\"190\" cy=\"146\" r=\"4\"/\u003e\u003ctext class=\"t\" x=\"200\" y=\"138\"\u003eO\u003c/text\u003e\u003ctext class=\"t\" x=\"100.44\" y=\"71.86\"\u003eA\u003c/text\u003e\u003ctext class=\"t\" x=\"265.56\" y=\"71.86\"\u003eB\u003c/text\u003e\u003ctext class=\"t\" x=\"185\" y=\"272\"\u003eC\u003c/text\u003e\u003c/svg\u003e","o":["20°","40°","60°","80°","140°"],"a":3,"s":"Вписаний кут удвічі менший за центральний, що спирається на ту саму дугу. Отже, ∠AOB = 2 · 40° = 80°."},{"n":16,"t":"match","b":"geo","q":"На рисунку зображено прямокутну трапецію ABCD, у якої кути при вершинах A і B — прямі. Використовуючи дані рисунка, узгодьте відрізок (1–3) із його довжиною (А–Д).","fig":"\u003csvg class=\"fig__svg\" viewBox=\"0 0 420 250\" style=\"max-width:420px\" role=\"img\" aria-label=\"Прямокутна трапеція ABCD з прямими кутами при A і B: AB = 8 см, BC = 6 см, AD = 21 см; проведено діагональ AC\"\u003e\u003cpath class=\"sh\" d=\"M 54 210 L 54 88.1 L 145.43 88.1 L 374 210 Z\" fill=\"none\"/\u003e\u003cline class=\"hl\" x1=\"54\" y1=\"210\" x2=\"145.43\" y2=\"88.1\"/\u003e\u003cpath class=\"sh\" d=\"M 54 196 h 14 v 14\" fill=\"none\"/\u003e\u003cpath class=\"sh\" d=\"M 54 88.1 h 14 v 14\" fill=\"none\"/\u003e\u003ctext class=\"t\" x=\"32\" y=\"216\"\u003eA\u003c/text\u003e\u003ctext class=\"t\" x=\"32\" y=\"94.1\"\u003eB\u003c/text\u003e\u003ctext class=\"t\" x=\"141.43\" y=\"76.1\"\u003eC\u003c/text\u003e\u003ctext class=\"t\" x=\"382\" y=\"216\"\u003eD\u003c/text\u003e\u003ctext class=\"d\" x=\"46\" y=\"153.05\" text-anchor=\"end\"\u003e8 см\u003c/text\u003e\u003ctext class=\"d\" x=\"99.71\" y=\"78.1\" text-anchor=\"middle\"\u003e6 см\u003c/text\u003e\u003ctext class=\"d\" x=\"214\" y=\"234\" text-anchor=\"middle\"\u003e21 см\u003c/text\u003e\u003c/svg\u003e","r":["Діагональ AC","Бічна сторона CD","Середня лінія трапеції"],"o":["10 см","13,5 см","15 см","17 см","27 см"],"a":[0,3,1],"s":"1) У прямокутному трикутнику ABC катети AB = 8 см і BC = 6 см, тож AC = √(64 + 36) = 10 см.\n2) Опустимо з C висоту на AD: її довжина 8 см, а горизонтальна проекція CD дорівнює 21 − 6 = 15 см. Тоді CD = √(225 + 64) = √289 = 17 см.\n3) Середня лінія дорівнює півсумі основ: (6 + 21) / 2 = 13,5 см."},{"n":17,"t":"match","b":"func","q":"Узгодьте прогресію (1–3) із указаним її членом (А–Д).","r":["Арифметична прогресія, a₁ = 5, d = 4; знайти a₇","Геометрична прогресія, b₁ = 2, q = 3; знайти b₄","Арифметична прогресія, a₁ = −3, d = 5; знайти a₅"],"o":["17","23","29","54","48"],"a":[2,3,0],"s":"1) aₙ = a₁ + (n − 1)d, тож a₇ = 5 + 6 · 4 = 29 (множимо на 6, а не на 7).\n2) bₙ = b₁ · qⁿ⁻¹, тож b₄ = 2 · 3³ = 2 · 27 = 54.\n3) a₅ = −3 + 4 · 5 = 17."},{"n":18,"t":"match","b":"func","q":"На рисунку зображено графік функції y = f(x), визначеної на проміжку [−4; 5]. Узгодьте характеристику функції (1–3) із її значенням (А–Д).","fig":"\u003csvg class=\"fig__svg\" viewBox=\"0 0 440 290\" style=\"max-width:440px\" role=\"img\" aria-label=\"Графік функції — ламана через точки (-4; -1), (-2; 3), (0; 2), (2; -2), (5; 4)\"\u003e\u003cline class=\"g\" x1=\"18\" y1=\"272\" x2=\"18\" y2=\"18\"/\u003e\u003cline class=\"g\" x1=\"54.73\" y1=\"272\" x2=\"54.73\" y2=\"18\"/\u003e\u003cline class=\"g\" x1=\"91.45\" y1=\"272\" x2=\"91.45\" y2=\"18\"/\u003e\u003cline class=\"g\" x1=\"128.18\" y1=\"272\" x2=\"128.18\" y2=\"18\"/\u003e\u003cline class=\"g\" x1=\"164.91\" y1=\"272\" x2=\"164.91\" y2=\"18\"/\u003e\u003cline class=\"g\" x1=\"201.64\" y1=\"272\" x2=\"201.64\" y2=\"18\"/\u003e\u003cline class=\"g\" x1=\"238.36\" y1=\"272\" x2=\"238.36\" y2=\"18\"/\u003e\u003cline class=\"g\" x1=\"275.09\" y1=\"272\" x2=\"275.09\" y2=\"18\"/\u003e\u003cline class=\"g\" x1=\"311.82\" y1=\"272\" x2=\"311.82\" y2=\"18\"/\u003e\u003cline class=\"g\" x1=\"348.55\" y1=\"272\" x2=\"348.55\" y2=\"18\"/\u003e\u003cline class=\"g\" x1=\"385.27\" y1=\"272\" x2=\"385.27\" y2=\"18\"/\u003e\u003cline class=\"g\" x1=\"422\" y1=\"272\" x2=\"422\" y2=\"18\"/\u003e\u003cline class=\"g\" x1=\"18\" y1=\"272\" x2=\"422\" y2=\"272\"/\u003e\u003cline class=\"g\" x1=\"18\" y1=\"246.6\" x2=\"422\" y2=\"246.6\"/\u003e\u003cline class=\"g\" x1=\"18\" y1=\"221.2\" x2=\"422\" y2=\"221.2\"/\u003e\u003cline class=\"g\" x1=\"18\" y1=\"195.8\" x2=\"422\" y2=\"195.8\"/\u003e\u003cline class=\"g\" x1=\"18\" y1=\"170.4\" x2=\"422\" y2=\"170.4\"/\u003e\u003cline class=\"g\" x1=\"18\" y1=\"145\" x2=\"422\" y2=\"145\"/\u003e\u003cline class=\"g\" x1=\"18\" y1=\"119.6\" x2=\"422\" y2=\"119.6\"/\u003e\u003cline class=\"g\" x1=\"18\" y1=\"94.2\" x2=\"422\" y2=\"94.2\"/\u003e\u003cline class=\"g\" x1=\"18\" y1=\"68.8\" x2=\"422\" y2=\"68.8\"/\u003e\u003cline class=\"g\" x1=\"18\" y1=\"43.4\" x2=\"422\" y2=\"43.4\"/\u003e\u003cline class=\"g\" x1=\"18\" y1=\"18\" x2=\"422\" y2=\"18\"/\u003e\u003cline class=\"ax\" x1=\"18\" y1=\"170.4\" x2=\"422\" y2=\"170.4\"/\u003e\u003cline class=\"ax\" x1=\"201.64\" y1=\"272\" x2=\"201.64\" y2=\"18\"/\u003e\u003cpath class=\"ax\" d=\"M 422 170.4 l -7 -4 M 422 170.4 l -7 4\" fill=\"none\"/\u003e\u003cpath class=\"ax\" d=\"M 201.64 18 l -4 7 M 201.64 18 l 4 7\" fill=\"none\"/\u003e\u003ctext class=\"d\" x=\"418\" y=\"188.4\"\u003ex\u003c/text\u003e\u003ctext class=\"d\" x=\"210.64\" y=\"28\"\u003ey\u003c/text\u003e\u003ctext class=\"d\" x=\"187.64\" y=\"186.4\"\u003e0\u003c/text\u003e\u003ctext class=\"d\" x=\"234.36\" y=\"186.4\"\u003e1\u003c/text\u003e\u003ctext class=\"d\" x=\"187.64\" y=\"150\"\u003e1\u003c/text\u003e\u003cpath class=\"cv\" d=\"M54.73,195.8 L128.18,94.2 L201.64,119.6 L275.09,221.2 L385.27,68.8\" fill=\"none\"/\u003e\u003ccircle class=\"pt\" cx=\"54.73\" cy=\"195.8\" r=\"4\"/\u003e\u003ccircle class=\"pt\" cx=\"128.18\" cy=\"94.2\" r=\"4\"/\u003e\u003ccircle class=\"pt\" cx=\"201.64\" cy=\"119.6\" r=\"4\"/\u003e\u003ccircle class=\"pt\" cx=\"275.09\" cy=\"221.2\" r=\"4\"/\u003e\u003ccircle class=\"pt\" cx=\"385.27\" cy=\"68.8\" r=\"4\"/\u003e\u003c/svg\u003e","r":["Значення f(0)","Кількість нулів функції","Найбільше значення функції"],"o":["4","2","−2","3","5"],"a":[1,3,0],"s":"1) У точці x = 0 графік проходить через y = 2.\n2) Нулі — це точки перетину з віссю абсцис. Ламана перетинає вісь тричі: між −4 і −2, між 0 і 2, між 2 і 5.\n3) Найвища точка графіка — правий кінець (5; 4), тож найбільше значення 4. Значення 5 — це абсциса цієї точки, а не значення функції."},{"n":19,"t":"short","b":"eq","q":"Знайдіть корінь рівняння 2(x − 3) = 5x + 9.","a":"−5","s":"Розкриваємо дужки: 2x − 6 = 5x + 9. Далі 2x − 5x = 9 + 6, тобто −3x = 15 і x = −5. Відповідь від’ємна — знак мінус записуємо перед першою цифрою."},{"n":20,"t":"short","b":"geo","q":"На рисунку зображено трикутник ABC, у якому сторона AC дорівнює 14 см, а висота BH, проведена до цієї сторони, — 9 см. Обчисліть площу трикутника (у см²).","fig":"\u003csvg class=\"fig__svg\" viewBox=\"0 0 380 240\" style=\"max-width:380px\" role=\"img\" aria-label=\"Трикутник ABC, у якому сторона AC дорівнює 14 см, а висота BH, проведена до неї, — 9 см\"\u003e\u003cpath class=\"sh\" d=\"M 48 196 L 196 52 L 332 196 Z\" fill=\"none\"/\u003e\u003cline class=\"hl\" x1=\"196\" y1=\"52\" x2=\"196\" y2=\"196\" stroke-dasharray=\"6 5\"/\u003e\u003cpath class=\"sh\" d=\"M 196 182 h 14 v 14\" fill=\"none\"/\u003e\u003ctext class=\"t\" x=\"28\" y=\"204\"\u003eA\u003c/text\u003e\u003ctext class=\"t\" x=\"190\" y=\"40\"\u003eB\u003c/text\u003e\u003ctext class=\"t\" x=\"340\" y=\"204\"\u003eC\u003c/text\u003e\u003ctext class=\"t\" x=\"190\" y=\"218\"\u003eH\u003c/text\u003e\u003ctext class=\"d\" x=\"190\" y=\"238\" text-anchor=\"middle\"\u003e14 см\u003c/text\u003e\u003ctext class=\"d\" x=\"206\" y=\"124\"\u003e9 см\u003c/text\u003e\u003c/svg\u003e","a":"63","s":"S = ½ · AC · BH = ½ · 14 · 9 = 63 см². Множник ½ пропускати не можна."},{"n":21,"t":"short","b":"geo","q":"Периметр прямокутника дорівнює 25 см, а одна з його сторін — 6 см. Знайдіть суміжну сторону (у сантиметрах).","a":"6,5","s":"Півпериметр — це сума двох суміжних сторін: 25 : 2 = 12,5 см. Тоді друга сторона 12,5 − 6 = 6,5 см. Відповідь записують десятковим дробом."},{"n":22,"t":"short","b":"deriv","q":"Обчисліть f′(3), якщо f(x) = x³ − 3x.","a":"24","s":"f′(x) = 3x² − 3, тож f′(3) = 3 · 9 − 3 = 27 − 3 = 24."}];
+
+  /* ── допоміжне ─────────────────────────────────────────── */
+  function el(tag, cls, text){
+    var n = document.createElement(tag);
+    if (cls) n.className = cls;
+    if (text != null) n.textContent = text;
+    return n;
+  }
+  function maxPts(t){ return t.t === 'mc' ? 1 : (t.t === 'match' ? 3 : 2); }
+  function plural(n, one, few, many){
+    var a = n % 10, b = n % 100;
+    if (a === 1 && b !== 11) return one;
+    if (a >= 2 && a <= 4 && (b < 10 || b >= 20)) return few;
+    return many;
+  }
+  /* Нормалізація короткої відповіді: різні мінуси, кома, пробіли, одиниці. */
+  function norm(v){
+    var s = String(v == null ? '' : v).trim().toLowerCase();
+    s = s.replace(/[−‐‑‒–—―]/g, '-');
+    s = s.replace(/\s| /g, '');
+    s = s.replace(/[,]/g, '.');
+    s = s.replace(/(см|cm|мм|mm|м)[23²³]?$/, '');
+    s = s.replace(/[²³]$/, '');
+    s = s.replace(/^\+/, '');
+    if (/^-?\d+\.?\d*$/.test(s)) {
+      var num = parseFloat(s);
+      if (!isNaN(num)) return String(num);
+    }
+    return s;
+  }
+
+  /* ── рендер завдань ────────────────────────────────────── */
+  var byN = {};
+  TASKS.forEach(function(t){ byN[t.n] = t; });
+
+  function blockName(key){
+    for (var i = 0; i < BLOCKS.length; i++) if (BLOCKS[i][0] === key) return BLOCKS[i][1];
+    return '';
+  }
+
+  function buildTask(t){
+    var li = el('li', 'task');
+    li.id = 'task-' + t.n;
+    li.setAttribute('data-n', t.n);
+
+    var top = el('div', 'task__top');
+    top.appendChild(el('span', 'task__n', String(t.n)));
+    top.appendChild(el('span', 'task__tag', blockName(t.b)));
+    var m = maxPts(t);
+    top.appendChild(el('span', 'task__pts', m + ' ' + plural(m, 'бал', 'бали', 'балів')));
+    li.appendChild(top);
+
+    li.appendChild(el('p', 'task__q', t.q));
+
+    /* Рисунок до умови. Розмітка своя, не користувацька — тому innerHTML. */
+    if (t.fig){
+      var figbox = el('div', 'fig');
+      figbox.innerHTML = t.fig;
+      li.appendChild(figbox);
+    }
+
+    if (t.t === 'mc'){
+      var isFig = !!t.ofig;
+      var opts = el('div', 'opts' + (isFig ? ' opts--fig' : ''));
+      (isFig ? t.ofig : t.o).forEach(function(val, i){
+        var lab = el('label', 'opt' + (isFig ? ' opt--fig' : ''));
+        var inp = document.createElement('input');
+        inp.type = 'radio';
+        inp.name = 'q' + t.n;
+        inp.value = String(i);
+        inp.setAttribute('aria-label',
+          LETTERS[i] + ') ' + (isFig ? t.oalt[i] : val));
+        lab.appendChild(inp);
+        if (isFig){
+          var ofb = el('div', 'fig');
+          ofb.innerHTML = val;
+          lab.appendChild(ofb);
+          lab.appendChild(el('span', 'opt__key', LETTERS[i]));
+        } else {
+          lab.appendChild(el('span', 'opt__key', LETTERS[i]));
+          lab.appendChild(el('span', 'opt__val', val));
+        }
+        opts.appendChild(lab);
+      });
+      li.appendChild(opts);
+
+    } else if (t.t === 'match'){
+      var pairs = el('div', 'pairs');
+      var ol = document.createElement('ol');
+      t.r.forEach(function(text){ ol.appendChild(el('li', null, text)); });
+      var ul = document.createElement('ul');
+      t.o.forEach(function(text, i){
+        var item = el('li', null, text);
+        item.setAttribute('data-k', LETTERS[i]);
+        ul.appendChild(item);
+      });
+      pairs.appendChild(ol);
+      pairs.appendChild(ul);
+      li.appendChild(pairs);
+
+      var bank = el('div', 'bank');
+      var head = el('div', 'bank__row bank__row--head');
+      head.appendChild(el('span', null, ''));
+      LETTERS.forEach(function(L){ head.appendChild(el('span', null, L)); });
+      bank.appendChild(head);
+
+      t.r.forEach(function(_, ri){
+        var row = el('div', 'bank__row');
+        row.appendChild(el('span', 'bank__lbl', String(ri + 1)));
+        LETTERS.forEach(function(L, ci){
+          var cell = el('label', 'bank__cell');
+          cell.setAttribute('aria-label', 'Рядок ' + (ri + 1) + ', варіант ' + L);
+          var inp = document.createElement('input');
+          inp.type = 'radio';
+          inp.name = 'q' + t.n + 'r' + ri;
+          inp.value = String(ci);
+          cell.appendChild(inp);
+          cell.appendChild(el('span', 'bank__dot'));
+          row.appendChild(cell);
+        });
+        bank.appendChild(row);
+      });
+      li.appendChild(bank);
+
+    } else {
+      var box = el('div', 'short');
+      var lab2 = el('label', null, 'Відповідь:');
+      lab2.setAttribute('for', 'in' + t.n);
+      var inp2 = document.createElement('input');
+      inp2.type = 'text';
+      inp2.id = 'in' + t.n;
+      inp2.name = 'q' + t.n;
+      inp2.inputMode = 'text';
+      inp2.placeholder = '—';
+      inp2.setAttribute('aria-label', 'Відповідь на завдання ' + t.n);
+      box.appendChild(lab2);
+      box.appendChild(inp2);
+      li.appendChild(box);
+    }
+    return li;
+  }
+
+  var form = document.getElementById('form');
+  var lists = { 1: document.getElementById('part1'), 2: document.getElementById('part2'), 3: document.getElementById('part3') };
+  TASKS.forEach(function(t){
+    var part = t.t === 'mc' ? 1 : (t.t === 'match' ? 2 : 3);
+    lists[part].appendChild(buildTask(t));
+  });
+  lists[1].setAttribute('start', '1');
+  lists[2].setAttribute('start', '16');
+  lists[3].setAttribute('start', '19');
+
+  /* ── читання відповідей ────────────────────────────────── */
+  function readAnswers(){
+    var out = {};
+    TASKS.forEach(function(t){
+      if (t.t === 'mc'){
+        var c = form.querySelector('input[name="q' + t.n + '"]:checked');
+        out[t.n] = c ? parseInt(c.value, 10) : null;
+      } else if (t.t === 'match'){
+        out[t.n] = t.r.map(function(_, ri){
+          var c = form.querySelector('input[name="q' + t.n + 'r' + ri + '"]:checked');
+          return c ? parseInt(c.value, 10) : null;
+        });
+      } else {
+        var i = form.querySelector('input[name="q' + t.n + '"]');
+        out[t.n] = i ? i.value : '';
+      }
+    });
+    return out;
+  }
+  function answered(t, a){
+    if (t.t === 'mc') return a !== null;
+    if (t.t === 'match') return a.some(function(v){ return v !== null; });
+    return String(a).trim() !== '';
+  }
+
+  /* ── прогрес ───────────────────────────────────────────── */
+  var countEl = document.getElementById('count');
+  var fillEl = document.getElementById('fill');
+  function updateProgress(){
+    var ans = readAnswers(), done = 0;
+    TASKS.forEach(function(t){ if (answered(t, ans[t.n])) done++; });
+    countEl.textContent = 'Відповіді: ' + done + ' з ' + TASKS.length;
+    fillEl.style.width = Math.round(done / TASKS.length * 100) + '%';
+  }
+
+  /* ── таймер ────────────────────────────────────────────── */
+  var timerEl = document.getElementById('timer');
+  var startedAt = null, tick = null, finished = false;
+
+  function fmt(sec){
+    if (sec < 0) sec = 0;
+    var m = Math.floor(sec / 60), s = sec % 60;
+    return (m < 10 ? '0' : '') + m + ':' + (s < 10 ? '0' : '') + s;
+  }
+  function renderTimer(){
+    var left = TIME_LIMIT - Math.floor((Date.now() - startedAt) / 1000);
+    timerEl.textContent = '⏱ ' + fmt(left);
+    timerEl.classList.toggle('is-low', left <= 300);
+    if (left <= 0){ stopTimer(); check(true); }
+  }
+  function startTimer(){
+    if (startedAt || finished) return;
+    startedAt = Date.now();
+    timerEl.classList.remove('is-off');
+    renderTimer();
+    tick = setInterval(renderTimer, 1000);
+    save();
+  }
+  function stopTimer(){ if (tick){ clearInterval(tick); tick = null; } }
+  function spent(){ return startedAt ? Math.min(TIME_LIMIT, Math.floor((Date.now() - startedAt) / 1000)) : 0; }
+
+  /* ── збереження у браузері ─────────────────────────────── */
+  function save(){
+    try {
+      localStorage.setItem(STORE_KEY, JSON.stringify({ a: readAnswers(), t: startedAt }));
+    } catch (e) {}
+  }
+  function restore(){
+    var raw = null;
+    try { raw = localStorage.getItem(STORE_KEY); } catch (e) { return; }
+    if (!raw) return;
+    var data;
+    try { data = JSON.parse(raw); } catch (e) { return; }
+    if (!data || !data.a) return;
+
+    TASKS.forEach(function(t){
+      var v = data.a[t.n];
+      if (v == null) return;
+      if (t.t === 'mc'){
+        var r = form.querySelector('input[name="q' + t.n + '"][value="' + v + '"]');
+        if (r) r.checked = true;
+      } else if (t.t === 'match' && Array.isArray(v)){
+        v.forEach(function(ci, ri){
+          if (ci == null) return;
+          var c = form.querySelector('input[name="q' + t.n + 'r' + ri + '"][value="' + ci + '"]');
+          if (c) c.checked = true;
+        });
+      } else if (t.t === 'short'){
+        var i = form.querySelector('input[name="q' + t.n + '"]');
+        if (i) i.value = v;
+      }
+    });
+
+    if (data.t){
+      startedAt = data.t;
+      timerEl.classList.remove('is-off');
+      if (TIME_LIMIT - Math.floor((Date.now() - startedAt) / 1000) > 0){
+        renderTimer();
+        tick = setInterval(renderTimer, 1000);
+      } else {
+        renderTimer();
+      }
+    }
+  }
+
+  form.addEventListener('change', function(){ startTimer(); updateProgress(); save(); });
+  form.addEventListener('input', function(){ startTimer(); updateProgress(); save(); });
+
+  /* ── перевірка ─────────────────────────────────────────── */
+  function scoreTask(t, a){
+    var m = maxPts(t);
+    if (t.t === 'mc')    return a === t.a ? 1 : 0;
+    if (t.t === 'short') return norm(a) !== '' && norm(a) === norm(t.a) ? 2 : 0;
+    var p = 0;
+    t.a.forEach(function(right, ri){ if (a[ri] === right) p++; });
+    return p;
+  }
+  function rightText(t){
+    if (t.t === 'mc')    return LETTERS[t.a] + ') ' + (t.ofig ? t.oalt[t.a] : t.o[t.a]);
+    if (t.t === 'short') return String(t.a);
+    return t.a.map(function(ci, ri){ return (ri + 1) + ' — ' + LETTERS[ci]; }).join(', ');
+  }
+
+  function check(auto){
+    if (finished) return;
+    finished = true;
+    stopTimer();
+
+    var ans = readAnswers();
+    var total = 0, totalMax = 0;
+    var perBlock = {};
+    BLOCKS.forEach(function(b){ perBlock[b[0]] = { got: 0, max: 0 }; });
+
+    var sheet = document.getElementById('sheet');
+    sheet.innerHTML = '';
+
+    TASKS.forEach(function(t){
+      var a = ans[t.n];
+      var m = maxPts(t);
+      var got = answered(t, a) ? scoreTask(t, a) : 0;
+      total += got; totalMax += m;
+      perBlock[t.b].got += got;
+      perBlock[t.b].max += m;
+
+      var li = document.getElementById('task-' + t.n);
+      var state = got === m ? 'ok' : (got === 0 ? 'bad' : 'part');
+      li.classList.add('is-' + state);
+
+      /* блокуємо та підсвічуємо поля */
+      Array.prototype.forEach.call(li.querySelectorAll('input'), function(i){ i.disabled = true; });
+
+      if (t.t === 'mc'){
+        var labels = li.querySelectorAll('.opt');
+        labels[t.a].classList.add('is-right');
+        if (a !== null && a !== t.a) labels[a].classList.add('is-wrong');
+      } else if (t.t === 'match'){
+        var rows = li.querySelectorAll('.bank__row:not(.bank__row--head)');
+        t.a.forEach(function(right, ri){
+          var cells = rows[ri].querySelectorAll('.bank__cell');
+          cells[right].classList.add('is-right');
+          if (a[ri] !== null && a[ri] !== right) cells[a[ri]].classList.add('is-wrong');
+        });
+      } else {
+        var inp = li.querySelector('.short input');
+        inp.classList.add(got ? 'is-right' : 'is-wrong');
+        if (!String(a).trim()) inp.value = '';
+      }
+
+      /* вердикт під завданням */
+      var v = el('div', 'verdict');
+      var line = el('div', 'verdict__line ' + state);
+      var mark = got === m ? '✓' : (got === 0 ? '✕' : '≈');
+      var word = !answered(t, a)
+        ? 'Без відповіді'
+        : (got === m ? 'Правильно' : (got === 0 ? 'Неправильно' : 'Частково правильно'));
+      line.appendChild(el('span', null, mark + '  ' + word));
+      line.appendChild(el('span', null, '· ' + got + ' з ' + m + ' ' + plural(m, 'бала', 'балів', 'балів')));
+      v.appendChild(line);
+
+      if (got !== m){
+        var r = el('p', 'verdict__right');
+        r.appendChild(el('span', null, 'Правильна відповідь: '));
+        var b = el('b', null, rightText(t));
+        r.appendChild(b);
+        v.appendChild(r);
+      }
+      v.appendChild(el('p', 'verdict__sol', t.s));
+      li.appendChild(v);
+
+      /* клітинка бланка */
+      var cell = el('button', 'sheet__cell ' + state);
+      cell.type = 'button';
+      cell.appendChild(el('span', null, String(t.n)));
+      cell.appendChild(el('small', null, got + '/' + m));
+      cell.addEventListener('click', function(){
+        li.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      });
+      sheet.appendChild(cell);
+    });
+
+    /* картка результату */
+    var pct = Math.round(total / totalMax * 100);
+    document.getElementById('score-big').textContent = String(total);
+    document.getElementById('score-of').textContent =
+      'із ' + totalMax + ' тестових балів · ' + pct + ' %';
+    document.getElementById('score-fill').style.width = pct + '%';
+
+    var level = pct >= 78 ? 'Високий рівень готовності'
+              : pct >= 53 ? 'Достатній рівень готовності'
+              : pct >= 28 ? 'Середній рівень готовності'
+              :             'Початковий рівень готовності';
+    document.getElementById('score-level').textContent = level;
+
+    var t0 = spent();
+    var timeNote = startedAt
+      ? 'Витрачено часу: ' + fmt(t0) + ' із 60:00.'
+      : 'Час не вимірювався.';
+    document.getElementById('score-note').textContent =
+      timeNote + (auto ? ' Час вичерпано — роботу перевірено автоматично. ' : ' ') +
+      'Рівень орієнтовний: офіційну шкалу переведення тестових балів у рейтингову оцінку 100–200 УЦОЯО оприлюднює після основної сесії.';
+
+    /* діагностика за темами */
+    var diag = document.getElementById('diag');
+    diag.innerHTML = '';
+    var weak = [];
+    BLOCKS.forEach(function(b){
+      var key = b[0], got = perBlock[key].got, max = perBlock[key].max;
+      if (!max) return;
+      var p = Math.round(got / max * 100);
+      if (p < 60) weak.push(b[1]);
+
+      var row = el('div', 'diag__row');
+      var line = el('div', 'diag__line');
+      line.appendChild(el('span', 'diag__name', b[1]));
+      line.appendChild(el('span', 'diag__sc', got + ' / ' + max));
+      row.appendChild(line);
+      row.appendChild(el('p', 'diag__hint', b[2]));
+      var track = el('span', 'diag__track');
+      var f = el('span', 'diag__fill' + (p < 40 ? ' low' : (p < 70 ? ' mid' : '')));
+      track.appendChild(f);
+      row.appendChild(track);
+      diag.appendChild(row);
+      setTimeout(function(){ f.style.width = p + '%'; }, 60);
+    });
+
+    document.getElementById('diag-foot').innerHTML = weak.length
+      ? 'Насамперед підтягніть: <b>' + weak.join('</b>, <b>') + '</b>. Саме ці теми дають найбільший приріст балів на НМТ.'
+      : '<b>Усі теми опрацьовано впевнено.</b> Можна переходити до завдань підвищеної складності та тренування на час.';
+
+    document.getElementById('result').hidden = false;
+    document.getElementById('check').disabled = true;
+    document.getElementById('check-top').disabled = true;
+    document.getElementById('checknote').textContent = 'Роботу перевірено. Розбір кожного завдання — під його умовою.';
+    try { localStorage.removeItem(STORE_KEY); } catch (e) {}
+    document.getElementById('result').scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+
+  function confirmCheck(){
+    var ans = readAnswers(), done = 0;
+    TASKS.forEach(function(t){ if (answered(t, ans[t.n])) done++; });
+    var left = TASKS.length - done;
+    if (left > 0){
+      var ok = window.confirm('Без відповіді лишилося завдань: ' + left + '. Усе одно показати результат?');
+      if (!ok) return;
+    }
+    check(false);
+  }
+
+  document.getElementById('check').addEventListener('click', confirmCheck);
+  document.getElementById('check-top').addEventListener('click', confirmCheck);
+
+  document.getElementById('retry').addEventListener('click', function(){
+    try { localStorage.removeItem(STORE_KEY); } catch (e) {}
+    window.location.reload();
+  });
+
+  /* ── тема ──────────────────────────────────────────────── */
+  var root = document.documentElement, KEY = 'kvant-theme';
+  try { var saved = localStorage.getItem(KEY); if (saved) root.setAttribute('data-theme', saved); } catch (e) {}
+  document.getElementById('theme').addEventListener('click', function(){
+    var isDark = root.getAttribute('data-theme') === 'dark' ||
+      (!root.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem(KEY, next); } catch (e) {}
+  });
+
+  restore();
+  updateProgress();
+})();
+</script>
+</body>
+</html>

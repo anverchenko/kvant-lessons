@@ -10,7 +10,7 @@
 <meta property="og:description" content="Бібліотека інтерактивних уроків онлайн-школи КВАНТ.">
 <meta property="og:locale" content="uk_UA">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 100 100%27%3E%3Crect width=%27100%27 height=%27100%27 rx=%2722%27 fill=%27%236741FF%27/%3E%3Ctext y=%27.9em%27 x=%27.5em%27 text-anchor=%27middle%27 font-size=%2762%27 fill=%27white%27 font-family=%27Georgia,serif%27%3EК%3C/text%3E%3C/svg%3E">
-<title>Уроки КВАНТ — бібліотека</title>
+<title>Вхідна діагностика НМТ — КВАНТ</title>
 
 <style>
 :root{
@@ -165,20 +165,10 @@ a{color:inherit}
 
 <div class="wrap">
   <div class="head">
-    <span class="eyebrow">Бібліотека</span>
-    <h1>Опубліковані уроки</h1>
-    <p>Кожен урок — самостійна сторінка з поясненням, розібраними прикладами, практикою й тестом. Відкривається без реєстрації, працює на телефоні.</p>
+    <span class="eyebrow">Математика</span>
+    <h1>Вхідна діагностика НМТ-2026</h1>
+    <p>Два рівноцінні варіанти: 22 завдання на 32 бали, усі формати НМТ — вибір однієї відповіді, встановлення відповідності та коротка відповідь. Перевірка й розбір кожного завдання одразу на сторінці. Без реєстрації, працює на телефоні.</p>
   </div>
-
-  <a class="doccard" href="eksport/">
-    <span class="ic">⇄</span>
-    <span>
-      <span class="lbl">Документ</span>
-      <h2>Зовнішня розробка уроків та експорт у Квант</h2>
-      <p>Як автор і програміст обмінюються уроками: що платформа передає на вхід, який пакет генерується у відповідь і що потрібно, щоб імпортувати урок назад і переглянути його.</p>
-      <span class="go">Читати документ →</span>
-    </span>
-  </a>
 
   <div class="bar" id="bar">
     <span class="lbl" id="barlbl">Предмет</span>
@@ -189,8 +179,8 @@ a{color:inherit}
   <ul class="list" id="list"></ul>
 
   <div class="foot-note">
-    <span>Уроки для платформи «КВАНТ» · граф знань як джерело істини</span>
-    <span>Оновлено 4 серпня 2026</span>
+    <span>Матеріали для платформи «КВАНТ» · граф знань як джерело істини</span>
+    <span>Оновлено 19 вересня 2026</span>
   </div>
 </div>
 
@@ -199,36 +189,27 @@ a{color:inherit}
   'use strict';
 
   /* Перелік уроків. Додати урок = один запис тут + тека з index.html поруч. */
+  /* Перелік матеріалів. Додати = один запис тут + тека з index.html поруч. */
   var LESSONS = [
     {
-      title: 'Квадратне рівняння: розв’язування через дискримінант',
-      subject: 'Алгебра',
-      grade: '8 клас',
-      href: 'dyskryminant/',
-      description: 'Звідки береться формула дискримінанта, що означають три випадки знака D і як не втрачати мінуси в коефіцієнтах. З графіками парабол, покроковим розбором і тестом із поясненнями.',
-      stages: 14,
-      minutes: 25,
-      updated: '4 серпня 2026'
+      title: 'Вхідна діагностика НМТ-2026: варіант 1',
+      subject: 'Математика',
+      grade: 'НМТ',
+      href: 'NMT/variant-1/',
+      description: 'Числа й відсотки, рівняння та нерівності, функції і графіки, тригонометрія, похідна, планіметрія — за програмою 5–10 класів. З рисунками до 11 завдань, миттєвою перевіркою та поясненням до кожної відповіді.',
+      tasks: 22,
+      points: 32,
+      updated: '19 вересня 2026'
     },
     {
-      title: 'Алкени: етен і реакції приєднання',
-      subject: 'Хімія',
-      grade: '10 клас',
-      href: 'alkeny/',
-      description: 'Чому подвійний зв’язок робить алкени активними, чотири реакції приєднання з умовами над стрілкою, правило Марковникова й полімеризація. Зі схемами реакцій та дослідом із бромною водою.',
-      stages: 14,
-      minutes: 30,
-      updated: '4 серпня 2026'
-    },
-    {
-      title: 'Алкіни: ацетилен і потрійний зв’язок',
-      subject: 'Хімія',
-      grade: '11 клас',
-      href: 'alkiny/',
-      description: 'Чому потрійний зв’язок приєднує вдвічі більше, як записати обидві стадії реакції, чому гідратація дає альдегід, а не спирт, і як відрізнити етин від етену в двох пробірках. З реакцією Кучерова, ацетиленідами й тримеризацією в бензен.',
-      stages: 14,
-      minutes: 30,
-      updated: '4 серпня 2026'
+      title: 'Вхідна діагностика НМТ-2026: варіант 2',
+      subject: 'Математика',
+      grade: 'НМТ',
+      href: 'NMT/variant-2/',
+      description: 'Рівноцінний за складністю другий варіант: ті самі змістові лінії й та сама структура, інші числа та рисунки. Підходить для повторного проходження або для роботи в парі.',
+      tasks: 22,
+      points: 32,
+      updated: '19 вересня 2026'
     }
   ];
 
@@ -274,12 +255,12 @@ a{color:inherit}
   function render(){
     var items = LESSONS.filter(function(l){ return active === 'all' || l.subject === active; });
     list.innerHTML = '';
-    countEl.textContent = items.length + ' ' + plural(items.length, 'урок', 'уроки', 'уроків');
+    countEl.textContent = items.length + ' ' + plural(items.length, 'варіант', 'варіанти', 'варіантів');
 
     if (!items.length){
       var e = document.createElement('div');
       e.className = 'empty';
-      e.textContent = 'За цим предметом уроків поки немає.';
+      e.textContent = 'За цим предметом матеріалів поки немає.';
       list.appendChild(e);
       return;
     }
@@ -295,14 +276,14 @@ a{color:inherit}
         '<div class="rfoot">' +
           '<span class="st"></span><span class="dotsep"></span>' +
           '<span class="mn"></span><span class="dotsep"></span>' +
-          '<span class="up"></span><span class="go">Відкрити урок →</span>' +
+          '<span class="up"></span><span class="go">Відкрити варіант →</span>' +
         '</div>';
       a.querySelector('.subject').textContent = l.subject;
       a.querySelector('.grade').textContent = l.grade;
       a.querySelector('h2').textContent = l.title;
       a.querySelector('.desc').textContent = l.description;
-      a.querySelector('.st').textContent = l.stages + ' ' + plural(l.stages, 'етап', 'етапи', 'етапів');
-      a.querySelector('.mn').textContent = '≈ ' + l.minutes + ' хв';
+      a.querySelector('.st').textContent = l.tasks + ' ' + plural(l.tasks, 'завдання', 'завдання', 'завдань');
+      a.querySelector('.mn').textContent = l.points + ' ' + plural(l.points, 'бал', 'бали', 'балів');
       a.querySelector('.up').textContent = 'оновлено ' + l.updated;
       li.appendChild(a);
       list.appendChild(li);
